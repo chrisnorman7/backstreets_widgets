@@ -1,6 +1,7 @@
 /// Provides the [GetText] class.
 import 'package:flutter/material.dart';
 
+import '../screens/simple_scaffold.dart';
 import 'cancel.dart';
 
 /// A widget for getting text.
@@ -70,11 +71,9 @@ class GetTextState extends State<GetText> {
   /// Build a widget.
   @override
   Widget build(final BuildContext context) => Cancel(
-        child: Scaffold(
-          appBar: AppBar(
-            actions: widget.actions,
-            title: Text(widget.title),
-          ),
+        child: SimpleScaffold(
+          actions: widget.actions,
+          title: widget.title,
           body: Form(
             key: _formKey,
             child: Column(

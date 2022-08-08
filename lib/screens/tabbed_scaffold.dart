@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../constants.dart';
+import '../shortcuts.dart';
 import '../widgets/keyboard_shortcuts_list.dart';
 import 'simple_scaffold.dart';
 

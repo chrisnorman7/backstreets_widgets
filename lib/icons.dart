@@ -1,13 +1,4 @@
-import 'dart:io';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
-/// Whether the control key should be used in shortcuts.
-final useControlKey = kIsWeb || !Platform.isMacOS;
-
-/// Whether or not the meta key should be used for shortcuts.
-final useMetaKey = !kIsWeb && Platform.isMacOS;
 
 /// The new icon to use.
 const addIcon = Icon(

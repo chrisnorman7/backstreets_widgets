@@ -15,10 +15,12 @@ class CenterText extends StatelessWidget {
   /// Whether the resulting [Focus] should be autofocused.
   final bool autofocus;
 
-  /// GBuild the widget.
+  /// Build the widget.
   @override
   Widget build(final BuildContext context) => Focus(
         autofocus: autofocus,
-        child: Text(text),
+        child: Center(
+          child: Text(text),
+        ),
       );
 }

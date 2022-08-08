@@ -1,12 +1,8 @@
-/// A library of useful widgets.
-library backstreets_widgets;
+library widgets;
 
-export 'constants.dart';
-export 'screens/select_enum.dart';
-export 'screens/select_item.dart';
-export 'screens/simple_scaffold.dart';
-export 'screens/tabbed_scaffold.dart';
-export 'shortcuts.dart';
+/// A collection of [Widget]s which can be used inside a [Scaffold].
+import 'package:flutter/material.dart';
+
 export 'widgets/cancel.dart';
 export 'widgets/center_text.dart';
 export 'widgets/double_list_tile.dart';
