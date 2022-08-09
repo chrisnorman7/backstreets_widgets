@@ -1,6 +1,6 @@
+/// A collection of [Widget]s which can be used inside a [Scaffold].
 library widgets;
 
-/// A collection of [Widget]s which can be used inside a [Scaffold].
 import 'package:flutter/material.dart';
 
 export 'widgets/cancel.dart';
