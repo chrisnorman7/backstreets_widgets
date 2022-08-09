@@ -106,7 +106,7 @@ class TabbedScaffoldTab {
   final List<Widget>? actions;
 
   /// The floating action button to use.
-  final FloatingActionButton? floatingActionButton;
+  final Widget? floatingActionButton;
 }
 
 /// A scaffold with multiple tabs.

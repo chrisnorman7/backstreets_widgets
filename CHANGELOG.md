@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.0.3]
+
+### Changed
+
+- Use a `Widget` for `floatingActionButton`.
+
 ## [0.0.2]
 
 ### Added
