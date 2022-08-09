@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.0.4]
+
+### Changed
+
+- `helpShortcut` is now an instance of `CharacterActivator`.
+
 ## [0.0.3]
 
 ### Changed

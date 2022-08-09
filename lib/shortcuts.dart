@@ -37,12 +37,7 @@ final closeProjectShortcut = SingleActivator(
 const searchShortcut = SingleActivator(LogicalKeyboardKey.slash);
 
 /// The intent to get help from a [WithKeyboardShortcuts] widget.
-final helpShortcut = SingleActivator(
-  LogicalKeyboardKey.slash,
-  control: useControlKey,
-  meta: useMetaKey,
-  shift: true,
-);
+const helpShortcut = CharacterActivator('?');
 
 /// The delete shortcut.
 const deleteShortcut = SingleActivator(LogicalKeyboardKey.delete);
