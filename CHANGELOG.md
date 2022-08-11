@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.0.5]
+
+### Changed
+
+- Add the `SelectItem.shouldPop` property.
+
 ## [0.0.4]
 
 ### Changed

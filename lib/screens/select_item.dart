@@ -15,6 +15,7 @@ class SelectItem<T> extends StatelessWidget {
     this.title = 'Select Item',
     this.getSearchString,
     this.getWidget,
+    this.shouldPop = true,
     super.key,
   });
 
@@ -41,6 +42,9 @@ class SelectItem<T> extends StatelessWidget {
   /// If this value is `null`, then `toString` will be used.
   final Widget Function(T value)? getWidget;
 
+  /// Whether this widget should pop itself before calling [onDone].
+  final bool shouldPop;
+
   /// Build the widget.
   @override
   Widget build(final BuildContext context) {
@@ -65,7 +69,9 @@ class SelectItem<T> extends StatelessWidget {
                     ? Text(item.toString())
                     : getWidgetFunction(item),
                 onTap: () {
-                  Navigator.pop(context);
+                  if (shouldPop) {
+                    Navigator.pop(context);
+                  }
                   onDone(
                     item,
                   );
