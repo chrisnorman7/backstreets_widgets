@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.1.0]
+
+### Added
+
+- Added some widgets and screens for use with Riverpod.
+
 ## [0.0.5]
 
 ### Changed
