@@ -9,6 +9,7 @@ class CopyListTile extends StatelessWidget {
     required this.title,
     required this.subtitle,
     this.autofocus = false,
+    this.onLongPress,
     super.key,
   });
 
@@ -21,6 +22,9 @@ class CopyListTile extends StatelessWidget {
   /// Whether to autofocus this widget.
   final bool autofocus;
 
+  /// What to do when long pressing the [ListTile].
+  final GestureLongPressCallback? onLongPress;
+
   /// Build the widget.
   @override
   Widget build(final BuildContext context) => ListTile(
@@ -28,5 +32,6 @@ class CopyListTile extends StatelessWidget {
         title: Text(title),
         subtitle: Text(subtitle),
         onTap: () => setClipboardText('$title: $subtitle'),
+        onLongPress: onLongPress,
       );
 }

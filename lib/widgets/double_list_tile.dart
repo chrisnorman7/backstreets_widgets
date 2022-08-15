@@ -18,6 +18,7 @@ class DoubleListTile extends StatelessWidget {
     this.min,
     this.max,
     this.modifier = 1.0,
+    this.onLongPress,
     super.key,
   });
 
@@ -52,6 +53,9 @@ class DoubleListTile extends StatelessWidget {
 
   /// How much hotkeys should change [value] by.
   final double modifier;
+
+  /// What to do when long pressing the [ListTile].
+  final GestureLongPressCallback? onLongPress;
 
   /// Build the widget.
   @override
@@ -100,6 +104,7 @@ class DoubleListTile extends StatelessWidget {
           },
         ),
         subtitle: subtitle ?? text,
+        onLongPress: onLongPress,
       ),
     );
   }

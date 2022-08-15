@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0]
+
+### Changed
+
+- All `ListTile` widgets now accept a `onLongPress` argument.
+- The `IntListTile` now uses the `PushWidgetListTile` widget, to bring it in line with the `DoubleListTile` widget.
+
 ## [0.1.0]
 
 ### Added

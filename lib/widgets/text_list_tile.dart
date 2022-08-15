@@ -15,6 +15,7 @@ class TextListTile extends StatelessWidget {
     this.labelText,
     this.validator,
     this.autofocus = false,
+    this.onLongPress,
     super.key,
   });
 
@@ -41,6 +42,11 @@ class TextListTile extends StatelessWidget {
 
   /// Whether the resulting [ListTile] should be autofocused.
   final bool autofocus;
+
+  /// What to do when long pressing the [ListTile].
+  final GestureLongPressCallback? onLongPress;
+
+  /// Build the widget.
   @override
   Widget build(final BuildContext context) => ListTile(
         autofocus: autofocus,
@@ -60,5 +66,6 @@ class TextListTile extends StatelessWidget {
             validator: validator,
           ),
         ),
+        onLongPress: onLongPress,
       );
 }

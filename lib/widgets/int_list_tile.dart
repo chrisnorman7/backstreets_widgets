@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../shortcuts.dart';
-import '../util.dart';
 import 'get_text.dart';
+import 'push_widget_list_tile.dart';
 
 /// A list tile to edit the given number [value].
 class IntListTile extends StatelessWidget {
@@ -17,6 +17,7 @@ class IntListTile extends StatelessWidget {
     this.modifier = 1,
     this.autofocus = false,
     this.labelText = 'Number',
+    this.onLongPress,
     super.key,
   });
 
@@ -49,6 +50,10 @@ class IntListTile extends StatelessWidget {
   /// The label text to use.
   final String labelText;
 
+  /// What to do when long pressing the [ListTile].
+  final GestureLongPressCallback? onLongPress;
+
+  /// Build the widget.
   @override
   Widget build(final BuildContext context) => CallbackShortcuts(
         bindings: {
@@ -67,38 +72,36 @@ class IntListTile extends StatelessWidget {
           moveToStartShortcut: () => onChanged(min ?? value),
           moveToEndShortcut: () => onChanged(max ?? value)
         },
-        child: ListTile(
-          autofocus: autofocus,
-          title: Text(title),
-          subtitle: Text('${subtitle ?? value}'),
-          onTap: () => pushWidget(
-            context: context,
-            builder: (final context) => GetText(
-              onDone: (final value) {
-                Navigator.pop(context);
-                onChanged(int.parse(value));
-              },
-              labelText: labelText,
-              text: value.toString(),
-              title: title,
-              validator: (final value) {
-                if (value == null || value.isEmpty) {
-                  return 'You must provide a value';
-                }
-                final i = int.tryParse(value);
-                if (i == null) {
-                  return 'Invalid number';
-                }
-                if (i < (min ?? i)) {
-                  return 'You must use a number no less than $min';
-                }
-                if (i > (max ?? i)) {
-                  return 'You must use a number no more than $max';
-                }
-                return null;
-              },
-            ),
+        child: PushWidgetListTile(
+          title: title,
+          builder: (final context) => GetText(
+            onDone: (final value) {
+              Navigator.pop(context);
+              onChanged(int.parse(value));
+            },
+            labelText: labelText,
+            text: value.toString(),
+            title: title,
+            validator: (final value) {
+              if (value == null || value.isEmpty) {
+                return 'You must provide a value';
+              }
+              final i = int.tryParse(value);
+              if (i == null) {
+                return 'Invalid number';
+              }
+              if (i < (min ?? i)) {
+                return 'You must use a number no less than $min';
+              }
+              if (i > (max ?? i)) {
+                return 'You must use a number no more than $max';
+              }
+              return null;
+            },
           ),
+          autofocus: autofocus,
+          onLongPress: onLongPress,
+          subtitle: subtitle ?? value.toString(),
         ),
       );
 }

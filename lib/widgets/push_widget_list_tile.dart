@@ -12,6 +12,7 @@ class PushWidgetListTile extends StatefulWidget {
     this.subtitle,
     this.autofocus = false,
     this.selected = false,
+    this.onLongPress,
     super.key,
   });
 
@@ -34,6 +35,9 @@ class PushWidgetListTile extends StatefulWidget {
 
   /// Whether or not the resulting [ListTile] is selected.
   final bool selected;
+
+  /// What to do when long pressing the [ListTile].
+  final GestureLongPressCallback? onLongPress;
 
   /// Create state for this widget.
   @override
@@ -59,6 +63,7 @@ class PushWidgetListTileState extends State<PushWidgetListTile> {
         }
         setState(() {});
       },
+      onLongPress: widget.onLongPress,
     );
   }
 }
