@@ -12,6 +12,9 @@ class ErrorScreen extends StatelessWidget {
     super.key,
   });
 
+  /// Create an instance quickly from Riverpod's `ref.watch` method.
+  const ErrorScreen.withPositional(this.error, this.stackTrace, {super.key});
+
   /// The error to show.
   final Object error;
 

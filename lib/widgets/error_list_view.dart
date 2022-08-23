@@ -11,6 +11,9 @@ class ErrorListView extends StatelessWidget {
     super.key,
   });
 
+  /// Create an instance quickly from Riverpod's `ref.watch` method.
+  const ErrorListView.withPositional(this.error, this.stackTrace, {super.key});
+
   /// The error to show.
   ///
   /// This object will be displayed as the first item in the resulting

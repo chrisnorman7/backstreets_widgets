@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.0]
+
+### Changed
+
+- Added the `fromPositional` constructor to both `ErrorListView` and `ErrorScreen` for tighter integration with Riverpod.
+
 ## [0.2.0]
 
 ### Changed
