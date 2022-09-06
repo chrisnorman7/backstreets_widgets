@@ -4,6 +4,10 @@ import '../../widgets/cancel.dart';
 import '../../widgets/searchable_list_view.dart';
 import 'simple_scaffold.dart';
 
+/// The type of a function which returns callback shortcuts for a given value.
+typedef SelectItemCallbackShortcuts<T> = Map<ShortcutActivator, VoidCallback>
+    Function(T value);
+
 /// A widget for selecting a new [value] from a list of [values].
 class SelectItem<T> extends StatelessWidget {
   /// Create an instance.
@@ -16,6 +20,7 @@ class SelectItem<T> extends StatelessWidget {
     this.getSearchString,
     this.getWidget,
     this.shouldPop = true,
+    this.getCallbackShortcuts,
     super.key,
   });
 
@@ -45,6 +50,9 @@ class SelectItem<T> extends StatelessWidget {
   /// Whether this widget should pop itself before calling [onDone].
   final bool shouldPop;
 
+  /// Return a map of callback shortcuts for each value.
+  final SelectItemCallbackShortcuts? getCallbackShortcuts;
+
   /// Build the widget.
   @override
   Widget build(final BuildContext context) {
@@ -58,25 +66,31 @@ class SelectItem<T> extends StatelessWidget {
           items: values,
           builder: (final context, final index) {
             final item = values[index];
+            final listTile = ListTile(
+              autofocus: item == value || (value == null && index == 0),
+              selected: item == value,
+              title: getWidgetFunction == null
+                  ? Text(item.toString())
+                  : getWidgetFunction(item),
+              onTap: () {
+                if (shouldPop) {
+                  Navigator.pop(context);
+                }
+                onDone(
+                  item,
+                );
+              },
+            );
+            final bindings = getCallbackShortcuts?.call(item);
             return SearchableListTile(
-              searchString: getSearchStringFunction == null
-                  ? item.toString()
-                  : getSearchStringFunction(item),
-              child: ListTile(
-                autofocus: item == value || (value == null && index == 0),
-                selected: item == value,
-                title: getWidgetFunction == null
-                    ? Text(item.toString())
-                    : getWidgetFunction(item),
-                onTap: () {
-                  if (shouldPop) {
-                    Navigator.pop(context);
-                  }
-                  onDone(
-                    item,
-                  );
-                },
-              ),
+              searchString:
+                  getSearchStringFunction?.call(item) ?? item.toString(),
+              child: bindings == null
+                  ? listTile
+                  : CallbackShortcuts(
+                      bindings: bindings,
+                      child: listTile,
+                    ),
             );
           },
         ),
