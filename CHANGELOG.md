@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.4.0]
+
+### Changed
+
+- Allow setting callback shortcuts for `SelectItem` and `SelectEnum` widgets.
+
 ## [0.3.0]
 
 ### Changed
