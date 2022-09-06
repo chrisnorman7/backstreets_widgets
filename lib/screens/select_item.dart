@@ -51,7 +51,7 @@ class SelectItem<T> extends StatelessWidget {
   final bool shouldPop;
 
   /// Return a map of callback shortcuts for each value.
-  final SelectItemCallbackShortcuts? getCallbackShortcuts;
+  final SelectItemCallbackShortcuts<T>? getCallbackShortcuts;
 
   /// Build the widget.
   @override
