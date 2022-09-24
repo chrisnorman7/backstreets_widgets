@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.6.0]
+
+### Changed
+
+- Fixed the clear hotkey to be `escape`,.
+
 ## [0.5.0]
 
 ### Changed

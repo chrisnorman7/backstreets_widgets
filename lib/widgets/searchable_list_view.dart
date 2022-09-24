@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../shortcuts.dart';
 import 'keyboard_shortcuts_list.dart';
@@ -82,7 +83,10 @@ class _SearchableListViewState extends State<SearchableListView> {
               }
             }
             return CallbackShortcuts(
-              bindings: {deleteShortcut: clearSearchField},
+              bindings: {
+                const SingleActivator(LogicalKeyboardKey.escape):
+                    clearSearchField
+              },
               child: ListTile(
                 title: TextField(
                   controller: _controller,
