@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.5.0]
+
+### Changed
+
+- Allow the search field in a [SearchableListView] to be cleared with the escape key.
+
 ## [0.4.0]
 
 ### Changed

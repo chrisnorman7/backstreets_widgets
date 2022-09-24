@@ -81,32 +81,32 @@ class _SearchableListViewState extends State<SearchableListView> {
                 labelText = '${labelText}s)';
               }
             }
-            return ListTile(
-              title: TextField(
-                controller: _controller,
-                focusNode: _textFieldFocusNode,
-                decoration: InputDecoration(
-                  labelText: labelText,
+            return CallbackShortcuts(
+              bindings: {deleteShortcut: clearSearchField},
+              child: ListTile(
+                title: TextField(
+                  controller: _controller,
+                  focusNode: _textFieldFocusNode,
+                  decoration: InputDecoration(
+                    labelText: labelText,
+                  ),
+                  onChanged: (final value) => setState(
+                    () => _searchString = value.isEmpty ? null : value,
+                  ),
                 ),
-                onChanged: (final value) => setState(
-                  () => _searchString = value.isEmpty ? null : value,
-                ),
-              ),
-              subtitle: _controller.text.isEmpty
-                  ? null
-                  : IconButton(
-                      onPressed: () => setState(
-                        () {
-                          setState(() => _controller.text = '');
-                          _searchString = null;
+                subtitle: _controller.text.isEmpty
+                    ? null
+                    : IconButton(
+                        onPressed: () {
                           _textFieldFocusNode.requestFocus();
+                          clearSearchField();
                         },
+                        icon: const Icon(
+                          Icons.clear_outlined,
+                          semanticLabel: 'Clear',
+                        ),
                       ),
-                      icon: const Icon(
-                        Icons.clear_outlined,
-                        semanticLabel: 'Clear',
-                      ),
-                    ),
+              ),
             );
           }
           final child = results[index - 1];
@@ -128,6 +128,12 @@ class _SearchableListViewState extends State<SearchableListView> {
       ),
     );
   }
+
+  /// Clear the search field.
+  void clearSearchField() => setState(() {
+        _controller.text = '';
+        _searchString = null;
+      });
 
   /// Dispose of things.
   @override
