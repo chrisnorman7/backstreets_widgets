@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 export 'widgets/cancel.dart';
 export 'widgets/center_text.dart';
+export 'widgets/common_shortcuts.dart';
 export 'widgets/copy_list_tile.dart';
 export 'widgets/double_list_tile.dart';
 export 'widgets/error_list_view.dart';
