@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.7.0]
+
+### Added
+
+- Added the `CommonShortcuts` widget.
+- Added more useful shortcuts.
+
+### Changed
+
+- The `ErrorListView` widget now splits up stack traces into multiple list items.
+
 ## [0.6.0]
 
 ### Changed
