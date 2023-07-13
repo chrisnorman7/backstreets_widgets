@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.8.0]
+
+### Added
+
+- Added the `openCallback` argument to `CommonShortcuts`.`
+
 ## [0.7.0]
 
 ### Added

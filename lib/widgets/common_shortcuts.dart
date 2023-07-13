@@ -9,6 +9,7 @@ class CommonShortcuts extends StatelessWidget {
   const CommonShortcuts({
     required this.child,
     this.newCallback,
+    this.openCallback,
     this.deleteCallback,
     this.moveUpCallback,
     this.moveDownCallback,
@@ -27,6 +28,9 @@ class CommonShortcuts extends StatelessWidget {
 
   /// The function to call with the [newShortcut].
   final VoidCallback? newCallback;
+
+  /// The function to call with the [openShortcut].
+  final VoidCallback? openCallback;
 
   /// The function to call with the [deleteShortcut].
   final VoidCallback? deleteCallback;
@@ -62,6 +66,7 @@ class CommonShortcuts extends StatelessWidget {
   @override
   Widget build(final BuildContext context) {
     final newFunction = newCallback;
+    final openFunction = openCallback;
     final deleteFunction = deleteCallback;
     final moveUpFunction = moveUpCallback;
     final moveDownFunction = moveDownCallback;
@@ -75,6 +80,7 @@ class CommonShortcuts extends StatelessWidget {
     return CallbackShortcuts(
       bindings: {
         if (newFunction != null) newShortcut: newFunction,
+        if (openFunction != null) openShortcut: openFunction,
         if (deleteFunction != null) deleteShortcut: deleteFunction,
         if (moveUpFunction != null) moveUpShortcut: moveUpFunction,
         if (moveDownFunction != null) moveDownShortcut: moveDownFunction,
