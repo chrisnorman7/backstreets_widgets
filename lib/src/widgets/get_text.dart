@@ -1,4 +1,3 @@
-/// Provides the [GetText] class.
 import 'package:flutter/material.dart';
 
 import '../screens/simple_scaffold.dart';
