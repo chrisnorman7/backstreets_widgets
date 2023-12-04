@@ -90,7 +90,7 @@ class CommonShortcuts extends StatelessWidget {
         if (pageDownFunction != null) pageDownHotkey: pageDownFunction,
         if (testFunction != null) testHotkey: testFunction,
         if (backspaceFunction != null) backspaceHotkey: backspaceFunction,
-        if (text != null) copyHotkey: () => setClipboardText(text)
+        if (text != null) copyHotkey: () => setClipboardText(text),
       },
       child: child,
     );

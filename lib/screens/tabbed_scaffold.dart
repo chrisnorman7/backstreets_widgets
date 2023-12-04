@@ -183,7 +183,7 @@ class TabbedScaffoldState extends State<TabbedScaffold> {
               description: 'Switch to tab ${i + 1}.',
               keyName: (i + 1).toString(),
               control: true,
-            )
+            ),
         ],
         const KeyboardShortcut(
           description: 'Switch to the next tab.',
@@ -195,7 +195,7 @@ class TabbedScaffoldState extends State<TabbedScaffold> {
           keyName: 'Tab',
           control: true,
           shift: true,
-        )
+        ),
       ],
       child: SimpleScaffold(
         title: page.title,
@@ -263,7 +263,7 @@ class TabbedScaffoldState extends State<TabbedScaffold> {
       child: Actions(
         actions: {
           GotoPageIntent: gotoPageAction,
-          SwitchPageIntent: switchPageAction
+          SwitchPageIntent: switchPageAction,
         },
         child: topTabs == null
             ? scaffold

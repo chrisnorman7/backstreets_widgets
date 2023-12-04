@@ -44,7 +44,7 @@ class ErrorListView extends StatelessWidget {
                   title: Text(e),
                   onTap: () => setClipboardText(e),
                 ),
-              )
+              ),
       ],
     );
   }

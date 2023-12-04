@@ -30,7 +30,7 @@ class Cancel extends StatelessWidget {
           } else {
             func();
           }
-        }
+        },
       },
       child: child,
     );

@@ -84,7 +84,7 @@ class GetTextState extends State<GetText> {
                   decoration: InputDecoration(labelText: widget.labelText),
                   onFieldSubmitted: (final value) => onSubmit(),
                   validator: widget.validator,
-                )
+                ),
               ],
             ),
           ),

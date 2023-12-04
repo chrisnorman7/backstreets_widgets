@@ -76,7 +76,7 @@ class DoubleListTile extends StatelessWidget {
           }
         },
         moveToStartShortcut: () => onChanged(min ?? value),
-        moveToEndShortcut: () => onChanged(max ?? value)
+        moveToEndShortcut: () => onChanged(max ?? value),
       },
       child: PushWidgetListTile(
         autofocus: autofocus,

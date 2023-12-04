@@ -70,7 +70,7 @@ class IntListTile extends StatelessWidget {
             }
           },
           moveToStartShortcut: () => onChanged(min ?? value),
-          moveToEndShortcut: () => onChanged(max ?? value)
+          moveToEndShortcut: () => onChanged(max ?? value),
         },
         child: PushWidgetListTile(
           title: title,

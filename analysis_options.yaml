@@ -3,8 +3,6 @@ include: package:flutter_lints/flutter.yaml
 analyzer:
   exclude:
     - lib/src/json/**.g.dart
-  strong-mode:
-
 linter:
   rules:
     - always_declare_return_types
@@ -42,6 +40,7 @@ linter:
     - cascade_invocations
     - close_sinks
     - comment_references
+    - collection_methods_unrelated_type
     - constant_identifier_names
     - control_flow_in_finally
     - combinators_ordering
@@ -55,12 +54,10 @@ linter:
     - flutter_style_todos
     - hash_and_equals
     - implementation_imports
-    - iterable_contains_unrelated_type
     - join_return_with_assignment
     - leading_newlines_in_multiline_strings
     - library_private_types_in_public_api
     - lines_longer_than_80_chars
-    - list_remove_unrelated_type
     - missing_whitespace_between_adjacent_strings
     - no_adjacent_strings_in_list
     - no_leading_underscores_for_library_prefixes

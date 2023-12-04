@@ -68,7 +68,7 @@ class _SearchableListViewState extends State<SearchableListView> {
         KeyboardShortcut(
           description: 'Search the list.',
           keyName: '/',
-        )
+        ),
       ],
       child: ListView.builder(
         itemBuilder: (final context, final index) {
@@ -85,7 +85,7 @@ class _SearchableListViewState extends State<SearchableListView> {
             return CallbackShortcuts(
               bindings: {
                 const SingleActivator(LogicalKeyboardKey.escape):
-                    clearSearchField
+                    clearSearchField,
               },
               child: ListTile(
                 title: TextField(
@@ -168,7 +168,7 @@ class BuiltSearchableListView<T> extends StatelessWidget {
   @override
   Widget build(final BuildContext context) {
     final children = [
-      for (var i = 0; i < items.length; i++) builder(context, i)
+      for (var i = 0; i < items.length; i++) builder(context, i),
     ];
     return SearchableListView(children: children);
   }

@@ -49,7 +49,7 @@ Future<void> confirm({
           ElevatedButton(
             onPressed: noCallback ?? () => Navigator.pop(context),
             child: Text(noLabel),
-          )
+          ),
         ],
       ),
     );
@@ -67,13 +67,13 @@ Future<void> showMessage({
           TextButton(
             onPressed: () => Navigator.pop(context),
             child: const Text('OK'),
-          )
+          ),
         ],
         title: Text(title),
         content: CallbackShortcuts(
           bindings: {
             const SingleActivator(LogicalKeyboardKey.enter): () =>
-                Navigator.pop(context)
+                Navigator.pop(context),
           },
           child: Focus(
             autofocus: true,
