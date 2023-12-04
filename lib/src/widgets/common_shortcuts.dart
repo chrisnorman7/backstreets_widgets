@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-import '../shortcuts.dart';
-import '../util.dart';
+import '../../shortcuts.dart';
+import '../../util.dart';
 
 /// A widget which maps the most common shortcuts.
 class CommonShortcuts extends StatelessWidget {

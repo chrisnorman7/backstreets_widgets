@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../util.dart';
+import '../../util.dart';
 import 'get_text.dart';
 
 /// A list tile that displays and allows the editing of some text.

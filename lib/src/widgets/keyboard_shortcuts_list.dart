@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 
-import '../shortcuts.dart';
-import '../util.dart';
+import '../../shortcuts.dart';
+import '../../util.dart';
 import 'cancel.dart';
 
 /// A keyboard shortcut and a description.

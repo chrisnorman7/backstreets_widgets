@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../shortcuts.dart';
+import '../../shortcuts.dart';
 import 'keyboard_shortcuts_list.dart';
 
 /// A list tile that can be searched for within a [SearchableListView].

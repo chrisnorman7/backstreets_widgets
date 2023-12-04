@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../util.dart';
+import '../../util.dart';
 
 /// A list tile which can be copied with a cap.
 class CopyListTile extends StatelessWidget {

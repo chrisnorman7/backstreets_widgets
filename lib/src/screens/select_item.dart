@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../widgets/cancel.dart';
-import '../../widgets/searchable_list_view.dart';
+import '../widgets/cancel.dart';
+import '../widgets/searchable_list_view.dart';
 import 'simple_scaffold.dart';
 
 /// The type of a function which returns callback shortcuts for a given value.

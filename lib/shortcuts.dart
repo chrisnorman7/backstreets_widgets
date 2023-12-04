@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'widgets/keyboard_shortcuts_list.dart';
+import 'src/widgets/keyboard_shortcuts_list.dart';
 
 /// Whether the control key should be used in shortcuts.
 final useControlKey = kIsWeb || !Platform.isMacOS;

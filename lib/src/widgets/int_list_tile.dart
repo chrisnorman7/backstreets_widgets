@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../shortcuts.dart';
+import '../../shortcuts.dart';
 import 'get_text.dart';
 import 'push_widget_list_tile.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../util.dart';
+import '../../util.dart';
 import 'copy_list_tile.dart';
 
 /// A widget to show an [error], and optional [stackTrace].

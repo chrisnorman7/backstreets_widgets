@@ -5,6 +5,7 @@
 - Added the `SimpleFutureBuilder` widget.
 - Added the `pushWidget` extension method to the `BuildContext` class.
 - Code cleanup.
+- Fixed exports.
 
 ## [0.8.0]
 

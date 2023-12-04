@@ -3,9 +3,9 @@ library screens;
 
 import 'package:flutter/material.dart';
 
-export 'screens/error_screen.dart';
-export 'screens/loading_screen.dart';
-export 'screens/select_enum.dart';
-export 'screens/select_item.dart';
-export 'screens/simple_scaffold.dart';
-export 'screens/tabbed_scaffold.dart';
+export 'src/screens/error_screen.dart';
+export 'src/screens/loading_screen.dart';
+export 'src/screens/select_enum.dart';
+export 'src/screens/select_item.dart';
+export 'src/screens/simple_scaffold.dart';
+export 'src/screens/tabbed_scaffold.dart';
