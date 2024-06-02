@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.10.0]
+
+- Added the `ErrorListTile` widget.
+
 ## [0.9.0]
 
 - Added the `SimpleFutureBuilder` widget.
