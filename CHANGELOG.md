@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.11.0]
+
+- Added the `PointListTile` widget.
+- Added the `EditPointScreen` widget.
+
 ## [0.10.0]
 
 - Added the `ErrorListTile` widget.

@@ -14,6 +14,7 @@ export 'src/widgets/get_text.dart';
 export 'src/widgets/int_list_tile.dart';
 export 'src/widgets/keyboard_shortcuts_list.dart';
 export 'src/widgets/loading_widget.dart';
+export 'src/widgets/point_list_tile.dart';
 export 'src/widgets/push_widget_list_tile.dart';
 export 'src/widgets/searchable_list_view.dart';
 export 'src/widgets/simple_future_builder.dart';
