@@ -3,6 +3,7 @@ library widgets;
 
 import 'package:flutter/material.dart';
 
+export 'src/game_shortcuts_shortcut.dart';
 export 'src/widgets/cancel.dart';
 export 'src/widgets/center_text.dart';
 export 'src/widgets/common_shortcuts.dart';
