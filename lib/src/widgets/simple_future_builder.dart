@@ -19,7 +19,7 @@ class SimpleFutureBuilder<T> extends StatelessWidget {
   final Widget Function(BuildContext context, T? value) done;
 
   /// The function to call to build the widget while [future] is being awaited.
-  final WidgetBuilder loading;
+  final Widget Function() loading;
 
   /// The function to call to build the widget if [future] completes with an
   /// error.
@@ -38,7 +38,7 @@ class SimpleFutureBuilder<T> extends StatelessWidget {
           } else if (snapshot.hasError) {
             return error(snapshot.error!, snapshot.stackTrace);
           } else {
-            return loading(innerContext);
+            return loading();
           }
         },
       );
