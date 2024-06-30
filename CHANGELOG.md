@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.13.0]
+
+- Added missing exports.
+
 ## [0.12.0]
 
 - Added some widgets from the [flutter_audio_games](https://pub.dev/packages/flutter_audio_games) package.
