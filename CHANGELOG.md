@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.12.0]
+
+- Added some widgets from the [flutter_audio_games](https://pub.dev/packages/flutter_audio_games) package.
+- Changed the signature of `SimpleFutureBuilder.loading` to bring it inline with Riverpod's `AsyncValue.when`.
+
 ## [0.11.0]
 
 - Added the `PointListTile` widget.
