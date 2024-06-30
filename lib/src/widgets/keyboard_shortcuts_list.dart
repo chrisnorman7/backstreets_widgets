@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 
 import '../../shortcuts.dart';
 import '../../util.dart';
+import '../screens/simple_scaffold.dart';
 import 'cancel.dart';
+import 'copy_list_tile.dart';
 
 /// A keyboard shortcut and a description.
 class KeyboardShortcut {
@@ -67,22 +69,16 @@ class KeyboardShortcuts extends StatelessWidget {
   /// Build the widget.
   @override
   Widget build(final BuildContext context) => Cancel(
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text(title),
-          ),
+        child: SimpleScaffold(
+          title: title,
           body: ListView.builder(
+            shrinkWrap: true,
             itemBuilder: (final context, final index) {
               final keyboardShortcut = keyboardShortcuts[index];
-              return ListTile(
+              return CopyListTile(
                 autofocus: index == 0,
-                title: Text(keyboardShortcut.keyDescription),
-                subtitle: Text(keyboardShortcut.description),
-                onTap: () {
-                  final string = '${keyboardShortcut.keyDescription}: '
-                      '${keyboardShortcut.description}';
-                  setClipboardText(string);
-                },
+                title: keyboardShortcut.keyDescription,
+                subtitle: keyboardShortcut.description,
               );
             },
             itemCount: keyboardShortcuts.length,

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../screens/simple_scaffold.dart';
-import '../cancel.dart';
-import '../copy_list_tile.dart';
+import '../keyboard_shortcuts_list.dart';
 import 'game_shortcut.dart';
 
 /// A widget which shows game shortcuts.
@@ -38,27 +36,19 @@ class GameShortcutsHelpScreen extends StatelessWidget {
 
   /// Build the widget.
   @override
-  Widget build(final BuildContext context) => Cancel(
-        child: SimpleScaffold(
-          title: 'Keyboard Shortcuts Help',
-          body: ListView.builder(
-            itemBuilder: (final context, final index) {
-              final shortcut = shortcuts[index];
-              final keys = [
-                if (shortcut.controlKey) controlKey,
-                if (shortcut.shiftKey) shiftKey,
-                if (shortcut.altKey) altKey,
-                shortcut.shortcut.name,
-              ];
-              return CopyListTile(
-                title: keys.join(keyJoin),
-                subtitle: shortcut.title,
-                autofocus: index == 0,
-              );
-            },
-            itemCount: shortcuts.length,
-            shrinkWrap: true,
-          ),
-        ),
+  Widget build(final BuildContext context) => KeyboardShortcuts(
+        keyboardShortcuts: shortcuts.map((final shortcut) {
+          final keys = [
+            if (shortcut.controlKey) controlKey,
+            if (shortcut.shiftKey) shiftKey,
+            if (shortcut.altKey) altKey,
+            shortcut.shortcut.name,
+          ];
+          return KeyboardShortcut(
+            description: shortcut.title,
+            keyName: keys.join(keyJoin),
+          );
+        }).toList(),
+        title: title,
       );
 }
