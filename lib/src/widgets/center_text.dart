@@ -6,6 +6,7 @@ class CenterText extends StatelessWidget {
   const CenterText({
     required this.text,
     this.autofocus = false,
+    this.textStyle,
     super.key,
   });
 
@@ -15,12 +16,18 @@ class CenterText extends StatelessWidget {
   /// Whether the resulting [Focus] should be autofocused.
   final bool autofocus;
 
+  /// The text style to use.
+  final TextStyle? textStyle;
+
   /// Build the widget.
   @override
   Widget build(final BuildContext context) => Focus(
         autofocus: autofocus,
         child: Center(
-          child: Text(text),
+          child: Text(
+            text,
+            style: textStyle,
+          ),
         ),
       );
 }
