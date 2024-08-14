@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.14.3]
+
+- Stop stealing focus with the `GameShortcuts` widget in the `TabbedScaffold` widget.
+
 ## [0.14.2]
 
 - Add the control key to tabbed scaffolds page-switching keys.

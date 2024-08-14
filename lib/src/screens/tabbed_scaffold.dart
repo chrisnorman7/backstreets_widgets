@@ -122,6 +122,7 @@ class TabbedScaffoldState extends State<TabbedScaffold> {
     );
     return GameShortcuts(
       shortcuts: shortcuts,
+      autofocus: false,
       child: DefaultTabController(
         length: widget.tabs.length,
         child: SimpleScaffold(
