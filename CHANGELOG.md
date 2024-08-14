@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.14.2]
+
+- Add the control key to tabbed scaffolds page-switching keys.
+
 ## [0.14.1]
 
 - Fixed some bugs with tabbed scaffolds.

@@ -92,11 +92,13 @@ class TabbedScaffoldState extends State<TabbedScaffold> {
       GameShortcut(
         title: 'Switch to the next page',
         shortcut: GameShortcutsShortcut.tab,
+        controlKey: true,
         onStart: (final innerContext) => switchPages(1),
       ),
       GameShortcut(
         title: 'Switch to the previous page',
         shortcut: GameShortcutsShortcut.tab,
+        controlKey: true,
         shiftKey: true,
         onStart: (final innerContext) => switchPages(-1),
       ),
@@ -104,6 +106,7 @@ class TabbedScaffoldState extends State<TabbedScaffold> {
         GameShortcut(
           title: 'Switch to page ${i + 1}',
           shortcut: numbers[i],
+          controlKey: true,
           onStart: (final innerContext) => setState(() => _pageIndex = i),
         ),
     ];
