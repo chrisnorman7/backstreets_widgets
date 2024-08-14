@@ -12,6 +12,7 @@ class SelectEnum<T extends Enum> extends StatelessWidget {
     this.actions = const [],
     this.title = 'Select Value',
     this.getCallbackShortcuts,
+    this.textStyle,
     super.key,
   });
 
@@ -33,6 +34,9 @@ class SelectEnum<T extends Enum> extends StatelessWidget {
   /// The callback shortcuts to apply to each item.
   final SelectItemCallbackShortcuts<T>? getCallbackShortcuts;
 
+  /// The text style to use.
+  final TextStyle? textStyle;
+
   /// Build the widget.
   @override
   Widget build(final BuildContext context) => SelectItem<T>(
@@ -40,7 +44,10 @@ class SelectEnum<T extends Enum> extends StatelessWidget {
         values: values,
         actions: actions,
         getSearchString: (final value) => value.name,
-        getWidget: (final value) => Text(value.name),
+        getWidget: (final value) => Text(
+          value.name,
+          style: textStyle,
+        ),
         title: title,
         value: value,
         getCallbackShortcuts: getCallbackShortcuts,

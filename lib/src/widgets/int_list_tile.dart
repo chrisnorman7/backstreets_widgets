@@ -18,6 +18,7 @@ class IntListTile extends StatelessWidget {
     this.autofocus = false,
     this.labelText = 'Number',
     this.onLongPress,
+    this.textStyle,
     super.key,
   });
 
@@ -52,6 +53,9 @@ class IntListTile extends StatelessWidget {
 
   /// What to do when long pressing the [ListTile].
   final GestureLongPressCallback? onLongPress;
+
+  /// The text style to use.
+  final TextStyle? textStyle;
 
   /// Build the widget.
   @override
@@ -102,6 +106,7 @@ class IntListTile extends StatelessWidget {
           autofocus: autofocus,
           onLongPress: onLongPress,
           subtitle: subtitle ?? value.toString(),
+          textStyle: textStyle,
         ),
       );
 }

@@ -19,6 +19,7 @@ class DoubleListTile extends StatelessWidget {
     this.max,
     this.modifier = 1.0,
     this.onLongPress,
+    this.textStyle,
     super.key,
   });
 
@@ -56,6 +57,9 @@ class DoubleListTile extends StatelessWidget {
 
   /// What to do when long pressing the [ListTile].
   final GestureLongPressCallback? onLongPress;
+
+  /// The text style to use.
+  final TextStyle? textStyle;
 
   /// Build the widget.
   @override
@@ -105,6 +109,7 @@ class DoubleListTile extends StatelessWidget {
         ),
         subtitle: subtitle ?? text,
         onLongPress: onLongPress,
+        textStyle: textStyle,
       ),
     );
   }

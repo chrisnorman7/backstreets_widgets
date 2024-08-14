@@ -9,11 +9,17 @@ class ErrorScreen extends StatelessWidget {
   const ErrorScreen({
     required this.error,
     this.stackTrace,
+    this.textStyle,
     super.key,
   });
 
   /// Create an instance quickly from Riverpod's `ref.watch` method.
-  const ErrorScreen.withPositional(this.error, this.stackTrace, {super.key});
+  const ErrorScreen.withPositional(
+    this.error,
+    this.stackTrace, {
+    this.textStyle,
+    super.key,
+  });
 
   /// The error to show.
   final Object error;
@@ -23,10 +29,17 @@ class ErrorScreen extends StatelessWidget {
   /// If this value is `null`, only the [error] will be displayed.
   final StackTrace? stackTrace;
 
+  /// The text style to use.
+  final TextStyle? textStyle;
+
   /// Build the widget.
   @override
   Widget build(final BuildContext context) => SimpleScaffold(
         title: 'Error',
-        body: ErrorListView(error: error, stackTrace: stackTrace),
+        body: ErrorListView(
+          error: error,
+          stackTrace: stackTrace,
+          textStyle: textStyle,
+        ),
       );
 }

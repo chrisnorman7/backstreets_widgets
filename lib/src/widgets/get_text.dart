@@ -8,14 +8,14 @@ class GetText extends StatefulWidget {
   /// Create an instance.
   const GetText({
     required this.onDone,
+    super.key,
     this.validator,
     this.text,
     this.title = 'Enter Text',
     this.actions = const [],
     this.labelText = 'Text',
     this.icon = const Icon(Icons.done_rounded),
-    this.tooltip = 'Done',
-    super.key,
+    this.textStyle,
   });
 
   /// What to do with the resulting text.
@@ -39,8 +39,8 @@ class GetText extends StatefulWidget {
   /// The icon for the resulting floating action button.
   final Widget? icon;
 
-  /// THe tooltip for the resulting floating action button.
-  final String tooltip;
+  /// The text style to use.
+  final TextStyle? textStyle;
 
   /// Create state for this widget.
   @override
@@ -71,26 +71,33 @@ class GetTextState extends State<GetText> {
   @override
   Widget build(final BuildContext context) => Cancel(
         child: SimpleScaffold(
-          actions: widget.actions,
+          actions: [
+            ...widget.actions,
+            ElevatedButton(
+              onPressed: onSubmit,
+              child: widget.icon,
+            ),
+          ],
           title: widget.title,
           body: Form(
             key: _formKey,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextFormField(
                   autofocus: true,
                   controller: _controller,
-                  decoration: InputDecoration(labelText: widget.labelText),
+                  decoration: InputDecoration(
+                    label: Text(
+                      widget.labelText,
+                      style: widget.textStyle,
+                    ),
+                  ),
                   onFieldSubmitted: (final value) => onSubmit(),
                   validator: widget.validator,
                 ),
               ],
             ),
-          ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: onSubmit,
-            tooltip: widget.tooltip,
-            child: widget.icon,
           ),
         ),
       );

@@ -17,7 +17,6 @@ export 'src/widgets/game_shortcuts/game_shortcuts_help_screen.dart';
 export 'src/widgets/game_shortcuts/inherited_game_shortcuts.dart';
 export 'src/widgets/get_text.dart';
 export 'src/widgets/int_list_tile.dart';
-export 'src/widgets/keyboard_shortcuts_list.dart';
 export 'src/widgets/loading_widget.dart';
 export 'src/widgets/point_list_tile.dart';
 export 'src/widgets/push_widget_list_tile.dart';

@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
-import '../../util.dart';
+import '../../extensions.dart';
 
 /// A widget that will push a widget then set its state.
-class PushWidgetListTile extends StatefulWidget {
+class PushWidgetListTile extends StatelessWidget {
   /// Create an instance.
   const PushWidgetListTile({
     required this.title,
     required this.builder,
-    this.onSetState,
     this.subtitle,
     this.autofocus = false,
     this.selected = false,
     this.onLongPress,
+    this.textStyle,
     super.key,
   });
 
@@ -21,9 +21,6 @@ class PushWidgetListTile extends StatefulWidget {
 
   /// The widget builder to use.
   final WidgetBuilder builder;
-
-  /// The function to call when setting the state for this widget.
-  final VoidCallback? onSetState;
 
   /// The subtitle for this widget.
   ///
@@ -39,31 +36,27 @@ class PushWidgetListTile extends StatefulWidget {
   /// What to do when long pressing the [ListTile].
   final GestureLongPressCallback? onLongPress;
 
-  /// Create state for this widget.
-  @override
-  PushWidgetListTileState createState() => PushWidgetListTileState();
-}
+  /// The text style to use.
+  final TextStyle? textStyle;
 
-/// State for [PushWidgetListTile].
-class PushWidgetListTileState extends State<PushWidgetListTile> {
   /// Build a widget.
   @override
-  Widget build(final BuildContext context) {
-    final subtitle = widget.subtitle;
-    return ListTile(
-      autofocus: widget.autofocus,
-      selected: widget.selected,
-      title: Text(widget.title),
-      subtitle: subtitle == null ? null : Text(subtitle),
-      onTap: () async {
-        await pushWidget(context: context, builder: widget.builder);
-        final f = widget.onSetState;
-        if (f != null) {
-          f();
-        }
-        setState(() {});
-      },
-      onLongPress: widget.onLongPress,
-    );
-  }
+  Widget build(final BuildContext context) => ListTile(
+        autofocus: autofocus,
+        selected: selected,
+        title: Text(
+          title,
+          style: textStyle,
+        ),
+        subtitle: subtitle == null
+            ? null
+            : Text(
+                subtitle!,
+                style: textStyle,
+              ),
+        onTap: () async {
+          await context.pushWidgetBuilder(builder);
+        },
+        onLongPress: onLongPress,
+      );
 }

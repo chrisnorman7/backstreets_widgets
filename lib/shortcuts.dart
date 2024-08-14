@@ -4,8 +4,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'src/widgets/keyboard_shortcuts_list.dart';
-
 /// Whether the control key should be used in shortcuts.
 final useControlKey = kIsWeb || !Platform.isMacOS;
 
@@ -35,9 +33,6 @@ final closeProjectShortcut = SingleActivator(
 
 /// The search shortcut.
 const searchShortcut = SingleActivator(LogicalKeyboardKey.slash);
-
-/// The intent to get help from a [WithKeyboardShortcuts] widget.
-const helpShortcut = CharacterActivator('?');
 
 /// The delete shortcut.
 const deleteShortcut = SingleActivator(LogicalKeyboardKey.delete);

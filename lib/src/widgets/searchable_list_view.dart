@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../shortcuts.dart';
-import 'keyboard_shortcuts_list.dart';
 
 /// A list tile that can be searched for within a [SearchableListView].
 class SearchableListTile {
@@ -24,12 +23,15 @@ class SearchableListView extends StatefulWidget {
   /// Create an instance.
   const SearchableListView({
     required this.children,
+    this.textStyle,
     super.key,
   });
 
   /// The list of children.
   final List<SearchableListTile> children;
 
+  /// The text style to use.
+  final TextStyle? textStyle;
   @override
   State<SearchableListView> createState() => _SearchableListViewState();
 }
@@ -63,73 +65,66 @@ class _SearchableListViewState extends State<SearchableListView> {
           )
           .toList();
     }
-    return WithKeyboardShortcuts(
-      keyboardShortcuts: const [
-        KeyboardShortcut(
-          description: 'Search the list.',
-          keyName: '/',
-        ),
-      ],
-      child: ListView.builder(
-        itemBuilder: (final context, final index) {
-          if (index == 0) {
-            var labelText = 'Search';
-            if (searchString != null) {
-              labelText = '$labelText (${results.length} result';
-              if (results.length == 1) {
-                labelText = '$labelText)';
-              } else {
-                labelText = '${labelText}s)';
-              }
+    return ListView.builder(
+      itemBuilder: (final context, final index) {
+        if (index == 0) {
+          var labelText = 'Search';
+          if (searchString != null) {
+            labelText = '$labelText (${results.length} result';
+            if (results.length == 1) {
+              labelText = '$labelText)';
+            } else {
+              labelText = '${labelText}s)';
             }
-            return CallbackShortcuts(
-              bindings: {
-                const SingleActivator(LogicalKeyboardKey.escape):
-                    clearSearchField,
-              },
-              child: ListTile(
-                title: TextField(
-                  controller: _controller,
-                  focusNode: _textFieldFocusNode,
-                  decoration: InputDecoration(
-                    labelText: labelText,
-                  ),
-                  onChanged: (final value) => setState(
-                    () => _searchString = value.isEmpty ? null : value,
-                  ),
-                ),
-                subtitle: _controller.text.isEmpty
-                    ? null
-                    : IconButton(
-                        onPressed: () {
-                          _textFieldFocusNode.requestFocus();
-                          clearSearchField();
-                        },
-                        icon: const Icon(
-                          Icons.clear_outlined,
-                          semanticLabel: 'Clear',
-                        ),
-                      ),
-              ),
-            );
           }
-          final child = results[index - 1];
           return CallbackShortcuts(
             bindings: {
-              searchShortcut: () {
-                _textFieldFocusNode.requestFocus();
-                _controller.selection = TextSelection(
-                  baseOffset: 0,
-                  extentOffset: _controller.text.length,
-                );
-                return;
-              },
+              const SingleActivator(LogicalKeyboardKey.escape):
+                  clearSearchField,
             },
-            child: child.child,
+            child: ListTile(
+              title: TextField(
+                controller: _controller,
+                focusNode: _textFieldFocusNode,
+                decoration: InputDecoration(
+                  label: Text(
+                    labelText,
+                    style: widget.textStyle,
+                  ),
+                ),
+                onChanged: (final value) => setState(
+                  () => _searchString = value.isEmpty ? null : value,
+                ),
+              ),
+              subtitle: _controller.text.isEmpty
+                  ? null
+                  : IconButton(
+                      onPressed: () {
+                        _textFieldFocusNode.requestFocus();
+                        clearSearchField();
+                      },
+                      icon: const Icon(
+                        Icons.clear_outlined,
+                        semanticLabel: 'Clear',
+                      ),
+                    ),
+            ),
           );
-        },
-        itemCount: results.length + 1,
-      ),
+        }
+        return CallbackShortcuts(
+          bindings: {
+            searchShortcut: () {
+              _textFieldFocusNode.requestFocus();
+              _controller.selection = TextSelection(
+                baseOffset: 0,
+                extentOffset: _controller.text.length,
+              );
+            },
+          },
+          child: results[index - 1].child,
+        );
+      },
+      itemCount: results.length + 1,
     );
   }
 

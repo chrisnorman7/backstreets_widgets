@@ -27,6 +27,7 @@ class EditPointScreen extends StatefulWidget {
     this.minValue,
     this.maxValue,
     this.initialEditPoint = EditPointPoint.x,
+    this.textStyle,
     super.key,
   });
 
@@ -53,6 +54,9 @@ class EditPointScreen extends StatefulWidget {
 
   /// Which point to start editing with the number row.
   final EditPointPoint initialEditPoint;
+
+  /// The text style to use.
+  final TextStyle? textStyle;
 
   /// Create state for this widget.
   @override
@@ -179,18 +183,36 @@ class EditPointScreenState extends State<EditPointScreen> {
           children: [
             ListTile(
               autofocus: true,
-              title: Text(widget.editorTitle),
-              subtitle: Text('${point.x}, ${point.y}'),
+              title: Text(
+                widget.editorTitle,
+                style: widget.textStyle,
+              ),
+              subtitle: Text(
+                '${point.x}, ${point.y}',
+                style: widget.textStyle,
+              ),
               onTap: () {},
             ),
             ListTile(
-              title: const Text('Modifier'),
-              subtitle: Text('$modifier'),
+              title: Text(
+                'Modifier',
+                style: widget.textStyle,
+              ),
+              subtitle: Text(
+                '$modifier',
+                style: widget.textStyle,
+              ),
               onTap: () {},
             ),
             ListTile(
-              title: const Text('Number row will edit'),
-              subtitle: Text(editPointPoint.name),
+              title: Text(
+                'Number row will edit',
+                style: widget.textStyle,
+              ),
+              subtitle: Text(
+                editPointPoint.name,
+                style: widget.textStyle,
+              ),
               onTap: () {},
             ),
           ],
