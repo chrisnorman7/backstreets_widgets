@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.14.1]
+
+- Fixed some bugs with tabbed scaffolds.
+
 ## [0.14.0]
 
 - Updated a lot of code.

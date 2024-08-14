@@ -1,5 +1,12 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
+import '../../extensions.dart';
+import '../game_shortcuts_shortcut.dart';
+import '../widgets/game_shortcuts/game_shortcut.dart';
+import '../widgets/game_shortcuts/game_shortcuts.dart';
+import '../widgets/game_shortcuts/game_shortcuts_help_screen.dart';
 import 'simple_scaffold.dart';
 
 /// A tab for a [TabbedScaffold].
@@ -69,35 +76,69 @@ class TabbedScaffoldState extends State<TabbedScaffold> {
   Widget build(final BuildContext context) {
     final page = widget.tabs[_pageIndex];
     final builder = page.builder;
-    return DefaultTabController(
-      length: widget.tabs.length,
-      child: SimpleScaffold(
-        title: page.title,
-        leading: page.leading,
-        actions: page.actions ?? [],
-        bottom: TabBar(
-          tabs: widget.tabs
-              .map<Tab>(
-                (final tab) => Tab(
-                  icon: tab.icon,
-                  text: tab.title,
-                ),
-              )
-              .toList(),
+    final numbers = <GameShortcutsShortcut>[
+      GameShortcutsShortcut.digit1,
+      GameShortcutsShortcut.digit2,
+      GameShortcutsShortcut.digit3,
+      GameShortcutsShortcut.digit4,
+      GameShortcutsShortcut.digit5,
+      GameShortcutsShortcut.digit6,
+      GameShortcutsShortcut.digit7,
+      GameShortcutsShortcut.digit8,
+      GameShortcutsShortcut.digit9,
+      GameShortcutsShortcut.digit0,
+    ];
+    final shortcuts = <GameShortcut>[
+      GameShortcut(
+        title: 'Switch to the next page',
+        shortcut: GameShortcutsShortcut.tab,
+        onStart: (final innerContext) => switchPages(1),
+      ),
+      GameShortcut(
+        title: 'Switch to the previous page',
+        shortcut: GameShortcutsShortcut.tab,
+        shiftKey: true,
+        onStart: (final innerContext) => switchPages(-1),
+      ),
+      for (var i = 0; i < min(widget.tabs.length, numbers.length); i++)
+        GameShortcut(
+          title: 'Switch to page ${i + 1}',
+          shortcut: numbers[i],
+          onStart: (final innerContext) => setState(() => _pageIndex = i),
         ),
-        body: Builder(builder: builder),
-        floatingActionButton: page.floatingActionButton,
-        bottomNavigationBar: BottomNavigationBar(
-          items: widget.tabs
-              .map(
-                (final e) => BottomNavigationBarItem(
-                  icon: e.icon,
-                  label: e.title,
-                ),
-              )
-              .toList(),
-          currentIndex: _pageIndex,
-          onTap: (final index) => setState(() => _pageIndex = index),
+    ];
+    shortcuts.add(
+      GameShortcut(
+        title: 'Show help',
+        shortcut: GameShortcutsShortcut.slash,
+        shiftKey: true,
+        onStart: (final innerContext) => innerContext.pushWidgetBuilder(
+          (final _) => GameShortcutsHelpScreen(shortcuts: shortcuts),
+        ),
+      ),
+    );
+    return GameShortcuts(
+      shortcuts: shortcuts,
+      child: DefaultTabController(
+        length: widget.tabs.length,
+        child: SimpleScaffold(
+          title: page.title,
+          leading: page.leading,
+          actions: page.actions ?? [],
+          body: Builder(builder: builder),
+          floatingActionButton: page.floatingActionButton,
+          bottomNavigationBar: BottomNavigationBar(
+            items: widget.tabs
+                .map(
+                  (final e) => BottomNavigationBarItem(
+                    icon: e.icon,
+                    label: e.title,
+                  ),
+                )
+                .toList(),
+            currentIndex: _pageIndex,
+            onTap: (final index) => setState(() => _pageIndex = index),
+          ),
         ),
       ),
     );
