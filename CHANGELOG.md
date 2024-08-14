@@ -1,12 +1,10 @@
 # Changelog
 
-## [0.15.0]
+## [0.14.0]
 
 - Updated a lot of code.
 - Simplified shortcuts.
-
-## [0.14.0]
-
+- Allow styling all widgets.
 - Allow styling the `CenterText` widget.
 
 ## [0.13.0]
