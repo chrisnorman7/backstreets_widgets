@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.15.0]
+
+- Added the `ListViewBuilder` widget.
+
 ## [0.14.3]
 
 - Stop stealing focus with the `GameShortcuts` widget in the `TabbedScaffold` widget.
