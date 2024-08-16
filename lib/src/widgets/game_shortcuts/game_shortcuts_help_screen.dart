@@ -55,6 +55,7 @@ class GameShortcutsHelpScreen extends StatelessWidget {
                 shortcut.shortcut.name,
               ];
               return CopyListTile(
+                autofocus: index == 0,
                 title: shortcut.title,
                 subtitle: keys.join(keyJoin),
                 textStyle: textStyle,
