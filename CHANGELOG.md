@@ -1,7 +1,8 @@
 # Changelog
 
-## [0.14.4]
+## [0.15.0]
 
+- Added the `ListViewBuilder` widget.
 - Fixed an autofocus issue with the `GameShortcutsHelpScreen`.
 
 ## [0.14.3]
