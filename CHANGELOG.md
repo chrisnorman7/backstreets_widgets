@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.14.4]
+
+- Fixed an autofocus issue with the `GameShortcutsHelpScreen`.
+
 ## [0.14.3]
 
 - Stop stealing focus with the `GameShortcuts` widget in the `TabbedScaffold` widget.
