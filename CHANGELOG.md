@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.16.0]
+
+- Pass more arguments to `Focus` constructor.
+
 ## [0.15.0]
 
 - Added the `ListViewBuilder` widget.
