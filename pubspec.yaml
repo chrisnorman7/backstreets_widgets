@@ -1,5 +1,5 @@
 name: backstreets_widgets
-version: 0.15.0
+version: 0.16.0
 description: A package of useful widgets.
 repository: https://github.com/chrisnorman7/backstreets_widgets
 
@@ -17,5 +17,3 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   html: ^0.15.4
-
-flutter:
