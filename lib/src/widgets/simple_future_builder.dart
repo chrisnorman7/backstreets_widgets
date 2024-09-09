@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 /// A simple version of a [FutureBuilder].
-class SimpleFutureBuilder<T> extends StatelessWidget {
+class SimpleFutureBuilder<T> extends StatefulWidget {
   /// Create an instance.
   const SimpleFutureBuilder({
     required this.future,
@@ -16,7 +16,7 @@ class SimpleFutureBuilder<T> extends StatelessWidget {
 
   /// The function to call to build the widget when [future] has completed with
   /// no error.
-  final Widget Function(BuildContext context, T? value) done;
+  final Widget Function(BuildContext futureContext, T value) done;
 
   /// The function to call to build the widget while [future] is being awaited.
   final Widget Function() loading;
@@ -28,18 +28,32 @@ class SimpleFutureBuilder<T> extends StatelessWidget {
     StackTrace? stackTrace,
   ) error;
 
+  /// Create state.
+  @override
+  State<SimpleFutureBuilder<T>> createState() => _SimpleFutureBuilderState<T>();
+}
+
+class _SimpleFutureBuilderState<T> extends State<SimpleFutureBuilder<T>> {
+  /// The loaded value.
+  late T _value;
+
+  /// Whether `_value` has been loaded yet.
+  late bool _isLoaded;
+
+  /// Initialise state.
+  @override
+  void initState() {
+    super.initState();
+    _isLoaded = false;
+    widget.future.then((final value) => setState(() => _value = value));
+  }
+
   /// Build the widget.
   @override
-  Widget build(final BuildContext context) => FutureBuilder(
-        future: future,
-        builder: (final innerContext, final snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            return done(innerContext, snapshot.data);
-          } else if (snapshot.hasError) {
-            return error(snapshot.error!, snapshot.stackTrace);
-          } else {
-            return loading();
-          }
-        },
-      );
+  Widget build(final BuildContext context) {
+    if (_isLoaded) {
+      return widget.done(context, _value);
+    }
+    return widget.loading();
+  }
 }
