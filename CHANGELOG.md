@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.16.1]
+
+- Catch errors with `SimpleFutureBuilder` again.
+
 ## [0.16.0]
 
 - Improved the `SimpleFutureBuilder` widget.
