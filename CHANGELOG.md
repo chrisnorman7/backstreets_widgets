@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.17.0]
+
+- Hopefully fixed `SimpleFutureBuilder`.
+- Fixed focus problems with `TabbedScaffold`s.
+
 ## [0.16.1]
 
 - Catch errors with `SimpleFutureBuilder` again.

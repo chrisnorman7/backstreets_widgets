@@ -63,11 +63,24 @@ class _SimpleFutureBuilderState<T> extends State<SimpleFutureBuilder<T>> {
   @override
   Widget build(final BuildContext context) {
     final error = _error;
-    if (_isLoaded) {
-      return widget.done(context, _value);
-    } else if (error != null) {
+    if (error != null) {
       return widget.error(error, _stackTrace);
+    } else if (_isLoaded) {
+      return widget.done(context, _value);
     }
+    widget.future
+        .then(
+          (final value) => setState(() {
+            _isLoaded = true;
+            _value = value;
+          }),
+        )
+        .onError(
+          (final error, final stackTrace) => setState(() {
+            _error = error;
+            _stackTrace = stackTrace;
+          }),
+        );
     return widget.loading();
   }
 }

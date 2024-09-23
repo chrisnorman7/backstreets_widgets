@@ -18,6 +18,7 @@ class GameShortcuts extends StatelessWidget {
     required this.child,
     this.autofocus = true,
     this.focusNode,
+    this.canRequestFocus = true,
     super.key,
   });
 
@@ -44,6 +45,9 @@ class GameShortcuts extends StatelessWidget {
   ///
   /// Only provide a [focusNode] if you wish to be able to request focus.
   final FocusNode? focusNode;
+
+  /// Whether the resulting [Focus] node can request focus.
+  final bool canRequestFocus;
 
   /// Build the widget.
   @override
@@ -74,6 +78,7 @@ class GameShortcuts extends StatelessWidget {
             return KeyEventResult.ignored;
           },
           focusNode: focusNode,
+          canRequestFocus: canRequestFocus,
           child: child,
         ),
       ),
