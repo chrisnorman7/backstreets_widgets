@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.18.0]
+
+- Added the `TimedCommands` widget.
+
 ## [0.17.0]
 
 - Hopefully fixed `SimpleFutureBuilder`.

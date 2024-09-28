@@ -31,5 +31,6 @@ export 'src/widgets/tasks/ticking/ticking.dart';
 export 'src/widgets/tasks/ticking_tasks/ticking_task.dart';
 export 'src/widgets/tasks/ticking_tasks/ticking_tasks.dart';
 export 'src/widgets/text_list_tile.dart';
+export 'src/widgets/timed//timed_commands.dart';
 export 'src/widgets/timed/timed_builders.dart';
 export 'src/widgets/timed/timed_transitions.dart';
