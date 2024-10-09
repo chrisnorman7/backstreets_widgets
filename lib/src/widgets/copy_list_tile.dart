@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../util.dart';
+import '../../extensions.dart';
 
 /// A list tile which can be copied with a cap.
 class CopyListTile extends StatelessWidget {
@@ -41,7 +41,7 @@ class CopyListTile extends StatelessWidget {
           subtitle,
           style: textStyle,
         ),
-        onTap: () => setClipboardText('$title: $subtitle'),
+        onTap: () => '$title: $subtitle'.copyToClipboard(),
         onLongPress: onLongPress,
       );
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../util.dart';
+import '../../extensions.dart';
 
 /// A [ListTile] which can show an error.
 class ErrorListTile extends StatelessWidget {
@@ -50,7 +50,7 @@ class ErrorListTile extends StatelessWidget {
           final buffer = StringBuffer()
             ..writeln(error)
             ..writeln(stackTrace);
-          setClipboardText(buffer.toString());
+          buffer.toString().copyToClipboard();
         },
       );
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../util.dart';
+import '../../extensions.dart';
 import 'copy_list_tile.dart';
 
 /// A widget to show an [error], and optional [stackTrace].
@@ -55,7 +55,7 @@ class ErrorListView extends StatelessWidget {
                     e,
                     style: textStyle,
                   ),
-                  onTap: () => setClipboardText(e),
+                  onTap: e.copyToClipboard,
                 ),
               ),
       ],

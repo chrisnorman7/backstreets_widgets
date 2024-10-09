@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../util.dart';
+import '../../extensions.dart';
 import 'get_text.dart';
 
 /// A list tile that displays and allows the editing of some text.
@@ -62,9 +62,8 @@ class TextListTile extends StatelessWidget {
           value,
           style: textStyle,
         ),
-        onTap: () => pushWidget(
-          context: context,
-          builder: (final context) => GetText(
+        onTap: () => context.pushWidgetBuilder(
+          (final context) => GetText(
             onDone: (final value) {
               Navigator.pop(context);
               onChanged(value);

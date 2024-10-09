@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
+import '../../extensions.dart';
 import '../../shortcuts.dart';
-import '../../util.dart';
 
 /// A widget which maps the most common shortcuts.
 class CommonShortcuts extends StatelessWidget {
@@ -90,7 +90,7 @@ class CommonShortcuts extends StatelessWidget {
         if (pageDownFunction != null) pageDownHotkey: pageDownFunction,
         if (testFunction != null) testHotkey: testFunction,
         if (backspaceFunction != null) backspaceHotkey: backspaceFunction,
-        if (text != null) copyHotkey: () => setClipboardText(text),
+        if (text != null) copyHotkey: text.copyToClipboard,
       },
       child: child,
     );

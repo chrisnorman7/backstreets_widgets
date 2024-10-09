@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.19.0]
+
+- Added the `TouchSurfaceBuilder` widget.
+- Moved all utility functions to extension methods.
+
 ## [0.18.0]
 
 - Added the `TimedCommands` widget.
