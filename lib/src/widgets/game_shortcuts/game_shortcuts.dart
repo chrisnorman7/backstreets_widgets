@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../../widgets.dart';
+import 'game_shortcut.dart';
+import 'inherited_game_shortcuts.dart';
 
 /// A widget for handling game [shortcuts].
 ///
@@ -16,12 +17,8 @@ class GameShortcuts extends StatelessWidget {
     required this.shortcuts,
     required this.child,
     this.autofocus = true,
-    this.canRequestFocus,
-    this.skipTraversal,
-    this.descendantsAreFocusable,
-    this.descendantsAreTraversal,
-    this.includeSemantics = true,
     this.focusNode,
+    this.canRequestFocus = true,
     super.key,
   });
 
@@ -44,25 +41,13 @@ class GameShortcuts extends StatelessWidget {
   /// Whether the resulting [Focus] widget should be autofocused.
   final bool autofocus;
 
-  /// Passed directly to [Focus].
-  final bool? canRequestFocus;
-
-  /// Passed directly to [Focus].
-  final bool? skipTraversal;
-
-  /// Passed directly to [Focus].
-  final bool? descendantsAreFocusable;
-
-  /// Passed directly to [Focus].
-  final bool? descendantsAreTraversal;
-
-  /// Passed directly to [Focus].
-  final bool includeSemantics;
-
   /// The focus node to use.
   ///
   /// Only provide a [focusNode] if you wish to be able to request focus.
   final FocusNode? focusNode;
+
+  /// Whether the resulting [Focus] node can request focus.
+  final bool canRequestFocus;
 
   /// Build the widget.
   @override
@@ -70,34 +55,32 @@ class GameShortcuts extends StatelessWidget {
     final keyboard = HardwareKeyboard.instance;
     return InheritedGameShortcuts(
       shortcuts: shortcuts,
-      child: Focus(
-        autofocus: autofocus,
-        canRequestFocus: canRequestFocus,
-        descendantsAreFocusable: descendantsAreFocusable,
-        descendantsAreTraversable: descendantsAreTraversal,
-        includeSemantics: includeSemantics,
-        skipTraversal: skipTraversal,
-        onKeyEvent: (final node, final event) {
-          if (event is KeyRepeatEvent) {
-            return KeyEventResult.ignored;
-          }
-          for (final shortcut in shortcuts) {
-            if (shortcut.shortcut.key == event.physicalKey &&
-                shortcut.controlKey == keyboard.isControlPressed &&
-                shortcut.altKey == keyboard.isAltPressed &&
-                shortcut.shiftKey == keyboard.isShiftPressed) {
-              if (event is KeyDownEvent) {
-                shortcut.onStart?.call(context);
-              } else {
-                shortcut.onStop?.call(context);
-              }
-              return KeyEventResult.handled;
+      child: Builder(
+        builder: (final innerContext) => Focus(
+          autofocus: autofocus,
+          onKeyEvent: (final node, final event) {
+            if (event is KeyRepeatEvent) {
+              return KeyEventResult.ignored;
             }
-          }
-          return KeyEventResult.ignored;
-        },
-        focusNode: focusNode,
-        child: child,
+            for (final shortcut in shortcuts) {
+              if (shortcut.shortcut.key == event.physicalKey &&
+                  shortcut.controlKey == keyboard.isControlPressed &&
+                  shortcut.altKey == keyboard.isAltPressed &&
+                  shortcut.shiftKey == keyboard.isShiftPressed) {
+                if (event is KeyDownEvent) {
+                  shortcut.onStart?.call(innerContext);
+                } else {
+                  shortcut.onStop?.call(innerContext);
+                }
+                return KeyEventResult.handled;
+              }
+            }
+            return KeyEventResult.ignored;
+          },
+          focusNode: focusNode,
+          canRequestFocus: canRequestFocus,
+          child: child,
+        ),
       ),
     );
   }

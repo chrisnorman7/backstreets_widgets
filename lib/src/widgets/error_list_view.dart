@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../util.dart';
+import '../../extensions.dart';
 import 'copy_list_tile.dart';
 
 /// A widget to show an [error], and optional [stackTrace].
@@ -9,7 +9,6 @@ class ErrorListView extends StatelessWidget {
   const ErrorListView({
     required this.error,
     this.stackTrace,
-    this.textStyle,
     super.key,
   });
 
@@ -17,7 +16,6 @@ class ErrorListView extends StatelessWidget {
   const ErrorListView.withPositional(
     this.error,
     this.stackTrace, {
-    this.textStyle,
     super.key,
   });
 
@@ -33,9 +31,6 @@ class ErrorListView extends StatelessWidget {
   /// resulting [ListView] will only have one item.
   final StackTrace? stackTrace;
 
-  /// The text style to use.
-  final TextStyle? textStyle;
-
   /// Build the widget.
   @override
   Widget build(final BuildContext context) {
@@ -46,16 +41,12 @@ class ErrorListView extends StatelessWidget {
           autofocus: true,
           title: 'Error Description',
           subtitle: error.toString(),
-          textStyle: textStyle,
         ),
         if (s != null)
           ...s.toString().split('\n').map(
                 (final e) => ListTile(
-                  title: Text(
-                    e,
-                    style: textStyle,
-                  ),
-                  onTap: () => setClipboardText(e),
+                  title: Text(e),
+                  onTap: e.copyToClipboard,
                 ),
               ),
       ],

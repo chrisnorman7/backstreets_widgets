@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../util.dart';
+import '../../extensions.dart';
 
 /// A [ListTile] which can show an error.
 class ErrorListTile extends StatelessWidget {
@@ -9,7 +9,6 @@ class ErrorListTile extends StatelessWidget {
     required this.error,
     required this.stackTrace,
     this.autofocus = false,
-    this.textStyle,
     super.key,
   });
 
@@ -18,7 +17,6 @@ class ErrorListTile extends StatelessWidget {
     this.error,
     this.stackTrace, {
     this.autofocus = false,
-    this.textStyle,
     super.key,
   });
 
@@ -31,26 +29,17 @@ class ErrorListTile extends StatelessWidget {
   /// Whether the [ListTile] should be autofocused.
   final bool autofocus;
 
-  /// The text style to use.
-  final TextStyle? textStyle;
-
   /// Build the widget.
   @override
   Widget build(final BuildContext context) => ListTile(
         autofocus: autofocus,
-        title: Text(
-          error.toString(),
-          style: textStyle,
-        ),
-        subtitle: Text(
-          stackTrace.toString(),
-          style: textStyle,
-        ),
+        title: Text(error.toString()),
+        subtitle: Text(stackTrace.toString()),
         onTap: () {
           final buffer = StringBuffer()
             ..writeln(error)
             ..writeln(stackTrace);
-          setClipboardText(buffer.toString());
+          buffer.toString().copyToClipboard();
         },
       );
 }

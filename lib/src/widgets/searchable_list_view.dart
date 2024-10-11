@@ -23,15 +23,13 @@ class SearchableListView extends StatefulWidget {
   /// Create an instance.
   const SearchableListView({
     required this.children,
-    this.textStyle,
     super.key,
   });
 
   /// The list of children.
   final List<SearchableListTile> children;
 
-  /// The text style to use.
-  final TextStyle? textStyle;
+  /// Create state.
   @override
   State<SearchableListView> createState() => _SearchableListViewState();
 }
@@ -87,10 +85,7 @@ class _SearchableListViewState extends State<SearchableListView> {
                 controller: _controller,
                 focusNode: _textFieldFocusNode,
                 decoration: InputDecoration(
-                  label: Text(
-                    labelText,
-                    style: widget.textStyle,
-                  ),
+                  labelText: labelText,
                 ),
                 onChanged: (final value) => setState(
                   () => _searchString = value.isEmpty ? null : value,

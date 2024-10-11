@@ -15,7 +15,6 @@ class GetText extends StatefulWidget {
     this.actions = const [],
     this.labelText = 'Text',
     this.icon = const Icon(Icons.done_rounded),
-    this.textStyle,
   });
 
   /// What to do with the resulting text.
@@ -38,9 +37,6 @@ class GetText extends StatefulWidget {
 
   /// The icon for the resulting floating action button.
   final Widget? icon;
-
-  /// The text style to use.
-  final TextStyle? textStyle;
 
   /// Create state for this widget.
   @override
@@ -90,7 +86,6 @@ class GetTextState extends State<GetText> {
                   decoration: InputDecoration(
                     label: Text(
                       widget.labelText,
-                      style: widget.textStyle,
                     ),
                   ),
                   onFieldSubmitted: (final value) => onSubmit(),

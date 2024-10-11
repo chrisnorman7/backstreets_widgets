@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../extensions.dart';
 import '../../shortcuts.dart';
 import 'get_text.dart';
-import 'push_widget_list_tile.dart';
 
 /// A widget that shows a double [value].
 class DoubleListTile extends StatelessWidget {
@@ -19,7 +19,6 @@ class DoubleListTile extends StatelessWidget {
     this.max,
     this.modifier = 1.0,
     this.onLongPress,
-    this.textStyle,
     super.key,
   });
 
@@ -58,9 +57,6 @@ class DoubleListTile extends StatelessWidget {
   /// What to do when long pressing the [ListTile].
   final GestureLongPressCallback? onLongPress;
 
-  /// The text style to use.
-  final TextStyle? textStyle;
-
   /// Build the widget.
   @override
   Widget build(final BuildContext context) {
@@ -82,34 +78,35 @@ class DoubleListTile extends StatelessWidget {
         moveToStartShortcut: () => onChanged(min ?? value),
         moveToEndShortcut: () => onChanged(max ?? value),
       },
-      child: PushWidgetListTile(
+      child: ListTile(
         autofocus: autofocus,
-        title: title,
-        builder: (final context) => GetText(
-          onDone: (final value) {
-            Navigator.pop(context);
-            onChanged(double.parse(value));
-          },
-          actions: actions,
-          text: text,
-          title: title,
-          validator: (final value) {
-            final d = value == null ? null : double.tryParse(value);
-            if (value == null || value.isEmpty) {
-              return 'You must enter a value';
-            } else if (d == null) {
-              return 'Invalid number';
-            } else if (d < (min ?? d)) {
-              return 'Value must be at least $min';
-            } else if (d > (max ?? d)) {
-              return 'Value must be no more than $max';
-            }
-            return null;
-          },
+        title: Text(title),
+        subtitle: Text(subtitle ?? text),
+        onTap: () => context.pushWidgetBuilder(
+          (final context) => GetText(
+            onDone: (final value) {
+              Navigator.pop(context);
+              onChanged(double.parse(value));
+            },
+            actions: actions,
+            text: text,
+            title: title,
+            validator: (final value) {
+              final d = value == null ? null : double.tryParse(value);
+              if (value == null || value.isEmpty) {
+                return 'You must enter a value';
+              } else if (d == null) {
+                return 'Invalid number';
+              } else if (d < (min ?? d)) {
+                return 'Value must be at least $min';
+              } else if (d > (max ?? d)) {
+                return 'Value must be no more than $max';
+              }
+              return null;
+            },
+          ),
         ),
-        subtitle: subtitle ?? text,
         onLongPress: onLongPress,
-        textStyle: textStyle,
       ),
     );
   }

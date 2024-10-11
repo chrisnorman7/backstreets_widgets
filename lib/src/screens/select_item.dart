@@ -21,7 +21,6 @@ class SelectItem<T> extends StatelessWidget {
     this.getWidget,
     this.shouldPop = true,
     this.getCallbackShortcuts,
-    this.textStyle,
     super.key,
   });
 
@@ -54,9 +53,6 @@ class SelectItem<T> extends StatelessWidget {
   /// Return a map of callback shortcuts for each value.
   final SelectItemCallbackShortcuts<T>? getCallbackShortcuts;
 
-  /// The text style to use.
-  final TextStyle? textStyle;
-
   /// Build the widget.
   @override
   Widget build(final BuildContext context) {
@@ -74,10 +70,7 @@ class SelectItem<T> extends StatelessWidget {
               autofocus: item == value || (value == null && index == 0),
               selected: item == value,
               title: getWidgetFunction == null
-                  ? Text(
-                      item.toString(),
-                      style: textStyle,
-                    )
+                  ? Text(item.toString())
                   : getWidgetFunction(item),
               onTap: () {
                 if (shouldPop) {

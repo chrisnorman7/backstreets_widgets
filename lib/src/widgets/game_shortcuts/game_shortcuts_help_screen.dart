@@ -15,7 +15,6 @@ class GameShortcutsHelpScreen extends StatelessWidget {
     this.shiftKey = 'SHIFT',
     this.altKey = 'ALT',
     this.keyJoin = ' + ',
-    this.textStyle,
     super.key,
   });
 
@@ -37,9 +36,6 @@ class GameShortcutsHelpScreen extends StatelessWidget {
   /// The string which joins keys.
   final String keyJoin;
 
-  /// The text style to use.
-  final TextStyle? textStyle;
-
   /// Build the widget.
   @override
   Widget build(final BuildContext context) => Cancel(
@@ -58,7 +54,6 @@ class GameShortcutsHelpScreen extends StatelessWidget {
                 autofocus: index == 0,
                 title: shortcut.title,
                 subtitle: keys.join(keyJoin),
-                textStyle: textStyle,
               );
             },
             itemCount: shortcuts.length,

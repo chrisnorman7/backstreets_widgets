@@ -9,7 +9,6 @@ class ErrorScreen extends StatelessWidget {
   const ErrorScreen({
     required this.error,
     this.stackTrace,
-    this.textStyle,
     super.key,
   });
 
@@ -17,7 +16,6 @@ class ErrorScreen extends StatelessWidget {
   const ErrorScreen.withPositional(
     this.error,
     this.stackTrace, {
-    this.textStyle,
     super.key,
   });
 
@@ -29,9 +27,6 @@ class ErrorScreen extends StatelessWidget {
   /// If this value is `null`, only the [error] will be displayed.
   final StackTrace? stackTrace;
 
-  /// The text style to use.
-  final TextStyle? textStyle;
-
   /// Build the widget.
   @override
   Widget build(final BuildContext context) => SimpleScaffold(
@@ -39,7 +34,6 @@ class ErrorScreen extends StatelessWidget {
         body: ErrorListView(
           error: error,
           stackTrace: stackTrace,
-          textStyle: textStyle,
         ),
       );
 }

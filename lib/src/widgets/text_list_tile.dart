@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../util.dart';
+import '../../extensions.dart';
 import 'get_text.dart';
 
 /// A list tile that displays and allows the editing of some text.
@@ -16,7 +16,6 @@ class TextListTile extends StatelessWidget {
     this.validator,
     this.autofocus = false,
     this.onLongPress,
-    this.textStyle,
     super.key,
   });
 
@@ -47,24 +46,14 @@ class TextListTile extends StatelessWidget {
   /// What to do when long pressing the [ListTile].
   final GestureLongPressCallback? onLongPress;
 
-  /// The text style to use.
-  final TextStyle? textStyle;
-
   /// Build the widget.
   @override
   Widget build(final BuildContext context) => ListTile(
         autofocus: autofocus,
-        title: Text(
-          header,
-          style: textStyle,
-        ),
-        subtitle: Text(
-          value,
-          style: textStyle,
-        ),
-        onTap: () => pushWidget(
-          context: context,
-          builder: (final context) => GetText(
+        title: Text(header),
+        subtitle: Text(value),
+        onTap: () => context.pushWidgetBuilder(
+          (final context) => GetText(
             onDone: (final value) {
               Navigator.pop(context);
               onChanged(value);
@@ -74,7 +63,6 @@ class TextListTile extends StatelessWidget {
             actions: actions,
             title: title ?? header,
             validator: validator,
-            textStyle: textStyle,
           ),
         ),
         onLongPress: onLongPress,

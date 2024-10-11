@@ -1,8 +1,30 @@
 # Changelog
 
+## [0.20.0]
+
+- Removed all the text style arguments now that I found `DefaultTextStyle`.
+
+## [0.19.0]
+
+- Added the `TouchSurfaceBuilder` widget.
+- Moved all utility functions to extension methods.
+
+## [0.18.0]
+
+- Added the `TimedCommands` widget.
+
+## [0.17.0]
+
+- Hopefully fixed `SimpleFutureBuilder`.
+- Fixed focus problems with `TabbedScaffold`s.
+
+## [0.16.1]
+
+- Catch errors with `SimpleFutureBuilder` again.
+
 ## [0.16.0]
 
-- Pass more arguments to `Focus` constructor.
+- Improved the `SimpleFutureBuilder` widget.
 
 ## [0.15.0]
 

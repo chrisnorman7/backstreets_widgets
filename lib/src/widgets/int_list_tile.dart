@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../extensions.dart';
 import '../../shortcuts.dart';
 import 'get_text.dart';
-import 'push_widget_list_tile.dart';
 
 /// A list tile to edit the given number [value].
 class IntListTile extends StatelessWidget {
@@ -18,7 +18,6 @@ class IntListTile extends StatelessWidget {
     this.autofocus = false,
     this.labelText = 'Number',
     this.onLongPress,
-    this.textStyle,
     super.key,
   });
 
@@ -54,9 +53,6 @@ class IntListTile extends StatelessWidget {
   /// What to do when long pressing the [ListTile].
   final GestureLongPressCallback? onLongPress;
 
-  /// The text style to use.
-  final TextStyle? textStyle;
-
   /// Build the widget.
   @override
   Widget build(final BuildContext context) => CallbackShortcuts(
@@ -76,37 +72,38 @@ class IntListTile extends StatelessWidget {
           moveToStartShortcut: () => onChanged(min ?? value),
           moveToEndShortcut: () => onChanged(max ?? value),
         },
-        child: PushWidgetListTile(
-          title: title,
-          builder: (final context) => GetText(
-            onDone: (final value) {
-              Navigator.pop(context);
-              onChanged(int.parse(value));
-            },
-            labelText: labelText,
-            text: value.toString(),
-            title: title,
-            validator: (final value) {
-              if (value == null || value.isEmpty) {
-                return 'You must provide a value';
-              }
-              final i = int.tryParse(value);
-              if (i == null) {
-                return 'Invalid number';
-              }
-              if (i < (min ?? i)) {
-                return 'You must use a number no less than $min';
-              }
-              if (i > (max ?? i)) {
-                return 'You must use a number no more than $max';
-              }
-              return null;
-            },
-          ),
+        child: ListTile(
           autofocus: autofocus,
+          title: Text(title),
+          subtitle: Text(subtitle ?? value.toString()),
+          onTap: () => context.pushWidgetBuilder(
+            (final context) => GetText(
+              onDone: (final value) {
+                Navigator.pop(context);
+                onChanged(int.parse(value));
+              },
+              labelText: labelText,
+              text: value.toString(),
+              title: title,
+              validator: (final value) {
+                if (value == null || value.isEmpty) {
+                  return 'You must provide a value';
+                }
+                final i = int.tryParse(value);
+                if (i == null) {
+                  return 'Invalid number';
+                }
+                if (i < (min ?? i)) {
+                  return 'You must use a number no less than $min';
+                }
+                if (i > (max ?? i)) {
+                  return 'You must use a number no more than $max';
+                }
+                return null;
+              },
+            ),
+          ),
           onLongPress: onLongPress,
-          subtitle: subtitle ?? value.toString(),
-          textStyle: textStyle,
         ),
       );
 }

@@ -1,5 +1,5 @@
 /// Various [Widget]s with [Scaffold]s at their root.
-library screens;
+library;
 
 import 'package:flutter/material.dart';
 

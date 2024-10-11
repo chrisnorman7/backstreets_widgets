@@ -1,5 +1,5 @@
 /// A collection of [Widget]s which can be used inside a [Scaffold].
-library widgets;
+library;
 
 import 'package:flutter/material.dart';
 
@@ -20,7 +20,6 @@ export 'src/widgets/int_list_tile.dart';
 export 'src/widgets/list_view_builder.dart';
 export 'src/widgets/loading_widget.dart';
 export 'src/widgets/point_list_tile.dart';
-export 'src/widgets/push_widget_list_tile.dart';
 export 'src/widgets/searchable_list_view.dart';
 export 'src/widgets/simple_future_builder.dart';
 export 'src/widgets/tasks/random_tasks/inherited_random_tasks.dart';
@@ -31,5 +30,6 @@ export 'src/widgets/tasks/ticking/ticking.dart';
 export 'src/widgets/tasks/ticking_tasks/ticking_task.dart';
 export 'src/widgets/tasks/ticking_tasks/ticking_tasks.dart';
 export 'src/widgets/text_list_tile.dart';
+export 'src/widgets/timed//timed_commands.dart';
 export 'src/widgets/timed/timed_builders.dart';
 export 'src/widgets/timed/timed_transitions.dart';
