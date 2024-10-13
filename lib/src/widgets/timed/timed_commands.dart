@@ -101,6 +101,16 @@ class TimedCommandsState extends State<TimedCommands> {
     _timers.add(null);
   }
 
+  /// Unregisters a [command] which has previously been registered with
+  /// [registerCommand].
+  void unregisterCommand(final VoidCallback command) {
+    final index = _getCommandIndex(command);
+    _commands.removeAt(index);
+    _intervals.removeAt(index);
+    _running.removeAt(index);
+    _timers.removeAt(index)?.cancel();
+  }
+
   /// Returns a boolean indicating whether [command] is registered with this
   /// widget.
   bool commandIsRegistered(final VoidCallback command) =>
