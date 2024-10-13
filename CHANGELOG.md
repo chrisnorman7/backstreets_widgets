@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.21.0]
+
+- Added the `TimedCommands.unregisterCommand` method.
+
 ## [0.20.0]
 
 - Removed all the text style arguments now that I found `DefaultTextStyle`.
