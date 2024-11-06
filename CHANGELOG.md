@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.22.0]
+
+- Added the `DataScope` widget.
+- Updated the `BuildContext.showMessage` extension method to make it more customizable.
+- Added the `BuildContext.getLoadedData` extension method.
+
 ## [0.21.0]
 
 - Added the `TimedCommands.unregisterCommand` method.

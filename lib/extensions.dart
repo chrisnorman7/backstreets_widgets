@@ -3,6 +3,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'src/widgets/data_scope.dart';
+
 /// Useful methods for build contexts.
 extension BuildContextX on BuildContext {
   /// Push a widget [builder].
@@ -47,14 +49,15 @@ extension BuildContextX on BuildContext {
   Future<void> showMessage({
     required final String message,
     final String title = 'Error',
+    final String buttonLabel = 'OK',
   }) =>
-      showDialog<void>(
+      showDialog(
         context: this,
         builder: (final context) => AlertDialog(
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: const Text('OK'),
+              child: Text(buttonLabel),
             ),
           ],
           title: Text(title),
@@ -68,8 +71,20 @@ extension BuildContextX on BuildContext {
               child: Text(message),
             ),
           ),
+          semanticLabel: message,
         ),
       );
+
+  /// Get the loaded data from a [DataScope].
+  ///
+  /// If the data hasn't been loaded, then [StateError] will be thrown.
+  T getLoadedData<T>() {
+    final state = DataScope.of<T>(this);
+    if (state.dataLoaded) {
+      return state.data;
+    }
+    throw StateError('The data has not yet been loaded.');
+  }
 }
 
 /// Useful extension methods for doubles.

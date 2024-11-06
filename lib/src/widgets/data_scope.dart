@@ -11,6 +11,14 @@ class DataScope<T> extends StatefulWidget {
     super.key,
   });
 
+  /// Maybe provide the nearest instance.
+  static DataScopeState<T>? maybeOf<T>(final BuildContext context) =>
+      context.findAncestorStateOfType<DataScopeState<T>>();
+
+  /// Returns the nearest instance.
+  static DataScopeState<T> of<T>(final BuildContext context) =>
+      DataScope.maybeOf(context)!;
+
   /// The function to call to load the data.
   final FutureOr<T> Function() loadData;
 
