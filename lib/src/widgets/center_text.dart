@@ -20,7 +20,12 @@ class CenterText extends StatelessWidget {
   Widget build(final BuildContext context) => Focus(
         autofocus: autofocus,
         child: Center(
-          child: Text(text),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(text),
+            ],
+          ),
         ),
       );
 }
