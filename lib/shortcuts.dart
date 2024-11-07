@@ -1,14 +1,16 @@
-import 'dart:io';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+/// Whether we are running on something Apple-flavoured.
+final runningOnApple =
+    [TargetPlatform.iOS, TargetPlatform.macOS].contains(defaultTargetPlatform);
+
 /// Whether the control key should be used in shortcuts.
-final useControlKey = kIsWeb || !Platform.isMacOS;
+final useControlKey = !runningOnApple;
 
 /// Whether or not the meta key should be used for shortcuts.
-final useMetaKey = !kIsWeb && Platform.isMacOS;
+final useMetaKey = runningOnApple;
 
 /// The "New" shortcut.
 final newShortcut = SingleActivator(

@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.22.1]
+
+- Use the `defaultTargetPlatform` property to determine whether keyboard shortcuts should be Apple style or not.
+
 ## [0.22.0]
 
 - Added the `DataScope` widget.
