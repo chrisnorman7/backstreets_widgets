@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 
 import 'src/widgets/data_scope.dart';
@@ -85,6 +86,15 @@ extension BuildContextX on BuildContext {
     }
     throw StateError('The data has not yet been loaded.');
   }
+
+  /// Announce something to screen readers.
+  ///
+  /// This method uses the [SemanticsService.announce] method.
+  void announce(
+    final String message, {
+    final TextDirection textDirection = TextDirection.ltr,
+  }) =>
+      SemanticsService.announce(message, textDirection);
 }
 
 /// Useful extension methods for doubles.

@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.23.0]
+
+- Added the `NextButton` widget.
+- Added the `NewButton` widget.
+- Added the `SaveButton` widget.
+- Added the `DurationListTile` widget.
+- Added the `EditDurationScreen` screen.
+- Added the `BuildContext.announce` extension method.
+
 ## [0.22.1]
 
 - Use the `defaultTargetPlatform` property to determine whether keyboard shortcuts should be Apple style or not
