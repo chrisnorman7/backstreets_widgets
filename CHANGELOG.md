@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.23.1]
+
+- Fixed a bug in `EditDurationScreen` which meant milliseconds could not be altered in durations.
+
 ## [0.23.0]
 
 - Added the `NextButton` widget.

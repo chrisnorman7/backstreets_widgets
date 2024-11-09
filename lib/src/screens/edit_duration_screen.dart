@@ -136,7 +136,7 @@ class EditDurationScreenState extends State<EditDurationScreen> {
               Slider(
                 value: milliseconds.toDouble(),
                 onChanged: (final value) => setState(
-                  () => milliseconds = value.floor(),
+                  () => milliseconds = value.round(),
                 ),
                 label: 'Milliseconds',
                 max: 999,
