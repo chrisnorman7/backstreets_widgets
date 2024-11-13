@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.24.0]
+
+- Updated code.
+- Added the `CrossPlatformSingleActivator` class.
+
 ## [0.23.1]
 
 - Fixed a bug in `EditDurationScreen` which meant milliseconds could not be altered in durations.

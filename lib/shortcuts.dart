@@ -2,6 +2,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'src/cross_platform_single_activator.dart';
+
+export 'src/cross_platform_single_activator.dart';
+
 /// Whether we are running on something Apple-flavoured.
 final runningOnApple =
     [TargetPlatform.iOS, TargetPlatform.macOS].contains(defaultTargetPlatform);
@@ -13,24 +17,14 @@ final useControlKey = !runningOnApple;
 final useMetaKey = runningOnApple;
 
 /// The "New" shortcut.
-final newShortcut = SingleActivator(
-  LogicalKeyboardKey.keyN,
-  control: useControlKey,
-  meta: useMetaKey,
-);
+final newShortcut = CrossPlatformSingleActivator(LogicalKeyboardKey.keyN);
 
 /// The "Open" shortcut.
-final openShortcut = SingleActivator(
-  LogicalKeyboardKey.keyO,
-  control: useControlKey,
-  meta: useMetaKey,
-);
+final openShortcut = CrossPlatformSingleActivator(LogicalKeyboardKey.keyO);
 
-/// The "Close Project" shortcut.
-final closeProjectShortcut = SingleActivator(
+/// The "Close" shortcut.
+final closeProjectShortcut = CrossPlatformSingleActivator(
   LogicalKeyboardKey.keyW,
-  control: useControlKey,
-  meta: useMetaKey,
 );
 
 /// The search shortcut.
@@ -76,17 +70,13 @@ const moveToEndShortcut = SingleActivator(
 );
 
 /// The hotkey for copying things.
-final copyHotkey = SingleActivator(
+final copyHotkey = CrossPlatformSingleActivator(
   LogicalKeyboardKey.keyC,
-  control: useControlKey,
-  meta: useMetaKey,
 );
 
 /// The hotkey for testing things.
-final testHotkey = SingleActivator(
+final testHotkey = CrossPlatformSingleActivator(
   LogicalKeyboardKey.keyT,
-  control: useControlKey,
-  meta: useMetaKey,
   shift: true,
 );
 
