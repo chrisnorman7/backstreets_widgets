@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.24.1]
+
+- Fixed the `Cancel` widget.
+
 ## [0.24.0]
 
 - Updated code.

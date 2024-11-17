@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 /// A widget that can be cancelled with the escape key.
 class Cancel extends StatelessWidget {
@@ -21,18 +22,15 @@ class Cancel extends StatelessWidget {
   @override
   Widget build(final BuildContext context) {
     final func = onCancel;
-    return Actions(
-      actions: {
-        DismissIntent: CallbackAction(
-          onInvoke: (final intent) {
-            if (func == null) {
-              Navigator.pop(context);
-            } else {
-              func();
-            }
-            return null;
-          },
-        ),
+    return CallbackShortcuts(
+      bindings: {
+        const SingleActivator(LogicalKeyboardKey.escape): () {
+          if (func == null) {
+            Navigator.pop(context);
+          } else {
+            func();
+          }
+        },
       },
       child: child,
     );
