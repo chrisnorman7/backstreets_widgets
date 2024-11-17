@@ -4,6 +4,7 @@
 
 - Updated code.
 - Added the `CrossPlatformSingleActivator` class.
+- Added the `PerformableActionsBuilder`, `PerformableActions`, and `PerformableActionsListTile` widgets.
 
 ## [0.23.1]
 
