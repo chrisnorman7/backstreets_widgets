@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../extensions.dart';
 import 'performable_action.dart';
 import 'performable_actions_builder.dart';
 
@@ -9,13 +10,7 @@ Widget defaultButtonBuilder(
   final MenuController controller,
 ) =>
     IconButton(
-      onPressed: () {
-        if (controller.isOpen) {
-          controller.close();
-        } else {
-          controller.open();
-        }
-      },
+      onPressed: controller.toggle,
       icon: const Icon(Icons.more_vert),
       tooltip: 'Show / hide menu',
     );

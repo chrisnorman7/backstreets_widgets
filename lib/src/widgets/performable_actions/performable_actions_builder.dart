@@ -15,7 +15,7 @@ class PerformableActionsBuilder extends StatelessWidget {
   /// The actions which can be performed.
   final List<PerformableAction> actions;
 
-  /// The widget below this widget in the tree.
+  /// The function which will build the widget below this widget in the tree.
   final Widget Function(BuildContext builderContext, MenuController controller)
       builder;
 
@@ -45,13 +45,4 @@ class PerformableActionsBuilder extends StatelessWidget {
           ),
         ),
       );
-
-  /// Toggle [controller] open or closed.
-  void toggleController(final MenuController controller) {
-    if (controller.isOpen) {
-      controller.close();
-    } else {
-      controller.open();
-    }
-  }
 }

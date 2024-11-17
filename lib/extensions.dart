@@ -116,3 +116,15 @@ extension StringX on String {
     Clipboard.setData(data);
   }
 }
+
+/// Useful extensions on menu controllers.
+extension MenuControllerX on MenuController {
+  /// Toggle the [isOpen] state of this [MenuController].
+  void toggle() {
+    if (isOpen) {
+      close();
+    } else {
+      open();
+    }
+  }
+}
