@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../extensions.dart';
 
-/// A list tile which can be copied with a cap.
+/// A list tile which can be copied with a tap.
 class CopyListTile extends StatelessWidget {
   /// Create an instance.
   const CopyListTile({
