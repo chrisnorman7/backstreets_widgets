@@ -65,6 +65,7 @@ class GameShortcuts extends StatelessWidget {
             for (final shortcut in shortcuts) {
               if (shortcut.shortcut.key == event.physicalKey &&
                   shortcut.controlKey == keyboard.isControlPressed &&
+                  shortcut.metaKey == keyboard.isMetaPressed &&
                   shortcut.altKey == keyboard.isAltPressed &&
                   shortcut.shiftKey == keyboard.isShiftPressed) {
                 if (event is KeyDownEvent) {

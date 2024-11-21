@@ -12,6 +12,7 @@ class GameShortcutsHelpScreen extends StatelessWidget {
     required this.shortcuts,
     this.title = 'Keyboard Shortcuts',
     this.controlKey = 'CTRL',
+    this.metaKey = 'META',
     this.shiftKey = 'SHIFT',
     this.altKey = 'ALT',
     this.keyJoin = ' + ',
@@ -26,6 +27,9 @@ class GameShortcutsHelpScreen extends StatelessWidget {
 
   /// The name of the control key.
   final String controlKey;
+
+  /// The title of the meta key.
+  final String metaKey;
 
   /// The title of the shift key.
   final String shiftKey;
@@ -46,6 +50,7 @@ class GameShortcutsHelpScreen extends StatelessWidget {
               final shortcut = shortcuts[index];
               final keys = <String>[
                 if (shortcut.controlKey) controlKey,
+                if (shortcut.metaKey) metaKey,
                 if (shortcut.shiftKey) shiftKey,
                 if (shortcut.altKey) altKey,
                 shortcut.shortcut.name,
