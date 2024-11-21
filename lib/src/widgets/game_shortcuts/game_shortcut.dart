@@ -1,3 +1,4 @@
+import '../../../shortcuts.dart';
 import '../../../typedefs.dart';
 import '../../game_shortcuts_shortcut.dart';
 import 'game_shortcuts.dart';
@@ -11,9 +12,22 @@ class GameShortcut {
     this.onStart,
     this.onStop,
     this.controlKey = false,
+    this.metaKey = false,
     this.altKey = false,
     this.shiftKey = false,
   });
+
+  /// Create an instance with [controlKey] or [metaKey] equal to `true`,
+  /// depending on which platform we are running on.
+  GameShortcut.withControlKey({
+    required this.title,
+    required this.shortcut,
+    this.onStart,
+    this.onStop,
+    this.altKey = false,
+    this.shiftKey = false,
+  })  : controlKey = useControlKey,
+        metaKey = useMetaKey;
 
   /// The title of this shortcut.
   ///
@@ -26,6 +40,9 @@ class GameShortcut {
 
   /// Whether the control key must be used to trigger this shortcut.
   final bool controlKey;
+
+  /// Whether the meta key must be used to trigger this shortcut.
+  final bool metaKey;
 
   /// Whether the shift key must be used to trigger this shortcut.
   final bool shiftKey;

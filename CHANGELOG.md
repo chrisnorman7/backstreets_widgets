@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.25.0]
+
+- Added the `GameShortcut.withControlKey` constructor.
+- Added meta shortcuts to `GameShortcut`s.
+
 ## [0.24.1]
 
 - Fixed the `Cancel` widget.
