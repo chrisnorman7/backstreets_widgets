@@ -12,11 +12,10 @@ packages:
   backstreets_widgets:
     dependency: "direct main"
     description:
-      name: backstreets_widgets
-      sha256: a47fd77a345a7e451b1ce21607a9eb8415d5d70dd732386ef3faa82fba59ae12
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.22.1"
+      path: ".."
+      relative: true
+    source: path
+    version: "0.25.0"
   boolean_selector:
     dependency: transitive
     description:
