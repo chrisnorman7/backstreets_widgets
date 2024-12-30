@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.26.0]
+
+- Added the `EnsureSemantics` widget.
+
 ## [0.25.0]
 
 - Added the `GameShortcut.withControlKey` constructor.
