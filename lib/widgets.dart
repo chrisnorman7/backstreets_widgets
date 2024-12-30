@@ -14,6 +14,7 @@ export 'src/widgets/common_shortcuts.dart';
 export 'src/widgets/copy_list_tile.dart';
 export 'src/widgets/double_list_tile.dart';
 export 'src/widgets/duration_list_tile.dart';
+export 'src/widgets/ensure_semantics.dart';
 export 'src/widgets/error_list_tile.dart';
 export 'src/widgets/error_list_view.dart';
 export 'src/widgets/game_shortcuts/game_shortcut.dart';
