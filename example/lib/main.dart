@@ -4,6 +4,21 @@ import 'package:backstreets_widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+/// The size of clothing.
+enum ClothingSize {
+  /// Small.
+  s,
+
+  /// Medium.
+  m,
+
+  /// Large.
+  l,
+
+  /// Extra large.
+  xl,
+}
+
 void main() {
   runApp(const MyApp());
 }
@@ -38,6 +53,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   late int _counter;
+  ClothingSize? _clothingSize;
 
   /// Initialise state.
   @override
@@ -82,6 +98,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   subtitle: Text('$_counter'),
                   autofocus: true,
                   onTap: () => setState(() => _counter = 0),
+                ),
+                EnumListTile(
+                  title: 'Clothing size',
+                  values: ClothingSize.values,
+                  onChanged: (final value) =>
+                      setState(() => _clothingSize = value),
+                  emptyValue: "Don't care",
+                  value: _clothingSize,
                 ),
               ],
             ),
