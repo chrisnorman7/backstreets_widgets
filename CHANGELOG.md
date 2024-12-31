@@ -1,8 +1,9 @@
 # Changelog
 
-## [0.26.1]
+## [0.27.0]
 
 - Fixed a couple of bugs in `SimpleFutureBuilder`.
+- Copied extension methods from [flutter_audio_games](https://pub.dev/packages/flutter_audio_games).
 
 ## [0.26.0]
 
