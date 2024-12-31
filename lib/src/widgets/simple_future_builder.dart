@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../typedefs.dart';
+
 /// A simple version of a [FutureBuilder].
 class SimpleFutureBuilder<T> extends StatefulWidget {
   /// Create an instance.
@@ -16,7 +18,7 @@ class SimpleFutureBuilder<T> extends StatefulWidget {
 
   /// The function to call to build the widget when [future] has completed with
   /// no error.
-  final Widget Function(BuildContext futureContext, T value) done;
+  final BuildContextValueBuilder done;
 
   /// The function to call to build the widget while [future] is being awaited.
   final Widget Function() loading;
@@ -51,12 +53,6 @@ class _SimpleFutureBuilderState<T> extends State<SimpleFutureBuilder<T>> {
   void initState() {
     super.initState();
     _isLoaded = false;
-    widget.future.then((final value) => setState(() => _value = value)).onError(
-          (final error, final stackTrace) => setState(() {
-            _error = error;
-            _stackTrace = stackTrace;
-          }),
-        );
   }
 
   /// Build the widget.

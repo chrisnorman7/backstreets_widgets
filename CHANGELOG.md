@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.26.1]
+
+- Fixed a couple of bugs in `SimpleFutureBuilder`.
+
 ## [0.26.0]
 
 - Added the `EnsureSemantics` widget.

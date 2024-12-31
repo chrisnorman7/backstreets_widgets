@@ -5,6 +5,9 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 
 import 'src/widgets/data_scope.dart';
+import 'src/widgets/tasks/random_tasks/random_tasks.dart' show RandomTasks;
+import 'src/widgets/tasks/ticking/ticking.dart';
+import 'widgets.dart' show RandomTasks;
 
 /// Useful methods for build contexts.
 extension BuildContextX on BuildContext {
@@ -95,6 +98,28 @@ extension BuildContextX on BuildContext {
     final TextDirection textDirection = TextDirection.ltr,
   }) =>
       SemanticsService.announce(message, textDirection);
+
+  /// Pause and resume a [Ticking] while pushing a widget [builder].
+  ///
+  /// This method is useful when implementing a pause menu for example.
+  Future<void> pauseTickingBuilderAndPushWidget(
+    final WidgetBuilder builder,
+  ) async {
+    Ticking.maybeOf(this)?.pause();
+    await Navigator.of(this).push(MaterialPageRoute(builder: builder));
+    Ticking.maybeOf(this)?.resume();
+  }
+
+  /// Pause and resume a [RandomTasks] while pushing a widget [builder].
+  ///
+  /// This method is useful when implementing a pause menu for example.
+  Future<void> pauseRandomTaskBuilderAndPushWidget(
+    final WidgetBuilder builder,
+  ) async {
+    RandomTasks.maybeOf(this)?.pause();
+    await Navigator.of(this).push(MaterialPageRoute(builder: builder));
+    RandomTasks.maybeOf(this)?.resume();
+  }
 }
 
 /// Useful extension methods for doubles.
