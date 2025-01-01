@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.28.0]
+
+- Added the `ErrorWidgetCallback` typedef.
+
 ## [0.27.1]
 
 - Fixed a bug with `SimpleFutureBuilder`.

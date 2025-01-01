@@ -25,10 +25,7 @@ class SimpleFutureBuilder<T> extends StatefulWidget {
 
   /// The function to call to build the widget if [future] completes with an
   /// error.
-  final Widget Function(
-    Object error,
-    StackTrace? stackTrace,
-  ) error;
+  final ErrorWidgetCallback error;
 
   /// Create state.
   @override

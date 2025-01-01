@@ -11,3 +11,9 @@ typedef BuildContextValueBuilder<T> = Widget Function(
 
 /// The type of a function to instigate a transition.
 typedef OnTransition = void Function(Duration duration, WidgetBuilder builder);
+
+/// The type of a function which produces an error widget.
+typedef ErrorWidgetCallback = Widget Function(
+  Object error,
+  StackTrace? stackTrace,
+);
