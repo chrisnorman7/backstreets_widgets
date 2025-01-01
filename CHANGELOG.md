@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.27.1]
+
+- Fixed a bug with `SimpleFutureBuilder`.
+
 ## [0.27.0]
 
 - Fixed a couple of bugs in `SimpleFutureBuilder`.

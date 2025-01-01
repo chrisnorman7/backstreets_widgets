@@ -64,19 +64,25 @@ class _SimpleFutureBuilderState<T> extends State<SimpleFutureBuilder<T>> {
     } else if (_isLoaded) {
       return widget.done(context, _value);
     }
-    widget.future
-        .then(
-          (final value) => setState(() {
+    widget.future.then(
+      (final value) {
+        if (mounted) {
+          setState(() {
             _isLoaded = true;
             _value = value;
-          }),
-        )
-        .onError(
-          (final error, final stackTrace) => setState(() {
+          });
+        }
+      },
+    ).onError(
+      (final error, final stackTrace) {
+        if (mounted) {
+          setState(() {
             _error = error;
             _stackTrace = stackTrace;
-          }),
-        );
+          });
+        }
+      },
+    );
     return widget.loading();
   }
 }
