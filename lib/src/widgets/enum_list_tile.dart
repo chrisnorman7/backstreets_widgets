@@ -10,6 +10,7 @@ class EnumListTile<T extends Enum> extends StatelessWidget {
     required this.title,
     required this.values,
     required this.onChanged,
+    this.onLongPress,
     this.value,
     this.autofocus = false,
     this.emptyValue = 'Not set',
@@ -23,6 +24,9 @@ class EnumListTile<T extends Enum> extends StatelessWidget {
 
   /// The function to call when [value] changes.
   final ValueChanged<T?> onChanged;
+
+  /// What to do when long pressing the [ListTile].
+  final GestureLongPressCallback? onLongPress;
 
   /// The current value to show.
   final T? value;
@@ -74,6 +78,7 @@ class EnumListTile<T extends Enum> extends StatelessWidget {
             title: Text(title),
             subtitle: Text(_getValueName(value)),
             onTap: controller.toggle,
+            onLongPress: onLongPress,
           ),
         ),
       );

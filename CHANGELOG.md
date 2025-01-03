@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.29.0]
+
+- Allow `PerformableActionsListTile` instances to be long pressed.
+- Add more menus and semantic actions to various `ListTile` widgets.
+- Try and make member names more consistent.
+
 ## [0.28.0]
 
 - Added the `ErrorWidgetCallback` typedef.

@@ -70,21 +70,27 @@ const moveToEndShortcut = SingleActivator(
 );
 
 /// The hotkey for copying things.
-final copyHotkey = CrossPlatformSingleActivator(
+final copyShortcut = CrossPlatformSingleActivator(
   LogicalKeyboardKey.keyC,
 );
 
+/// The hotkey for copying other things.
+final copyOtherShortcut = CrossPlatformSingleActivator(
+  LogicalKeyboardKey.keyC,
+  shift: true,
+);
+
 /// The hotkey for testing things.
-final testHotkey = CrossPlatformSingleActivator(
+final testShortcut = CrossPlatformSingleActivator(
   LogicalKeyboardKey.keyT,
   shift: true,
 );
 
 /// The page up hotkey.
-const pageUpHotkey = SingleActivator(LogicalKeyboardKey.pageUp);
+const pageUpShortcut = SingleActivator(LogicalKeyboardKey.pageUp);
 
 /// The page down hotkey.
-const pageDownHotkey = SingleActivator(LogicalKeyboardKey.pageDown);
+const pageDownShortcut = SingleActivator(LogicalKeyboardKey.pageDown);
 
 /// The backspace hotkey.
-const backspaceHotkey = SingleActivator(LogicalKeyboardKey.backspace);
+const backspaceShortcut = SingleActivator(LogicalKeyboardKey.backspace);

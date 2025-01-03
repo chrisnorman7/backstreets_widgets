@@ -16,8 +16,8 @@ class PointListTile extends StatelessWidget {
     this.autofocus = false,
     this.editorTitle = 'Point',
     this.defaultModifier = 1,
-    this.minValue,
-    this.maxValue,
+    this.min,
+    this.max,
     this.initialEditPoint = EditPointPoint.x,
     super.key,
   });
@@ -44,10 +44,10 @@ class PointListTile extends StatelessWidget {
   final int defaultModifier;
 
   /// The minimum value for [point].
-  final Point<int>? minValue;
+  final Point<int>? min;
 
   /// The maximum value for [point].
-  final Point<int>? maxValue;
+  final Point<int>? max;
 
   /// Which point to start editing with the number row.
   final EditPointPoint initialEditPoint;
@@ -64,8 +64,8 @@ class PointListTile extends StatelessWidget {
             onChanged: onChanged,
             defaultModifier: defaultModifier,
             editorTitle: title,
-            minValue: minValue,
-            maxValue: maxValue,
+            minValue: min,
+            maxValue: max,
             title: editorTitle,
             initialEditPoint: initialEditPoint,
           ),

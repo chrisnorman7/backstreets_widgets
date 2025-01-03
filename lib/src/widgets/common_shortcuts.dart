@@ -47,19 +47,19 @@ class CommonShortcuts extends StatelessWidget {
   /// The function to call with the [moveToEndShortcut].
   final VoidCallback? endCallback;
 
-  /// function to call with the [pageUpHotkey]
+  /// function to call with the [pageUpShortcut]
   final VoidCallback? pageUpCallback;
 
-  /// The function to be called with the [pageDownHotkey].
+  /// The function to be called with the [pageDownShortcut].
   final VoidCallback? pageDownCallback;
 
-  /// The function to call with the [testHotkey].
+  /// The function to call with the [testShortcut].
   final VoidCallback? testCallback;
 
-  /// The function to be called with the [backspaceHotkey].
+  /// The function to be called with the [backspaceShortcut].
   final VoidCallback? backspaceCallback;
 
-  /// The text to copy with the [copyHotkey].
+  /// The text to copy with the [copyShortcut].
   final String? copyText;
 
   /// Build the widget.
@@ -86,11 +86,11 @@ class CommonShortcuts extends StatelessWidget {
         if (moveDownFunction != null) moveDownShortcut: moveDownFunction,
         if (homeFunction != null) moveToStartShortcut: homeFunction,
         if (endFunction != null) moveToEndShortcut: endFunction,
-        if (pageUpFunction != null) pageUpHotkey: pageUpFunction,
-        if (pageDownFunction != null) pageDownHotkey: pageDownFunction,
-        if (testFunction != null) testHotkey: testFunction,
-        if (backspaceFunction != null) backspaceHotkey: backspaceFunction,
-        if (text != null) copyHotkey: text.copyToClipboard,
+        if (pageUpFunction != null) pageUpShortcut: pageUpFunction,
+        if (pageDownFunction != null) pageDownShortcut: pageDownFunction,
+        if (testFunction != null) testShortcut: testFunction,
+        if (backspaceFunction != null) backspaceShortcut: backspaceFunction,
+        if (text != null) copyShortcut: text.copyToClipboard,
       },
       child: child,
     );

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../../extensions.dart';
 import '../../shortcuts.dart';
 import 'get_text.dart';
+import 'performable_actions/performable_action.dart';
+import 'performable_actions/performable_actions_list_tile.dart';
 
 /// A widget that shows a double [value].
 class DoubleListTile extends StatelessWidget {
@@ -61,53 +63,71 @@ class DoubleListTile extends StatelessWidget {
   @override
   Widget build(final BuildContext context) {
     final text = value.toStringAsFixed(decimalPlaces);
-    return CallbackShortcuts(
-      bindings: {
-        moveDownShortcut: () {
-          final i = value - modifier;
-          if (i >= (min ?? i)) {
-            onChanged(i);
-          }
-        },
-        moveUpShortcut: () {
-          final i = value + modifier;
-          if (i <= (max ?? i)) {
-            onChanged(i);
-          }
-        },
-        moveToStartShortcut: () => onChanged(min ?? value),
-        moveToEndShortcut: () => onChanged(max ?? value),
-      },
-      child: ListTile(
-        autofocus: autofocus,
-        title: Text(title),
-        subtitle: Text(subtitle ?? text),
-        onTap: () => context.pushWidgetBuilder(
-          (final context) => GetText(
-            onDone: (final value) {
-              Navigator.pop(context);
-              onChanged(double.parse(value));
-            },
-            actions: actions,
-            text: text,
-            title: title,
-            validator: (final value) {
-              final d = value == null ? null : double.tryParse(value);
-              if (value == null || value.isEmpty) {
-                return 'You must enter a value';
-              } else if (d == null) {
-                return 'Invalid number';
-              } else if (d < (min ?? d)) {
-                return 'Value must be at least $min';
-              } else if (d > (max ?? d)) {
-                return 'Value must be no more than $max';
-              }
-              return null;
-            },
-          ),
+    final minValue = min;
+    final maxValue = max;
+    return PerformableActionsListTile(
+      autofocus: autofocus,
+      actions: [
+        PerformableAction(
+          name: 'Increase',
+          activator: moveUpShortcut,
+          invoke: () {
+            final i = value + modifier;
+            if (i <= (max ?? i)) {
+              onChanged(i);
+            }
+          },
         ),
-        onLongPress: onLongPress,
+        PerformableAction(
+          name: 'Decrease',
+          activator: moveDownShortcut,
+          invoke: () {
+            final i = value - modifier;
+            if (i >= (min ?? i)) {
+              onChanged(i);
+            }
+          },
+        ),
+        if (minValue != null)
+          PerformableAction(
+            name: 'Set minimum',
+            activator: moveToStartShortcut,
+            invoke: () => onChanged(min ?? value),
+          ),
+        if (maxValue != null)
+          PerformableAction(
+            name: 'Set maximum',
+            activator: moveToEndShortcut,
+            invoke: () => onChanged(max ?? value),
+          ),
+      ],
+      title: Text(title),
+      subtitle: Text(subtitle ?? text),
+      onTap: () => context.pushWidgetBuilder(
+        (final context) => GetText(
+          onDone: (final value) {
+            Navigator.pop(context);
+            onChanged(double.parse(value));
+          },
+          actions: actions,
+          text: text,
+          title: title,
+          validator: (final value) {
+            final d = value == null ? null : double.tryParse(value);
+            if (value == null || value.isEmpty) {
+              return 'You must enter a value';
+            } else if (d == null) {
+              return 'Invalid number';
+            } else if (d < (min ?? d)) {
+              return 'Value must be at least $min';
+            } else if (d > (max ?? d)) {
+              return 'Value must be no more than $max';
+            }
+            return null;
+          },
+        ),
       ),
+      onLongPress: onLongPress,
     );
   }
 }

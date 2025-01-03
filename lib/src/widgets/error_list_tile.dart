@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../extensions.dart';
+import '../../shortcuts.dart';
+import '../../widgets.dart';
 
 /// A [ListTile] which can show an error.
 class ErrorListTile extends StatelessWidget {
@@ -31,15 +33,31 @@ class ErrorListTile extends StatelessWidget {
 
   /// Build the widget.
   @override
-  Widget build(final BuildContext context) => ListTile(
-        autofocus: autofocus,
-        title: Text(error.toString()),
-        subtitle: Text(stackTrace.toString()),
-        onTap: () {
-          final buffer = StringBuffer()
-            ..writeln(error)
-            ..writeln(stackTrace);
-          buffer.toString().copyToClipboard();
-        },
-      );
+  Widget build(final BuildContext context) {
+    final s = stackTrace;
+    return PerformableActionsListTile(
+      autofocus: autofocus,
+      actions: [
+        PerformableAction(
+          name: 'Copy error',
+          activator: copyShortcut,
+          invoke: error.toString().copyToClipboard,
+        ),
+        if (s != null)
+          PerformableAction(
+            name: 'Copy stack trace',
+            activator: copyOtherShortcut,
+            invoke: s.toString().copyToClipboard,
+          ),
+      ],
+      title: Text(error.toString()),
+      subtitle: Text(stackTrace.toString()),
+      onTap: () {
+        final buffer = StringBuffer()
+          ..writeln(error)
+          ..writeln(stackTrace);
+        buffer.toString().copyToClipboard();
+      },
+    );
+  }
 }

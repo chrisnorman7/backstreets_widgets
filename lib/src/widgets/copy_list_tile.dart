@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../extensions.dart';
+import '../../shortcuts.dart';
+import '../../widgets.dart';
 
 /// A list tile which can be copied with a tap.
 class CopyListTile extends StatelessWidget {
@@ -27,7 +29,19 @@ class CopyListTile extends StatelessWidget {
 
   /// Build the widget.
   @override
-  Widget build(final BuildContext context) => ListTile(
+  Widget build(final BuildContext context) => PerformableActionsListTile(
+        actions: [
+          PerformableAction(
+            name: 'Copy value',
+            activator: copyShortcut,
+            invoke: subtitle.copyToClipboard,
+          ),
+          PerformableAction(
+            name: 'Copy title',
+            activator: copyOtherShortcut,
+            invoke: title.copyToClipboard,
+          ),
+        ],
         autofocus: autofocus,
         title: Text(title),
         subtitle: Text(subtitle),
