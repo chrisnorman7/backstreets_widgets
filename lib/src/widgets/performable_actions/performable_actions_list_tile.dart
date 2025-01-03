@@ -24,6 +24,7 @@ class PerformableActionsListTile extends StatelessWidget {
     this.subtitle,
     this.onTap,
     this.buttonBuilder = defaultButtonBuilder,
+    this.onLongPress,
     this.autofocus = false,
     this.selected = false,
     super.key,
@@ -40,6 +41,9 @@ class PerformableActionsListTile extends StatelessWidget {
 
   /// The function to call when the [ListTile] is tapped.
   final VoidCallback? onTap;
+
+  /// What to do when long pressing the [ListTile].
+  final GestureLongPressCallback? onLongPress;
 
   /// Whether the [ListTile] should be autofocused.
   final bool autofocus;
@@ -61,6 +65,7 @@ class PerformableActionsListTile extends StatelessWidget {
           title: title,
           subtitle: subtitle,
           onTap: onTap,
+          onLongPress: onLongPress,
           trailing: buttonBuilder(builderContext, controller),
         ),
       );
