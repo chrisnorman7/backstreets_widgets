@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.29.2]
+
+- Fixed type arguments for `SimpleFutureBuilder`.
+
 ## [0.29.1]
 
 - Test GitHub workflow.

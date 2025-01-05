@@ -18,7 +18,7 @@ class SimpleFutureBuilder<T> extends StatefulWidget {
 
   /// The function to call to build the widget when [future] has completed with
   /// no error.
-  final BuildContextValueBuilder done;
+  final BuildContextValueBuilder<T> done;
 
   /// The function to call to build the widget while [future] is being awaited.
   final Widget Function() loading;
