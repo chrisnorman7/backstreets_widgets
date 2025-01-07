@@ -39,7 +39,8 @@ class PerformableActionsBuilder extends StatelessWidget {
           builder: (final builderContext, final controller, final __) =>
               CallbackShortcuts(
             bindings: {
-              for (final action in actions) action.activator: action.invoke,
+              for (final action in actions)
+                if (action.activator != null) action.activator!: action.invoke,
             },
             child: builder(builderContext, controller),
           ),

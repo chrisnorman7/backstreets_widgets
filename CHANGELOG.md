@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.30.0]
+
+- make activators optional for `PerformableAction`s.
+
 ## [0.29.2]
 
 - Fixed type arguments for `SimpleFutureBuilder`.
