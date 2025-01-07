@@ -7,6 +7,7 @@ class PerformableAction {
     required this.name,
     required this.invoke,
     this.activator,
+    this.checked,
   });
 
   /// The name of this action.
@@ -17,4 +18,9 @@ class PerformableAction {
 
   /// The function to call when this action is performed.
   final VoidCallback invoke;
+
+  /// Whether the resulting menu item should be selected.
+  ///
+  /// If [checked] is `null`, then no trailing widget will be generated.
+  final bool? checked;
 }

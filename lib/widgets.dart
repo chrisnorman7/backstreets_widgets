@@ -31,6 +31,7 @@ export 'src/widgets/performable_actions/performable_actions_builder.dart';
 export 'src/widgets/performable_actions/performable_actions_list_tile.dart';
 export 'src/widgets/point_list_tile.dart';
 export 'src/widgets/searchable_list_view.dart';
+export 'src/widgets/selected_icon.dart';
 export 'src/widgets/simple_future_builder.dart';
 export 'src/widgets/tasks/random_tasks/inherited_random_tasks.dart';
 export 'src/widgets/tasks/random_tasks/random_task.dart';

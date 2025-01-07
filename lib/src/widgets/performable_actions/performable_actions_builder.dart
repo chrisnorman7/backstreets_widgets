@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
+import '../selected_icon.dart';
 import 'performable_action.dart';
 
 /// A widget which allows [actions] to be performed.
@@ -21,29 +22,44 @@ class PerformableActionsBuilder extends StatelessWidget {
 
   /// Build the widget.
   @override
-  Widget build(final BuildContext context) => Semantics(
-        customSemanticsActions: {
-          for (final action in actions)
-            CustomSemanticsAction(label: action.name): action.invoke,
-        },
-        child: MenuAnchor(
-          menuChildren: [
-            for (var i = 0; i < actions.length; i++)
-              MenuItemButton(
-                autofocus: i == 0,
-                onPressed: actions[i].invoke,
-                shortcut: actions[i].activator,
-                child: Text(actions[i].name),
-              ),
-          ],
-          builder: (final builderContext, final controller, final __) =>
-              CallbackShortcuts(
-            bindings: {
-              for (final action in actions)
-                if (action.activator != null) action.activator!: action.invoke,
-            },
-            child: builder(builderContext, controller),
+  Widget build(final BuildContext context) {
+    final customSemanticActions = <CustomSemanticsAction, VoidCallback>{};
+    final menuChildren = <Widget>[];
+    final bindings = <ShortcutActivator, VoidCallback>{};
+    for (var i = 0; i < actions.length; i++) {
+      final action = actions[i];
+      final invoke = action.invoke;
+      customSemanticActions[CustomSemanticsAction(label: action.name)] = invoke;
+      final activator = action.activator;
+      final selected = action.checked;
+      menuChildren.add(
+        Semantics(
+          checked: action.checked,
+          selected: action.checked,
+          child: MenuItemButton(
+            autofocus: i == 0,
+            onPressed: invoke,
+            shortcut: activator,
+            trailingIcon:
+                selected == null ? null : SelectedIcon(selected: selected),
+            child: Text(action.name),
           ),
         ),
       );
+      if (activator != null) {
+        bindings[activator] = action.invoke;
+      }
+    }
+    return Semantics(
+      customSemanticsActions: customSemanticActions,
+      child: MenuAnchor(
+        menuChildren: menuChildren,
+        builder: (final builderContext, final controller, final __) =>
+            CallbackShortcuts(
+          bindings: bindings,
+          child: builder(builderContext, controller),
+        ),
+      ),
+    );
+  }
 }

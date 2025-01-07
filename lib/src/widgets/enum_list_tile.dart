@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
 
 import '../../extensions.dart';
+import 'selected_icon.dart';
 
 /// A [ListTile] which shows and allows selecting a new [Enum] [value].
 class EnumListTile<T extends Enum> extends StatelessWidget {
@@ -60,17 +61,29 @@ class EnumListTile<T extends Enum> extends StatelessWidget {
         child: MenuAnchor(
           menuChildren: [
             if (nullable)
-              MenuItemButton(
-                autofocus: value == null,
-                child: Text(emptyValue),
-                onPressed: () => onChanged(null),
+              Semantics(
+                checked: value == null,
+                selected: true,
+                child: MenuItemButton(
+                  autofocus: value == null,
+                  child: Text(emptyValue),
+                  onPressed: () => onChanged(null),
+                ),
               ),
             ...values.map(
-              (final v) => MenuItemButton(
-                autofocus: v == value,
-                child: Text(_getValueName(v)),
-                onPressed: () => onChanged(v),
-              ),
+              (final v) {
+                final checked = v == value;
+                return Semantics(
+                  checked: checked,
+                  selected: true,
+                  child: MenuItemButton(
+                    autofocus: checked,
+                    onPressed: () => onChanged(v),
+                    trailingIcon: SelectedIcon(selected: checked),
+                    child: Text(_getValueName(v)),
+                  ),
+                );
+              },
             ),
           ],
           builder: (final context, final controller, final child) => ListTile(

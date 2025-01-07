@@ -89,15 +89,17 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     PerformableAction(
                       name: 'Reset counter',
-                      activator:
-                          const SingleActivator(LogicalKeyboardKey.escape),
+                      activator: const SingleActivator(
+                        LogicalKeyboardKey.escape,
+                      ),
                       invoke: () => setState(() => _counter = 0),
+                      checked: _counter == 0,
                     ),
                   ],
                   title: const Text('Counter'),
                   subtitle: Text('$_counter'),
                   autofocus: true,
-                  onTap: () => setState(() => _counter = 0),
+                  onTap: () => setState(() => _counter = 10),
                 ),
                 EnumListTile(
                   title: 'Clothing size',
