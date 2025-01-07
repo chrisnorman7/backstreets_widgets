@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.31.0]
+
+- Added the `SelectedIcon` widget.
+- Add a `checked` state to the `PerformableAction` class.
+
 ## [0.30.0]
 
 - make activators optional for `PerformableAction`s.
