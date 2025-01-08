@@ -13,6 +13,11 @@ class PerformableActions extends StatelessWidget {
     required this.actions,
     required this.child,
     this.buttonBuilder = defaultButtonBuilder,
+    this.crossAxisAlignment = CrossAxisAlignment.center,
+    this.mainAxisAlignment = MainAxisAlignment.start,
+    this.mainAxisSize = MainAxisSize.max,
+    this.spacing = 0.0,
+    this.verticalDirection = VerticalDirection.down,
     super.key,
   });
 
@@ -26,6 +31,21 @@ class PerformableActions extends StatelessWidget {
   final Widget Function(BuildContext builderContext, MenuController controller)
       buttonBuilder;
 
+  /// The cross axis alignment to apply to the resulting [Row].
+  final CrossAxisAlignment crossAxisAlignment;
+
+  /// The main axis alignment to pass to the resulting [Row].
+  final MainAxisAlignment mainAxisAlignment;
+
+  /// The main axis size to apply to the resulting [Row].
+  final MainAxisSize mainAxisSize;
+
+  /// The spacing to apply to the resulting [Row].
+  final double spacing;
+
+  /// The vertical direction to apply to the resulting [Row].
+  final VerticalDirection verticalDirection;
+
   /// Build the widget.
   @override
   Widget build(final BuildContext context) {
@@ -33,8 +53,11 @@ class PerformableActions extends StatelessWidget {
     return PerformableActionsBuilder(
       actions: actions,
       builder: (final builderContext, final controller) => Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: crossAxisAlignment,
+        mainAxisAlignment: mainAxisAlignment,
+        mainAxisSize: mainAxisSize,
+        spacing: spacing,
+        verticalDirection: verticalDirection,
         children: [
           child,
           FocusScope(

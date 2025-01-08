@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.31.1]
+
+- Allow more control over the `Row` widget produced by `PerformableActionsBuilder`.
+
 ## [0.31.0]
 
 - Added the `SelectedIcon` widget.
