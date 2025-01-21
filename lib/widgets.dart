@@ -26,6 +26,7 @@ export 'src/widgets/get_text.dart';
 export 'src/widgets/int_list_tile.dart';
 export 'src/widgets/loading_widget.dart';
 export 'src/widgets/performable_actions/performable_action.dart';
+export 'src/widgets/performable_actions/performable_action_menu_item.dart';
 export 'src/widgets/performable_actions/performable_actions.dart';
 export 'src/widgets/performable_actions/performable_actions_builder.dart';
 export 'src/widgets/performable_actions/performable_actions_list_tile.dart';

@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.32.0]
+
+- Added the `PerformableActionMenuItem` widget.
+
 ## [0.31.1]
 
 - Allow more control over the `Row` widget produced by `PerformableActionsBuilder`.

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-import '../selected_icon.dart';
 import 'performable_action.dart';
+import 'performable_action_menu_item.dart';
 
 /// A widget which allows [actions] to be performed.
 class PerformableActionsBuilder extends StatelessWidget {
@@ -29,21 +29,12 @@ class PerformableActionsBuilder extends StatelessWidget {
     for (var i = 0; i < actions.length; i++) {
       final action = actions[i];
       final invoke = action.invoke;
-      customSemanticActions[CustomSemanticsAction(label: action.name)] = invoke;
       final activator = action.activator;
-      final selected = action.checked;
+      customSemanticActions[CustomSemanticsAction(label: action.name)] = invoke;
       menuChildren.add(
-        Semantics(
-          checked: action.checked,
-          selected: action.checked,
-          child: MenuItemButton(
-            autofocus: i == 0,
-            onPressed: invoke,
-            shortcut: activator,
-            trailingIcon:
-                selected == null ? null : SelectedIcon(selected: selected),
-            child: Text(action.name),
-          ),
+        PerformableActionMenuItem(
+          action: action,
+          autofocus: i == 0,
         ),
       );
       if (activator != null) {
