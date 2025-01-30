@@ -19,6 +19,7 @@ class TabbedScaffoldTab {
     this.leading,
     this.actions,
     this.floatingActionButton,
+    this.tooltip,
   });
 
   /// The title of the scaffold.
@@ -38,6 +39,9 @@ class TabbedScaffoldTab {
 
   /// The floating action button to use.
   final Widget? floatingActionButton;
+
+  /// The tooltip to use.
+  final String? tooltip;
 }
 
 /// A scaffold with multiple tabs.
@@ -46,6 +50,7 @@ class TabbedScaffold extends StatefulWidget {
   const TabbedScaffold({
     required this.tabs,
     this.initialPageIndex = 0,
+    this.onPageChange,
     super.key,
   });
 
@@ -54,6 +59,9 @@ class TabbedScaffold extends StatefulWidget {
 
   /// The initial tab index to use.
   final int initialPageIndex;
+
+  /// A function to call when the index changes.
+  final ValueChanged<int>? onPageChange;
 
   /// Create state for this widget.
   @override
@@ -138,11 +146,15 @@ class TabbedScaffoldState extends State<TabbedScaffold> {
                   (final e) => BottomNavigationBarItem(
                     icon: e.icon,
                     label: e.title,
+                    tooltip: e.tooltip,
                   ),
                 )
                 .toList(),
             currentIndex: _pageIndex,
-            onTap: (final index) => setState(() => _pageIndex = index),
+            onTap: (final index) {
+              widget.onPageChange?.call(index);
+              setState(() => _pageIndex = index);
+            },
           ),
         ),
       ),
