@@ -15,11 +15,12 @@ class TabbedScaffoldTab {
   const TabbedScaffoldTab({
     required this.title,
     required this.icon,
-    required this.builder,
+    required this.child,
     this.leading,
     this.actions,
     this.floatingActionButton,
     this.tooltip,
+    this.enabled = true,
   });
 
   /// The title of the scaffold.
@@ -28,8 +29,8 @@ class TabbedScaffoldTab {
   /// The icon to use for the [BottomNavigationBarItem] that shows this tab.
   final Widget icon;
 
-  /// The function to call to build the widget.
-  final WidgetBuilder builder;
+  /// The widget below this widget in the tree.
+  final Widget child;
 
   /// The value for [AppBar.leading].
   final Widget? leading;
@@ -42,6 +43,9 @@ class TabbedScaffoldTab {
 
   /// The tooltip to use.
   final String? tooltip;
+
+  /// Whether this page is enabled.
+  final bool enabled;
 }
 
 /// A scaffold with multiple tabs.
@@ -83,7 +87,6 @@ class TabbedScaffoldState extends State<TabbedScaffold> {
   @override
   Widget build(final BuildContext context) {
     final page = widget.tabs[_pageIndex];
-    final builder = page.builder;
     final numbers = <GameShortcutsShortcut>[
       GameShortcutsShortcut.digit1,
       GameShortcutsShortcut.digit2,
@@ -115,7 +118,10 @@ class TabbedScaffoldState extends State<TabbedScaffold> {
           title: 'Switch to page ${i + 1}',
           shortcut: numbers[i],
           controlKey: true,
-          onStart: (final innerContext) => setState(() => _pageIndex = i),
+          onStart: (final innerContext) {
+            widget.onPageChange?.call(i);
+            setState(() => _pageIndex = i);
+          },
         ),
     ];
     shortcuts.add(
@@ -132,30 +138,28 @@ class TabbedScaffoldState extends State<TabbedScaffold> {
       shortcuts: shortcuts,
       autofocus: false,
       canRequestFocus: false,
-      child: DefaultTabController(
-        length: widget.tabs.length,
-        child: SimpleScaffold(
-          title: page.title,
-          leading: page.leading,
-          actions: page.actions ?? [],
-          body: Builder(builder: builder),
-          floatingActionButton: page.floatingActionButton,
-          bottomNavigationBar: BottomNavigationBar(
-            items: widget.tabs
-                .map(
-                  (final e) => BottomNavigationBarItem(
-                    icon: e.icon,
-                    label: e.title,
-                    tooltip: e.tooltip,
-                  ),
-                )
-                .toList(),
-            currentIndex: _pageIndex,
-            onTap: (final index) {
-              widget.onPageChange?.call(index);
-              setState(() => _pageIndex = index);
-            },
-          ),
+      child: SimpleScaffold(
+        title: page.title,
+        leading: page.leading,
+        actions: page.actions ?? [],
+        body: page.child,
+        floatingActionButton: page.floatingActionButton,
+        bottomNavigationBar: NavigationBar(
+          destinations: widget.tabs
+              .map(
+                (final e) => NavigationDestination(
+                  icon: e.icon,
+                  label: e.title,
+                  tooltip: e.tooltip,
+                  enabled: e.enabled,
+                ),
+              )
+              .toList(),
+          onDestinationSelected: (final value) {
+            widget.onPageChange?.call(value);
+            setState(() => _pageIndex = value);
+          },
+          selectedIndex: _pageIndex,
         ),
       ),
     );
@@ -163,8 +167,10 @@ class TabbedScaffoldState extends State<TabbedScaffold> {
 
   /// Switch pages.
   void switchPages(final int direction) {
+    final pageIndex = (_pageIndex + direction) % widget.tabs.length;
+    widget.onPageChange?.call(pageIndex);
     setState(() {
-      _pageIndex = (_pageIndex + direction) % widget.tabs.length;
+      _pageIndex = pageIndex;
     });
   }
 }
