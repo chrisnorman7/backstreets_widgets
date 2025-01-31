@@ -63,55 +63,77 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   @override
-  Widget build(final BuildContext context) => Cancel(
-        onCancel: () => setState(() => _counter = 0),
-        child: SimpleScaffold(
-          title: 'Demo',
-          body: Center(
-            child: ListView(
-              shrinkWrap: true,
-              children: [
-                PerformableActionsListTile(
-                  actions: [
-                    PerformableAction(
-                      name: 'Increase counter',
-                      activator: CrossPlatformSingleActivator(
-                        LogicalKeyboardKey.arrowUp,
-                      ),
-                      invoke: () => setState(() => _counter++),
-                    ),
-                    PerformableAction(
-                      name: 'Decrease counter',
-                      activator: CrossPlatformSingleActivator(
-                        LogicalKeyboardKey.arrowDown,
-                      ),
-                      invoke: () => setState(() => _counter--),
-                    ),
-                    PerformableAction(
-                      name: 'Reset counter',
-                      activator: const SingleActivator(
-                        LogicalKeyboardKey.escape,
-                      ),
-                      invoke: () => setState(() => _counter = 0),
-                      checked: _counter == 0,
-                    ),
-                  ],
-                  title: const Text('Counter'),
-                  subtitle: Text('$_counter'),
-                  autofocus: true,
-                  onTap: () => setState(() => _counter = 10),
-                ),
-                EnumListTile(
-                  title: 'Clothing size',
-                  values: ClothingSize.values,
-                  onChanged: (final value) =>
-                      setState(() => _clothingSize = value),
-                  emptyValue: "Don't care",
-                  value: _clothingSize,
-                ),
-              ],
+  Widget build(final BuildContext context) => TabbedScaffold(
+        tabs: [
+          TabbedScaffoldTab(
+            title: 'Example',
+            icon: const Icon(Icons.calculate),
+            child: Ticking(
+              duration: const Duration(seconds: 1),
+              onTick: () => setState(() => _counter++),
+              child: CenterText(
+                text: '${_counter.isEven ? "Tock" : "Tick"}: $_counter',
+                autofocus: true,
+              ),
             ),
           ),
-        ),
+          TabbedScaffoldTab(
+            title: 'Counter',
+            icon: Badge(
+              label: Text('$_counter'),
+              child: const Icon(Icons.money),
+            ),
+            child: Cancel(
+              onCancel: () => setState(() => _counter = 0),
+              child: Center(
+                child: ListView(
+                  shrinkWrap: true,
+                  children: [
+                    PerformableActionsListTile(
+                      actions: [
+                        PerformableAction(
+                          name: 'Increase counter',
+                          activator: CrossPlatformSingleActivator(
+                            LogicalKeyboardKey.arrowUp,
+                          ),
+                          invoke: () => setState(() => _counter++),
+                        ),
+                        PerformableAction(
+                          name: 'Decrease counter',
+                          activator: CrossPlatformSingleActivator(
+                            LogicalKeyboardKey.arrowDown,
+                          ),
+                          invoke: () => setState(() => _counter--),
+                        ),
+                        PerformableAction(
+                          name: 'Reset counter',
+                          activator: const SingleActivator(
+                            LogicalKeyboardKey.escape,
+                          ),
+                          invoke: () => setState(() => _counter = 0),
+                          checked: _counter == 0,
+                        ),
+                      ],
+                      title: const Text('Counter'),
+                      subtitle: Text('$_counter'),
+                      autofocus: true,
+                      onTap: () => setState(() => _counter = 10),
+                    ),
+                    EnumListTile(
+                      title: 'Clothing size',
+                      values: ClothingSize.values,
+                      onChanged: (final value) =>
+                          setState(() => _clothingSize = value),
+                      emptyValue: "Don't care",
+                      value: _clothingSize,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+        initialPageIndex: 1,
+        onPageChange: print,
       );
 }
