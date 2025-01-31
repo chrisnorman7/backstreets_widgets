@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.33.0]
+
+- Allow intercepting page changes in `TabbedScaffold`.
+- Change from using builders to children in `TabbedScaffoldTab`s.
+- Added a `helpShortcut`.
+
 ## [0.32.0]
 
 - Added the `PerformableActionMenuItem` widget.
