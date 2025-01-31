@@ -94,3 +94,6 @@ const pageDownShortcut = SingleActivator(LogicalKeyboardKey.pageDown);
 
 /// The backspace hotkey.
 const backspaceShortcut = SingleActivator(LogicalKeyboardKey.backspace);
+
+/// The help shortcut.
+final helpShortcut = CrossPlatformSingleActivator(LogicalKeyboardKey.slash);
