@@ -20,6 +20,10 @@ extension BuildContextX on BuildContext {
       );
 
   /// Confirm something.
+  @Deprecated(
+    // ignore: lines_longer_than_80_chars
+    'This method does not pop its own context, and will be replaced by `shorConfirmMessage` in the near future.',
+  )
   Future<void> confirm({
     final String title = 'Confirm',
     final String message = 'Are you sure?',
@@ -49,6 +53,48 @@ extension BuildContextX on BuildContext {
         ),
       );
 
+  /// Pop `this` [BuildContext] from the [Navigator].
+  void pop() => Navigator.pop(this);
+
+  /// Maybe pop `this` [BuildContext] from the [Navigator].
+  Future<bool> maybePop() => Navigator.maybePop(this);
+
+  /// Show a confirm [message].
+  Future<void> showConfirmMessage({
+    final String title = 'Confirm',
+    final String message = 'Are you sure?',
+    final VoidCallback? yesCallback,
+    final VoidCallback? noCallback,
+    final String yesLabel = 'Yes',
+    final String noLabel = 'No',
+  }) =>
+      showDialog<void>(
+        context: this,
+        builder: (final innerContext) => AlertDialog(
+          title: Text(title),
+          content: Focus(
+            autofocus: true,
+            child: Text(message),
+          ),
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                innerContext.pop();
+                yesCallback?.call();
+              },
+              child: Text(yesLabel),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                innerContext.pop();
+                noCallback?.call();
+              },
+              child: Text(noLabel),
+            ),
+          ],
+        ),
+      );
+
   /// Show a message with an OK button.
   Future<void> showMessage({
     required final String message,
@@ -57,18 +103,17 @@ extension BuildContextX on BuildContext {
   }) =>
       showDialog(
         context: this,
-        builder: (final context) => AlertDialog(
+        builder: (final innerContext) => AlertDialog(
           actions: [
             TextButton(
-              onPressed: () => Navigator.pop(context),
+              onPressed: innerContext.pop,
               child: Text(buttonLabel),
             ),
           ],
           title: Text(title),
           content: CallbackShortcuts(
             bindings: {
-              const SingleActivator(LogicalKeyboardKey.enter): () =>
-                  Navigator.pop(context),
+              const SingleActivator(LogicalKeyboardKey.enter): innerContext.pop,
             },
             child: Focus(
               autofocus: true,

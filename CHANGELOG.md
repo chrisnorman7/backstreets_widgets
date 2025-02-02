@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.34.0]
+
+- Deprecated `BuildContext.confirm` in favour of `BuildContext.showConfirmMessage`.
+- Added the `BuildContext.pop` method.
+- Added the `BuildContext.maybePop` method.
+
 ## [0.33.0]
 
 - Allow intercepting page changes in `TabbedScaffold`.
