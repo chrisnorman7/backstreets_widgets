@@ -1,10 +1,8 @@
+import 'package:backstreets_widgets/extensions.dart';
+import 'package:backstreets_widgets/screens.dart';
+import 'package:backstreets_widgets/shortcuts.dart';
+import 'package:backstreets_widgets/widgets.dart';
 import 'package:flutter/material.dart';
-
-import '../../extensions.dart';
-import '../../shortcuts.dart';
-import 'get_text.dart';
-import 'performable_actions/performable_action.dart';
-import 'performable_actions/performable_actions_list_tile.dart';
 
 /// A widget that shows a double [value].
 class DoubleListTile extends StatelessWidget {

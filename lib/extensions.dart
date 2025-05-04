@@ -1,13 +1,13 @@
 import 'dart:math';
 
+import 'package:backstreets_widgets/src/widgets/data_scope.dart';
+import 'package:backstreets_widgets/src/widgets/tasks/random_tasks/random_tasks.dart'
+    show RandomTasks;
+import 'package:backstreets_widgets/src/widgets/tasks/ticking/ticking.dart';
+import 'package:backstreets_widgets/widgets.dart' show RandomTasks;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-
-import 'src/widgets/data_scope.dart';
-import 'src/widgets/tasks/random_tasks/random_tasks.dart' show RandomTasks;
-import 'src/widgets/tasks/ticking/ticking.dart';
-import 'widgets.dart' show RandomTasks;
 
 /// Useful methods for build contexts.
 extension BuildContextX on BuildContext {
@@ -151,7 +151,7 @@ extension BuildContextX on BuildContext {
     final WidgetBuilder builder,
   ) async {
     Ticking.maybeOf(this)?.pause();
-    await Navigator.of(this).push(MaterialPageRoute(builder: builder));
+    await Navigator.of(this).push(MaterialPageRoute<void>(builder: builder));
     Ticking.maybeOf(this)?.resume();
   }
 
@@ -162,7 +162,7 @@ extension BuildContextX on BuildContext {
     final WidgetBuilder builder,
   ) async {
     RandomTasks.maybeOf(this)?.pause();
-    await Navigator.of(this).push(MaterialPageRoute(builder: builder));
+    await Navigator.of(this).push(MaterialPageRoute<void>(builder: builder));
     RandomTasks.maybeOf(this)?.resume();
   }
 }

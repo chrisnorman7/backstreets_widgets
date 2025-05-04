@@ -1,10 +1,8 @@
 import 'dart:math';
 
+import 'package:backstreets_widgets/screens.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import '../../screens.dart';
-import 'simple_scaffold.dart';
 
 /// Which coordinate to edit.
 enum EditPointPoint {

@@ -1,9 +1,8 @@
 import 'dart:math';
 
+import 'package:backstreets_widgets/extensions.dart';
+import 'package:backstreets_widgets/screens.dart';
 import 'package:flutter/material.dart';
-
-import '../../extensions.dart';
-import '../screens/edit_point_screen.dart';
 
 /// A [ListTile] to display and edit [point].
 class PointListTile extends StatelessWidget {

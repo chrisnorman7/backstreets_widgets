@@ -1,13 +1,9 @@
 import 'dart:math';
 
+import 'package:backstreets_widgets/extensions.dart';
+import 'package:backstreets_widgets/screens.dart';
+import 'package:backstreets_widgets/widgets.dart';
 import 'package:flutter/material.dart';
-
-import '../../extensions.dart';
-import '../game_shortcuts_shortcut.dart';
-import '../widgets/game_shortcuts/game_shortcut.dart';
-import '../widgets/game_shortcuts/game_shortcuts.dart';
-import '../widgets/game_shortcuts/game_shortcuts_help_screen.dart';
-import 'simple_scaffold.dart';
 
 /// A tab for a [TabbedScaffold].
 class TabbedScaffoldTab {

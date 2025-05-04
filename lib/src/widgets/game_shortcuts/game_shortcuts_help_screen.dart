@@ -1,9 +1,6 @@
+import 'package:backstreets_widgets/screens.dart';
+import 'package:backstreets_widgets/widgets.dart';
 import 'package:flutter/material.dart';
-
-import '../../screens/simple_scaffold.dart';
-import '../cancel.dart';
-import '../copy_list_tile.dart';
-import 'game_shortcut.dart';
 
 /// A widget which shows game shortcuts.
 class GameShortcutsHelpScreen extends StatelessWidget {

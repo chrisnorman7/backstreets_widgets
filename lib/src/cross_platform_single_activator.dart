@@ -1,6 +1,5 @@
+import 'package:backstreets_widgets/shortcuts.dart';
 import 'package:flutter/material.dart';
-
-import '../shortcuts.dart';
 
 /// A cross-platform [SingleActivator].
 ///

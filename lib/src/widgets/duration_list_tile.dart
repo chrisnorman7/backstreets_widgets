@@ -1,7 +1,6 @@
+import 'package:backstreets_widgets/extensions.dart';
+import 'package:backstreets_widgets/screens.dart';
 import 'package:flutter/material.dart';
-
-import '../../extensions.dart';
-import '../screens/edit_duration_screen.dart';
 
 /// A [ListTile] which shows a [duration].
 class DurationListTile extends StatelessWidget {

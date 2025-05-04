@@ -1,7 +1,7 @@
+import 'package:backstreets_widgets/extensions.dart';
+import 'package:backstreets_widgets/screens.dart';
+import 'package:backstreets_widgets/src/screens/get_text.dart' show GetText;
 import 'package:flutter/material.dart';
-
-import '../../extensions.dart';
-import 'get_text.dart';
 
 /// A list tile that displays and allows the editing of some text.
 class TextListTile extends StatelessWidget {

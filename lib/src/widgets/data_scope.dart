@@ -27,7 +27,7 @@ class DataScope<T> extends StatefulWidget {
 
   /// Create state for this widget.
   @override
-  DataScopeState createState() => DataScopeState();
+  DataScopeState<T> createState() => DataScopeState();
 }
 
 /// State for [DataScope].

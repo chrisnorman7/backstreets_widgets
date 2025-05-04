@@ -1,6 +1,5 @@
+import 'package:backstreets_widgets/widgets.dart';
 import 'package:flutter/material.dart';
-
-import 'ticking_tasks.dart';
 
 /// A task whose [onTick] method will be called every [duration].
 ///

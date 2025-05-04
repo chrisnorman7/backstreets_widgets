@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.35.0]
+
+- Updated lints.
+- Added type arguments.
+- Added the `PerformableActionsContext` class.
+- Made it easier to compose widgets with both shortcuts and a menu button from a list for `PerformableAction`s.
+- Upgraded the minimum SDK constraint.
+
 ## [0.34.0]
 
 - Deprecated `BuildContext.confirm` in favour of `BuildContext.showConfirmMessage`.

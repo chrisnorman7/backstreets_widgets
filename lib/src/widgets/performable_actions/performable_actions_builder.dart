@@ -1,8 +1,5 @@
+import 'package:backstreets_widgets/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-
-import 'performable_action.dart';
-import 'performable_action_menu_item.dart';
 
 /// A widget which allows [actions] to be performed.
 class PerformableActionsBuilder extends StatelessWidget {
@@ -23,31 +20,14 @@ class PerformableActionsBuilder extends StatelessWidget {
   /// Build the widget.
   @override
   Widget build(final BuildContext context) {
-    final customSemanticActions = <CustomSemanticsAction, VoidCallback>{};
-    final menuChildren = <Widget>[];
-    final bindings = <ShortcutActivator, VoidCallback>{};
-    for (var i = 0; i < actions.length; i++) {
-      final action = actions[i];
-      final invoke = action.invoke;
-      final activator = action.activator;
-      customSemanticActions[CustomSemanticsAction(label: action.name)] = invoke;
-      menuChildren.add(
-        PerformableActionMenuItem(
-          action: action,
-          autofocus: i == 0,
-        ),
-      );
-      if (activator != null) {
-        bindings[activator] = action.invoke;
-      }
-    }
+    final actionsContext = PerformableActionsContext.fromActions(actions);
     return Semantics(
-      customSemanticsActions: customSemanticActions,
+      customSemanticsActions: actionsContext.customSemanticActions,
       child: MenuAnchor(
-        menuChildren: menuChildren,
+        menuChildren: actionsContext.menuChildren,
         builder: (final builderContext, final controller, final __) =>
             CallbackShortcuts(
-          bindings: bindings,
+          bindings: actionsContext.bindings,
           child: builder(builderContext, controller),
         ),
       ),

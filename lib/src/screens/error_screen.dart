@@ -1,7 +1,6 @@
+import 'package:backstreets_widgets/screens.dart';
+import 'package:backstreets_widgets/widgets.dart';
 import 'package:flutter/material.dart';
-
-import '../widgets/error_list_view.dart';
-import 'simple_scaffold.dart';
 
 /// A widget that displays an [error], and an optional [stackTrace].
 class ErrorScreen extends StatelessWidget {

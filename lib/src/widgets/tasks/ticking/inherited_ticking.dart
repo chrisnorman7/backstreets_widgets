@@ -1,6 +1,5 @@
+import 'package:backstreets_widgets/widgets.dart';
 import 'package:flutter/material.dart';
-
-import 'ticking.dart';
 
 /// The inherited version of [Ticking].
 ///

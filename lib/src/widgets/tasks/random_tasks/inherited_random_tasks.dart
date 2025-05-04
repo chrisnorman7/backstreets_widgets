@@ -1,6 +1,5 @@
+import 'package:backstreets_widgets/widgets.dart';
 import 'package:flutter/material.dart';
-
-import 'random_tasks.dart';
 
 /// An inherited version of [RandomTasks].
 ///

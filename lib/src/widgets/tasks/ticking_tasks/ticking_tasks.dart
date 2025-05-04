@@ -1,8 +1,5 @@
+import 'package:backstreets_widgets/widgets.dart';
 import 'package:flutter/material.dart';
-
-import '../random_tasks/random_task.dart';
-import '../random_tasks/random_tasks.dart';
-import 'ticking_task.dart';
 
 /// A widget which ticks [tasks].
 ///

@@ -1,7 +1,5 @@
+import 'package:backstreets_widgets/widgets.dart';
 import 'package:flutter/material.dart';
-
-import 'game_shortcut.dart';
-import 'game_shortcuts.dart';
 
 /// An inherited widget for use with [GameShortcuts].
 ///

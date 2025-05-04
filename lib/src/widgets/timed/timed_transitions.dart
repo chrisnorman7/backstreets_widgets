@@ -1,8 +1,7 @@
 import 'dart:async';
 
+import 'package:backstreets_widgets/typedefs.dart';
 import 'package:flutter/material.dart';
-
-import '../../../typedefs.dart';
 
 /// A widget which can transition between widgets on user gesture or similar.
 ///

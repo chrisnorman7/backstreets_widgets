@@ -1,7 +1,6 @@
+import 'package:backstreets_widgets/screens.dart';
+import 'package:backstreets_widgets/widgets.dart';
 import 'package:flutter/material.dart';
-
-import '../widgets/loading_widget.dart';
-import 'simple_scaffold.dart';
 
 /// A widget that displays a loading screen.
 class LoadingScreen extends StatelessWidget {

@@ -1,8 +1,7 @@
+import 'package:backstreets_widgets/extensions.dart';
+import 'package:backstreets_widgets/shortcuts.dart';
+import 'package:backstreets_widgets/widgets.dart';
 import 'package:flutter/material.dart';
-
-import '../../extensions.dart';
-import '../../shortcuts.dart';
-import '../../widgets.dart';
 
 /// A [ListTile] which can show an error.
 class ErrorListTile extends StatelessWidget {

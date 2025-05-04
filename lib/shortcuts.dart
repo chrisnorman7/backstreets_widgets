@@ -1,8 +1,7 @@
+import 'package:backstreets_widgets/shortcuts.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import 'src/cross_platform_single_activator.dart';
 
 export 'src/cross_platform_single_activator.dart';
 

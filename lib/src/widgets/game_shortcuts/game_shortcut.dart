@@ -1,7 +1,6 @@
-import '../../../shortcuts.dart';
-import '../../../typedefs.dart';
-import '../../game_shortcuts_shortcut.dart';
-import 'game_shortcuts.dart';
+import 'package:backstreets_widgets/shortcuts.dart';
+import 'package:backstreets_widgets/typedefs.dart';
+import 'package:backstreets_widgets/widgets.dart';
 
 /// A shortcut in a [GameShortcuts] widget.
 class GameShortcut {

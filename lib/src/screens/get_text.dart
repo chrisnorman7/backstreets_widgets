@@ -1,7 +1,6 @@
+import 'package:backstreets_widgets/screens.dart';
+import 'package:backstreets_widgets/widgets.dart';
 import 'package:flutter/material.dart';
-
-import '../screens/simple_scaffold.dart';
-import 'cancel.dart';
 
 /// A widget for getting text.
 class GetText extends StatefulWidget {

@@ -1,7 +1,5 @@
+import 'package:backstreets_widgets/widgets.dart';
 import 'package:flutter/material.dart';
-
-import '../selected_icon.dart';
-import 'performable_action.dart';
 
 /// A [MenuItemButton] which represents an [action].
 class PerformableActionMenuItem extends StatelessWidget {

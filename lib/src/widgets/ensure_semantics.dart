@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -29,7 +30,7 @@ class EnsureSemanticsState extends State<EnsureSemantics> {
     super.initState();
     WidgetsFlutterBinding.ensureInitialized();
     final rendererBinding = RendererBinding.instance;
-    if (!rendererBinding.semanticsEnabled) {
+    if (kIsWeb) {
       rendererBinding.ensureSemantics();
     }
   }

@@ -1,7 +1,6 @@
+import 'package:backstreets_widgets/extensions.dart';
+import 'package:backstreets_widgets/widgets.dart';
 import 'package:flutter/material.dart';
-
-import '../../extensions.dart';
-import 'copy_list_tile.dart';
 
 /// A widget to show an [error], and optional [stackTrace].
 class ErrorListView extends StatelessWidget {

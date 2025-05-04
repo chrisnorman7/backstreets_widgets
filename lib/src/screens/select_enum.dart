@@ -1,6 +1,5 @@
+import 'package:backstreets_widgets/screens.dart';
 import 'package:flutter/material.dart';
-
-import 'select_item.dart';
 
 /// A widget for selecting a new [value].
 class SelectEnum<T extends Enum> extends StatelessWidget {

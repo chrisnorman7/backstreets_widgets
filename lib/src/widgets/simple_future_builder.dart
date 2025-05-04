@@ -1,6 +1,5 @@
+import 'package:backstreets_widgets/typedefs.dart';
 import 'package:flutter/material.dart';
-
-import '../../typedefs.dart';
 
 /// A simple version of a [FutureBuilder].
 class SimpleFutureBuilder<T> extends StatefulWidget {

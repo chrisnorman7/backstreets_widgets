@@ -1,10 +1,10 @@
 name: backstreets_widgets
-version: 0.34.0
+version: 0.35.0
 description: A package of useful widgets which reduce code, and guarantee an accessible experience on multiple platforms.
 repository: https://github.com/chrisnorman7/backstreets_widgets
 
 environment:
-  sdk: ">=3.3.0 <4.0.0"
+  sdk: ^3.7.2
   flutter: ">=3.1.0-0"
 
 dependencies:

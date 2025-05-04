@@ -1,8 +1,6 @@
+import 'package:backstreets_widgets/screens.dart';
+import 'package:backstreets_widgets/widgets.dart';
 import 'package:flutter/material.dart';
-
-import '../widgets/buttons/save_button.dart';
-import '../widgets/cancel.dart';
-import 'simple_scaffold.dart';
 
 /// A widget to edit a [duration].
 class EditDurationScreen extends StatefulWidget {
