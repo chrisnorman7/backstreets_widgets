@@ -28,10 +28,7 @@ import 'package:flutter/material.dart';
 /// ```
 class TimedCommands extends StatefulWidget {
   /// Create an instance.
-  const TimedCommands({
-    required this.builder,
-    super.key,
-  });
+  const TimedCommands({required this.builder, super.key});
 
   /// The widget below this widget in the tree.
   final Widget Function(BuildContext context, TimedCommandsState state) builder;
@@ -197,7 +194,6 @@ class TimedCommandsState extends State<TimedCommands> {
       final newInterval = _intervals[index];
       if (newInterval != interval) {
         timer.cancel();
-        _startCommandTimer(command);
       }
     } else {
       timer.cancel();
