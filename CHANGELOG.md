@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.35.1]
+
+- Fixed a bug with `timeedcommands` which resulted in commands being called twice after a call to `setCommandInterval`.
+
 ## [0.35.0]
 
 - Updated lints.
