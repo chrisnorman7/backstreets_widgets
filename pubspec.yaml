@@ -4,7 +4,7 @@ description: A package of useful widgets which reduce code, and guarantee an acc
 repository: https://github.com/chrisnorman7/backstreets_widgets
 
 environment:
-  sdk: ^3.7.2
+  sdk: ^3.9.0
   flutter: ">=3.1.0-0"
 
 dependencies:
@@ -13,6 +13,6 @@ dependencies:
 
 dev_dependencies:
   dio: ^5.4.3+1
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
   flutter_test:
     sdk: flutter

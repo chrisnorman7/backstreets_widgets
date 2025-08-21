@@ -91,6 +91,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: [
                     PerformableActionsListTile(
                       actions: [
+                        const PerformableAction(
+                          name: 'Modify counter',
+                        ),
                         PerformableAction(
                           name: 'Increase counter',
                           activator: CrossPlatformSingleActivator(
@@ -105,6 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           invoke: () => setState(() => _counter--),
                         ),
+                        const PerformableAction(name: 'Miscellaneous'),
                         PerformableAction(
                           name: 'Reset counter',
                           activator: const SingleActivator(

@@ -15,7 +15,7 @@ class PerformableActionsBuilder extends StatelessWidget {
 
   /// The function which will build the widget below this widget in the tree.
   final Widget Function(BuildContext builderContext, MenuController controller)
-      builder;
+  builder;
 
   /// Build the widget.
   @override
@@ -25,11 +25,11 @@ class PerformableActionsBuilder extends StatelessWidget {
       customSemanticsActions: actionsContext.customSemanticActions,
       child: MenuAnchor(
         menuChildren: actionsContext.menuChildren,
-        builder: (final builderContext, final controller, final __) =>
+        builder: (final builderContext, final controller, final _) =>
             CallbackShortcuts(
-          bindings: actionsContext.bindings,
-          child: builder(builderContext, controller),
-        ),
+              bindings: actionsContext.bindings,
+              child: builder(builderContext, controller),
+            ),
       ),
     );
   }
