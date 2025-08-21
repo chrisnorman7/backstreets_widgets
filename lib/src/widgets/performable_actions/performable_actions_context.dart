@@ -29,9 +29,14 @@ class PerformableActionsContext {
         if (activator != null) {
           bindings[activator] = invoke;
         }
+      } else {
+        assert(
+          action.activator == null,
+          // ignore: lines_longer_than_80_chars
+          'The action "${action.name}" is acting as a label (`onActivate == null`). As such, it cannot have a shortcut: ${action.activator}.',
+        );
       }
       final autofocus = invoke != null && !autofocused;
-      if (autofocus) {}
       menuChildren.add(
         PerformableActionMenuItem(action: action, autofocus: autofocus),
       );

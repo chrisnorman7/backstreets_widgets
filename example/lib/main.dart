@@ -92,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     PerformableActionsListTile(
                       actions: [
                         const PerformableAction(
-                          name: 'Increase or decrease counter counter',
+                          name: 'Modify counter',
                         ),
                         PerformableAction(
                           name: 'Increase counter',
