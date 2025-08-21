@@ -5,7 +5,7 @@ import 'package:flutter/rendering.dart';
 /// A context for a [PerformableActionsBuilder].
 class PerformableActionsContext {
   /// Create an instance.
-  PerformableActionsContext({
+  const PerformableActionsContext({
     required this.actions,
     required this.customSemanticActions,
     required this.menuChildren,
@@ -19,19 +19,24 @@ class PerformableActionsContext {
     final customSemanticActions = <CustomSemanticsAction, VoidCallback>{};
     final menuChildren = <Widget>[];
     final bindings = <ShortcutActivator, VoidCallback>{};
-    for (var i = 0; i < actions.length; i++) {
-      final action = actions[i];
+    var autofocused = false;
+    for (final action in actions) {
       final invoke = action.invoke;
       final activator = action.activator;
-      customSemanticActions[CustomSemanticsAction(label: action.name)] = invoke;
+      if (invoke != null) {
+        customSemanticActions[CustomSemanticsAction(label: action.name)] =
+            invoke;
+        if (activator != null) {
+          bindings[activator] = invoke;
+        }
+      }
+      final autofocus = invoke != null && !autofocused;
+      if (autofocus) {}
       menuChildren.add(
-        PerformableActionMenuItem(
-          action: action,
-          autofocus: i == 0,
-        ),
+        PerformableActionMenuItem(action: action, autofocus: autofocus),
       );
-      if (activator != null) {
-        bindings[activator] = action.invoke;
+      if (autofocus) {
+        autofocused = true;
       }
     }
     return PerformableActionsContext(

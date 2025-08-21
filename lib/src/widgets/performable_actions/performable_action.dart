@@ -5,7 +5,7 @@ class PerformableAction {
   /// Create an instance.
   const PerformableAction({
     required this.name,
-    required this.invoke,
+    this.invoke,
     this.activator,
     this.checked,
   });
@@ -17,7 +17,7 @@ class PerformableAction {
   final SingleActivator? activator;
 
   /// The function to call when this action is performed.
-  final VoidCallback invoke;
+  final VoidCallback? invoke;
 
   /// Whether the resulting menu item should be selected.
   ///
