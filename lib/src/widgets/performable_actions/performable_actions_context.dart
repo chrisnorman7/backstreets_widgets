@@ -33,7 +33,7 @@ class PerformableActionsContext {
         assert(
           action.activator == null,
           // ignore: lines_longer_than_80_chars
-          'The action "${action.name}" is acting as a label (`onActivate == null`). As such, it cannot have a shortcut: ${action.activator}.',
+          'The action "${action.name}" is acting as a label (`activate == null`). As such, it cannot have a shortcut: ${action.activator}.',
         );
       }
       final autofocus = invoke != null && !autofocused;
