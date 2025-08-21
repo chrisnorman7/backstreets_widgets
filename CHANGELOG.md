@@ -1,8 +1,13 @@
 # Changelog
 
+## [0.36.0]
+
+- Upgraded the minimum SDK constraint.
+- Allow `PerformableAction`s with `activate = null` to function as labels in menus.
+
 ## [0.35.1]
 
-- Fixed a bug with `timeedcommands` which resulted in commands being called twice after a call to `setCommandInterval`.
+- Fixed a bug with `TimedCommands` which resulted in commands being called twice after a call to `setCommandInterval`.
 
 ## [0.35.0]
 
