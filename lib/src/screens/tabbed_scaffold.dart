@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:backstreets_widgets/extensions.dart';
 import 'package:backstreets_widgets/screens.dart';
+import 'package:backstreets_widgets/shortcuts.dart';
 import 'package:backstreets_widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -99,13 +100,15 @@ class TabbedScaffoldState extends State<TabbedScaffold> {
       GameShortcut(
         title: 'Switch to the next page',
         shortcut: GameShortcutsShortcut.tab,
-        controlKey: true,
+        controlKey: useControlKey,
+        metaKey: useMetaKey,
         onStart: (final innerContext) => switchPages(1),
       ),
       GameShortcut(
         title: 'Switch to the previous page',
         shortcut: GameShortcutsShortcut.tab,
-        controlKey: true,
+        controlKey: useControlKey,
+        metaKey: useMetaKey,
         shiftKey: true,
         onStart: (final innerContext) => switchPages(-1),
       ),
@@ -113,7 +116,8 @@ class TabbedScaffoldState extends State<TabbedScaffold> {
         GameShortcut(
           title: 'Switch to page ${i + 1}',
           shortcut: numbers[i],
-          controlKey: true,
+          controlKey: useControlKey,
+          metaKey: useMetaKey,
           onStart: (final innerContext) {
             widget.onPageChange?.call(i);
             setState(() => _pageIndex = i);

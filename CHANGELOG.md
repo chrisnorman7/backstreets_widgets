@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.37.0]
+
+- Fix shortcut keys for tabbed scaffolds.
+
 ## [0.36.0]
 
 - Upgraded the minimum SDK constraint.
