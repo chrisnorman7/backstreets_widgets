@@ -43,7 +43,10 @@ class PerformableActionMenuItem extends StatelessWidget {
         selected: action.checked,
         child: MenuItemButton(
           autofocus: autofocus,
-          onPressed: invoke,
+          onPressed: () {
+            controller?.close();
+            invoke?.call();
+          },
           shortcut: activator,
           trailingIcon: selected == null
               ? null
