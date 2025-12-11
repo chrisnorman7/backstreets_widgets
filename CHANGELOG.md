@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.39.0]
+
+- Configure how `PerformableAction`s close menus.
+- Remove dependency on dio.
+
 ## [0.38.0]
 
 - Start using `SemanticsService.sendAnnouncement`.
