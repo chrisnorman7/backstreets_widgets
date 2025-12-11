@@ -44,7 +44,7 @@ class PerformableActionMenuItem extends StatelessWidget {
         child: MenuItemButton(
           autofocus: autofocus,
           onPressed: () {
-            if (action.closeMenu ?? (action.checked != null)) {
+            if (action.closeMenu ?? (action.checked == null)) {
               controller?.close();
             }
             invoke?.call();
