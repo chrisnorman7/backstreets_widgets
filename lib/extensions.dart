@@ -13,11 +13,7 @@ import 'package:flutter/services.dart';
 extension BuildContextX on BuildContext {
   /// Push a widget [builder].
   Future<void> pushWidgetBuilder(final WidgetBuilder builder) =>
-      Navigator.of(this).push<void>(
-        MaterialPageRoute(
-          builder: builder,
-        ),
-      );
+      Navigator.of(this).push<void>(MaterialPageRoute(builder: builder));
 
   /// Confirm something.
   @Deprecated(
@@ -31,27 +27,23 @@ extension BuildContextX on BuildContext {
     final VoidCallback? noCallback,
     final String yesLabel = 'Yes',
     final String noLabel = 'No',
-  }) =>
-      showDialog<void>(
-        context: this,
-        builder: (final context) => AlertDialog(
-          title: Text(title),
-          content: Focus(
-            autofocus: true,
-            child: Text(message),
-          ),
-          actions: [
-            ElevatedButton(
-              onPressed: yesCallback ?? () => Navigator.pop(context),
-              child: Text(yesLabel),
-            ),
-            ElevatedButton(
-              onPressed: noCallback ?? () => Navigator.pop(context),
-              child: Text(noLabel),
-            ),
-          ],
+  }) => showDialog<void>(
+    context: this,
+    builder: (final context) => AlertDialog(
+      title: Text(title),
+      content: Focus(autofocus: true, child: Text(message)),
+      actions: [
+        ElevatedButton(
+          onPressed: yesCallback ?? () => Navigator.pop(context),
+          child: Text(yesLabel),
         ),
-      );
+        ElevatedButton(
+          onPressed: noCallback ?? () => Navigator.pop(context),
+          child: Text(noLabel),
+        ),
+      ],
+    ),
+  );
 
   /// Pop `this` [BuildContext] from the [Navigator].
   void pop() => Navigator.pop(this);
@@ -67,62 +59,51 @@ extension BuildContextX on BuildContext {
     final VoidCallback? noCallback,
     final String yesLabel = 'Yes',
     final String noLabel = 'No',
-  }) =>
-      showDialog<void>(
-        context: this,
-        builder: (final innerContext) => AlertDialog(
-          title: Text(title),
-          content: Focus(
-            autofocus: true,
-            child: Text(message),
-          ),
-          actions: [
-            ElevatedButton(
-              onPressed: () {
-                innerContext.pop();
-                yesCallback?.call();
-              },
-              child: Text(yesLabel),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                innerContext.pop();
-                noCallback?.call();
-              },
-              child: Text(noLabel),
-            ),
-          ],
+  }) => showDialog<void>(
+    context: this,
+    builder: (final innerContext) => AlertDialog(
+      title: Text(title),
+      content: Focus(autofocus: true, child: Text(message)),
+      actions: [
+        ElevatedButton(
+          onPressed: () {
+            innerContext.pop();
+            yesCallback?.call();
+          },
+          child: Text(yesLabel),
         ),
-      );
+        ElevatedButton(
+          onPressed: () {
+            innerContext.pop();
+            noCallback?.call();
+          },
+          child: Text(noLabel),
+        ),
+      ],
+    ),
+  );
 
   /// Show a message with an OK button.
   Future<void> showMessage({
     required final String message,
     final String title = 'Error',
     final String buttonLabel = 'OK',
-  }) =>
-      showDialog(
-        context: this,
-        builder: (final innerContext) => AlertDialog(
-          actions: [
-            TextButton(
-              onPressed: innerContext.pop,
-              child: Text(buttonLabel),
-            ),
-          ],
-          title: Text(title),
-          content: CallbackShortcuts(
-            bindings: {
-              const SingleActivator(LogicalKeyboardKey.enter): innerContext.pop,
-            },
-            child: Focus(
-              autofocus: true,
-              child: Text(message),
-            ),
-          ),
-          semanticLabel: message,
-        ),
-      );
+  }) => showDialog(
+    context: this,
+    builder: (final innerContext) => AlertDialog(
+      actions: [
+        TextButton(onPressed: innerContext.pop, child: Text(buttonLabel)),
+      ],
+      title: Text(title),
+      content: CallbackShortcuts(
+        bindings: {
+          const SingleActivator(LogicalKeyboardKey.enter): innerContext.pop,
+        },
+        child: Focus(autofocus: true, child: Text(message)),
+      ),
+      semanticLabel: message,
+    ),
+  );
 
   /// Get the loaded data from a [DataScope].
   ///
@@ -137,12 +118,17 @@ extension BuildContextX on BuildContext {
 
   /// Announce something to screen readers.
   ///
-  /// This method uses the [SemanticsService.announce] method.
-  void announce(
+  /// This method uses the [SemanticsService.sendAnnouncement] method.
+  Future<void> announce(
     final String message, {
     final TextDirection textDirection = TextDirection.ltr,
-  }) =>
-      SemanticsService.announce(message, textDirection);
+    final Assertiveness assertiveness = Assertiveness.polite,
+  }) => SemanticsService.sendAnnouncement(
+    View.of(this),
+    message,
+    textDirection,
+    assertiveness: assertiveness,
+  );
 
   /// Pause and resume a [Ticking] while pushing a widget [builder].
   ///
