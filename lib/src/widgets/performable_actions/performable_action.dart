@@ -8,6 +8,7 @@ class PerformableAction {
     this.invoke,
     this.activator,
     this.checked,
+    this.closeMenu,
   });
 
   /// The name of this action.
@@ -23,4 +24,9 @@ class PerformableAction {
   ///
   /// If [checked] is `null`, then no trailing widget will be generated.
   final bool? checked;
+
+  /// Whether to close the menu when this item is activated from the menu.
+  ///
+  /// If [closeMenu] is `null`, it defaults to `checked != null`.
+  final bool? closeMenu;
 }

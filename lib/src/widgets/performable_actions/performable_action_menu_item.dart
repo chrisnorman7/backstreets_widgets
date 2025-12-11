@@ -44,7 +44,9 @@ class PerformableActionMenuItem extends StatelessWidget {
         child: MenuItemButton(
           autofocus: autofocus,
           onPressed: () {
-            controller?.close();
+            if (action.closeMenu ?? (action.checked != null)) {
+              controller?.close();
+            }
             invoke?.call();
           },
           shortcut: activator,
