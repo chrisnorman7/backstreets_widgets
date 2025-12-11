@@ -17,6 +17,7 @@ class PerformableActions extends StatelessWidget {
     this.mainAxisSize = MainAxisSize.max,
     this.spacing = 0.0,
     this.verticalDirection = VerticalDirection.down,
+    this.controller,
     super.key,
   });
 
@@ -28,7 +29,7 @@ class PerformableActions extends StatelessWidget {
 
   /// The function to call to build the menu button.
   final Widget Function(BuildContext builderContext, MenuController controller)
-      buttonBuilder;
+  buttonBuilder;
 
   /// The cross axis alignment to apply to the resulting [Row].
   final CrossAxisAlignment crossAxisAlignment;
@@ -44,6 +45,9 @@ class PerformableActions extends StatelessWidget {
 
   /// The vertical direction to apply to the resulting [Row].
   final VerticalDirection verticalDirection;
+
+  /// The [MenuController] to pass to [MenuAnchor].
+  final MenuController? controller;
 
   /// Build the widget.
   @override
@@ -66,6 +70,7 @@ class PerformableActions extends StatelessWidget {
           ),
         ],
       ),
+      controller: controller,
     );
   }
 }

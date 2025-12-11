@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.38.0]
+
+- Start using `SemanticsService.sendAnnouncement`.
+- Add a `controller` argument to all `PerformableActions` builders.
+
 ## [0.37.0]
 
 - Fix shortcut keys for tabbed scaffolds.

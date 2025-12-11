@@ -7,6 +7,7 @@ class PerformableActionsBuilder extends StatelessWidget {
   const PerformableActionsBuilder({
     required this.actions,
     required this.builder,
+    this.controller,
     super.key,
   });
 
@@ -16,6 +17,9 @@ class PerformableActionsBuilder extends StatelessWidget {
   /// The function which will build the widget below this widget in the tree.
   final Widget Function(BuildContext builderContext, MenuController controller)
   builder;
+
+  /// The [MenuController] to pass to [MenuAnchor].
+  final MenuController? controller;
 
   /// Build the widget.
   @override
@@ -30,6 +34,7 @@ class PerformableActionsBuilder extends StatelessWidget {
               bindings: actionsContext.bindings,
               child: builder(builderContext, controller),
             ),
+        controller: controller,
       ),
     );
   }

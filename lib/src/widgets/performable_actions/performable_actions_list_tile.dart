@@ -6,12 +6,11 @@ import 'package:flutter/material.dart';
 Widget defaultButtonBuilder(
   final BuildContext builderContext,
   final MenuController controller,
-) =>
-    IconButton(
-      onPressed: controller.toggle,
-      icon: const Icon(Icons.more_vert),
-      tooltip: 'Show / hide menu',
-    );
+) => IconButton(
+  onPressed: controller.toggle,
+  icon: const Icon(Icons.more_vert),
+  tooltip: 'Show / hide menu',
+);
 
 /// A [ListTile] which wraps [PerformableActionsBuilder].
 class PerformableActionsListTile extends StatelessWidget {
@@ -25,6 +24,7 @@ class PerformableActionsListTile extends StatelessWidget {
     this.onLongPress,
     this.autofocus = false,
     this.selected = false,
+    this.controller,
     super.key,
   });
 
@@ -51,20 +51,24 @@ class PerformableActionsListTile extends StatelessWidget {
 
   /// The function to call to build the `trailing` [Widget] for the [ListTile].
   final Widget Function(BuildContext context, MenuController controller)
-      buttonBuilder;
+  buttonBuilder;
+
+  /// The [MenuController] to pass to [MenuAnchor].
+  final MenuController? controller;
 
   /// Build the widget.
   @override
   Widget build(final BuildContext context) => PerformableActionsBuilder(
-        actions: actions,
-        builder: (final builderContext, final controller) => ListTile(
-          autofocus: autofocus,
-          selected: selected,
-          title: title,
-          subtitle: subtitle,
-          onTap: onTap,
-          onLongPress: onLongPress,
-          trailing: buttonBuilder(builderContext, controller),
-        ),
-      );
+    actions: actions,
+    builder: (final builderContext, final controller) => ListTile(
+      autofocus: autofocus,
+      selected: selected,
+      title: title,
+      subtitle: subtitle,
+      onTap: onTap,
+      onLongPress: onLongPress,
+      trailing: buttonBuilder(builderContext, controller),
+    ),
+    controller: controller,
+  );
 }
