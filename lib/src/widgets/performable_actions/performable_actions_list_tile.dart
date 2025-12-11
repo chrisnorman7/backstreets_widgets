@@ -25,6 +25,7 @@ class PerformableActionsListTile extends StatelessWidget {
     this.autofocus = false,
     this.selected = false,
     this.controller,
+    this.closeMenuOnEscape = true,
     super.key,
   });
 
@@ -56,6 +57,9 @@ class PerformableActionsListTile extends StatelessWidget {
   /// The [MenuController] to pass to [MenuAnchor].
   final MenuController? controller;
 
+  /// Whether the escape key should close the menu or not.
+  final bool closeMenuOnEscape;
+
   /// Build the widget.
   @override
   Widget build(final BuildContext context) => PerformableActionsBuilder(
@@ -70,5 +74,6 @@ class PerformableActionsListTile extends StatelessWidget {
       trailing: buttonBuilder(builderContext, controller),
     ),
     controller: controller,
+    closeMenuOnEscape: closeMenuOnEscape,
   );
 }

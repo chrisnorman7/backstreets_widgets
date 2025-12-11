@@ -18,6 +18,7 @@ class PerformableActions extends StatelessWidget {
     this.spacing = 0.0,
     this.verticalDirection = VerticalDirection.down,
     this.controller,
+    this.closeMenuOnEscape = true,
     super.key,
   });
 
@@ -49,6 +50,9 @@ class PerformableActions extends StatelessWidget {
   /// The [MenuController] to pass to [MenuAnchor].
   final MenuController? controller;
 
+  /// Whether the escape key should close the menu or not.
+  final bool closeMenuOnEscape;
+
   /// Build the widget.
   @override
   Widget build(final BuildContext context) {
@@ -71,6 +75,7 @@ class PerformableActions extends StatelessWidget {
         ],
       ),
       controller: controller,
+      closeMenuOnEscape: closeMenuOnEscape,
     );
   }
 }

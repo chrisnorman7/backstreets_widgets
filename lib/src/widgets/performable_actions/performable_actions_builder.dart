@@ -8,6 +8,7 @@ class PerformableActionsBuilder extends StatelessWidget {
     required this.actions,
     required this.builder,
     this.controller,
+    this.closeMenuOnEscape = true,
     super.key,
   });
 
@@ -21,10 +22,16 @@ class PerformableActionsBuilder extends StatelessWidget {
   /// The [MenuController] to pass to [MenuAnchor].
   final MenuController? controller;
 
+  /// Whether the escape key should close the menu or not.
+  final bool closeMenuOnEscape;
+
   /// Build the widget.
   @override
   Widget build(final BuildContext context) {
-    final actionsContext = PerformableActionsContext.fromActions(actions);
+    final actionsContext = PerformableActionsContext.fromActions(
+      actions,
+      closeMenuOnEscape: closeMenuOnEscape,
+    );
     return Semantics(
       customSemanticsActions: actionsContext.customSemanticActions,
       child: MenuAnchor(

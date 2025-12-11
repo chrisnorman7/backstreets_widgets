@@ -1,6 +1,7 @@
 import 'package:backstreets_widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 
 /// A context for a [PerformableActionsBuilder].
 class PerformableActionsContext {
@@ -13,9 +14,15 @@ class PerformableActionsContext {
   });
 
   /// Create an instance from an [actions] list.
+  ///
+  /// If [closeMenuOnEscape] is `true`, then the [LogicalKeyboardKey.escape] key
+  /// will be added to every [PerformableActionMenuItem] in [menuChildren], by
+  /// passing `canCloseMenu` to the constructor of every
+  /// [PerformableActionMenuItem].
   factory PerformableActionsContext.fromActions(
-    final List<PerformableAction> actions,
-  ) {
+    final List<PerformableAction> actions, {
+    final bool closeMenuOnEscape = true,
+  }) {
     final customSemanticActions = <CustomSemanticsAction, VoidCallback>{};
     final menuChildren = <Widget>[];
     final bindings = <ShortcutActivator, VoidCallback>{};
@@ -38,7 +45,11 @@ class PerformableActionsContext {
       }
       final autofocus = invoke != null && !autofocused;
       menuChildren.add(
-        PerformableActionMenuItem(action: action, autofocus: autofocus),
+        PerformableActionMenuItem(
+          action: action,
+          autofocus: autofocus,
+          canCloseMenu: closeMenuOnEscape,
+        ),
       );
       if (autofocus) {
         autofocused = true;
