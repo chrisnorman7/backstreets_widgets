@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.40.0]
+
+- `GameShortcutsHelpScreen` now used `GameShortcuts.of`.
+- The `GameShortcuts` widget now optionally collects existing `GameShortcuts` and adds them to the `shortcuts` list.
+- Renamed `Inherited*` widgets to `*Provider`.
+- Removed the `DataScope` widget.
+- Make `RandomTask`s comparable.
+- Added the `cancelCallback` to the `CommonShortcuts` widget.
+- Removed the `SimpleFutureBuilder` widget.
+
 ## [0.39.0]
 
 - Configure how `PerformableAction`s close menus.

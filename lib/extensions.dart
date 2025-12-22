@@ -1,12 +1,10 @@
 import 'dart:math';
 
-import 'package:backstreets_widgets/src/widgets/data_scope.dart';
 import 'package:backstreets_widgets/src/widgets/tasks/random_tasks/random_tasks.dart'
     show RandomTasks;
 import 'package:backstreets_widgets/src/widgets/tasks/ticking/ticking.dart';
 import 'package:backstreets_widgets/widgets.dart' show RandomTasks;
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 
 /// Useful methods for build contexts.
@@ -14,36 +12,6 @@ extension BuildContextX on BuildContext {
   /// Push a widget [builder].
   Future<void> pushWidgetBuilder(final WidgetBuilder builder) =>
       Navigator.of(this).push<void>(MaterialPageRoute(builder: builder));
-
-  /// Confirm something.
-  @Deprecated(
-    // ignore: lines_longer_than_80_chars
-    'This method does not pop its own context, and will be replaced by `shorConfirmMessage` in the near future.',
-  )
-  Future<void> confirm({
-    final String title = 'Confirm',
-    final String message = 'Are you sure?',
-    final VoidCallback? yesCallback,
-    final VoidCallback? noCallback,
-    final String yesLabel = 'Yes',
-    final String noLabel = 'No',
-  }) => showDialog<void>(
-    context: this,
-    builder: (final context) => AlertDialog(
-      title: Text(title),
-      content: Focus(autofocus: true, child: Text(message)),
-      actions: [
-        ElevatedButton(
-          onPressed: yesCallback ?? () => Navigator.pop(context),
-          child: Text(yesLabel),
-        ),
-        ElevatedButton(
-          onPressed: noCallback ?? () => Navigator.pop(context),
-          child: Text(noLabel),
-        ),
-      ],
-    ),
-  );
 
   /// Pop `this` [BuildContext] from the [Navigator].
   void pop() => Navigator.pop(this);
@@ -103,31 +71,6 @@ extension BuildContextX on BuildContext {
       ),
       semanticLabel: message,
     ),
-  );
-
-  /// Get the loaded data from a [DataScope].
-  ///
-  /// If the data hasn't been loaded, then [StateError] will be thrown.
-  T getLoadedData<T>() {
-    final state = DataScope.of<T>(this);
-    if (state.dataLoaded) {
-      return state.data;
-    }
-    throw StateError('The data has not yet been loaded.');
-  }
-
-  /// Announce something to screen readers.
-  ///
-  /// This method uses the [SemanticsService.sendAnnouncement] method.
-  Future<void> announce(
-    final String message, {
-    final TextDirection textDirection = TextDirection.ltr,
-    final Assertiveness assertiveness = Assertiveness.polite,
-  }) => SemanticsService.sendAnnouncement(
-    View.of(this),
-    message,
-    textDirection,
-    assertiveness: assertiveness,
   );
 
   /// Pause and resume a [Ticking] while pushing a widget [builder].

@@ -2,6 +2,27 @@ import 'package:backstreets_widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+/// An inherited widget for use with [GameShortcuts].
+///
+/// Instances of [GameShortcutsProvider] are returned by
+/// [GameShortcuts.maybeOf] and [GameShortcuts.of].
+class GameShortcutsProvider extends InheritedWidget {
+  /// Create an instance.
+  const GameShortcutsProvider({
+    required this.shortcuts,
+    required super.child,
+    super.key,
+  });
+
+  /// The shortcuts to use.
+  final List<GameShortcut> shortcuts;
+
+  /// Whether listeners should be notified.
+  @override
+  bool updateShouldNotify(final GameShortcutsProvider oldWidget) =>
+      shortcuts != oldWidget.shortcuts;
+}
+
 /// A widget for handling game [shortcuts].
 ///
 /// Wrap a widget in a [GameShortcuts] widget to easily add game-friendly
@@ -17,15 +38,16 @@ class GameShortcuts extends StatelessWidget {
     this.autofocus = true,
     this.focusNode,
     this.canRequestFocus = true,
+    this.includeParentShortcuts = true,
     super.key,
   });
 
   /// Possibly return an instance.
-  static InheritedGameShortcuts? maybeOf(final BuildContext context) =>
-      context.dependOnInheritedWidgetOfExactType<InheritedGameShortcuts>();
+  static GameShortcutsProvider? maybeOf(final BuildContext context) =>
+      context.dependOnInheritedWidgetOfExactType<GameShortcutsProvider>();
 
   /// Return an instance.
-  static InheritedGameShortcuts of(final BuildContext context) =>
+  static GameShortcutsProvider of(final BuildContext context) =>
       maybeOf(context)!;
 
   /// The widget below this widget in the tree.
@@ -47,12 +69,22 @@ class GameShortcuts extends StatelessWidget {
   /// Whether the resulting [Focus] node can request focus.
   final bool canRequestFocus;
 
+  /// Whether to include shortcuts from parent [GameShortcuts] instances.
+  final bool includeParentShortcuts;
+
   /// Build the widget.
   @override
   Widget build(final BuildContext context) {
     final keyboard = HardwareKeyboard.instance;
-    return InheritedGameShortcuts(
-      shortcuts: shortcuts,
+    final allShortcuts = <GameShortcut>[...shortcuts];
+    if (includeParentShortcuts) {
+      final parent = GameShortcuts.maybeOf(context);
+      if (parent != null) {
+        allShortcuts.addAll(parent.shortcuts);
+      }
+    }
+    return GameShortcutsProvider(
+      shortcuts: allShortcuts,
       child: Builder(
         builder: (final innerContext) => Focus(
           autofocus: autofocus,
@@ -60,7 +92,7 @@ class GameShortcuts extends StatelessWidget {
             if (event is KeyRepeatEvent) {
               return KeyEventResult.ignored;
             }
-            for (final shortcut in shortcuts) {
+            for (final shortcut in allShortcuts) {
               if (shortcut.shortcut.key == event.physicalKey &&
                   shortcut.controlKey == keyboard.isControlPressed &&
                   shortcut.metaKey == keyboard.isMetaPressed &&

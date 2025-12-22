@@ -1,6 +1,7 @@
 import 'package:backstreets_widgets/extensions.dart';
 import 'package:backstreets_widgets/shortcuts.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 /// A widget which maps the most common shortcuts.
 class CommonShortcuts extends StatelessWidget {
@@ -18,6 +19,7 @@ class CommonShortcuts extends StatelessWidget {
     this.pageDownCallback,
     this.testCallback,
     this.backspaceCallback,
+    this.cancelCallback,
     this.copyText,
     super.key,
   });
@@ -58,6 +60,9 @@ class CommonShortcuts extends StatelessWidget {
   /// The function to be called with the [backspaceShortcut].
   final VoidCallback? backspaceCallback;
 
+  /// The function to call when the escape key is pressed.
+  final VoidCallback? cancelCallback;
+
   /// The text to copy with the [copyShortcut].
   final String? copyText;
 
@@ -75,6 +80,7 @@ class CommonShortcuts extends StatelessWidget {
     final pageDownFunction = pageDownCallback;
     final testFunction = testCallback;
     final backspaceFunction = backspaceCallback;
+    final cancelFunction = cancelCallback;
     final text = copyText;
     return CallbackShortcuts(
       bindings: {
@@ -89,6 +95,8 @@ class CommonShortcuts extends StatelessWidget {
         if (pageDownFunction != null) pageDownShortcut: pageDownFunction,
         if (testFunction != null) testShortcut: testFunction,
         if (backspaceFunction != null) backspaceShortcut: backspaceFunction,
+        if (cancelFunction != null)
+          const SingleActivator(LogicalKeyboardKey.escape): cancelFunction,
         if (text != null) copyShortcut: text.copyToClipboard,
       },
       child: child,

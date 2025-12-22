@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 class GameShortcutsHelpScreen extends StatelessWidget {
   /// Create an instance.
   const GameShortcutsHelpScreen({
-    required this.shortcuts,
     this.title = 'Keyboard Shortcuts',
     this.controlKey = 'CTRL',
     this.metaKey = 'META',
@@ -15,9 +14,6 @@ class GameShortcutsHelpScreen extends StatelessWidget {
     this.keyJoin = ' + ',
     super.key,
   });
-
-  /// The shortcuts to show.
-  final List<GameShortcut> shortcuts;
 
   /// The title of the resulting screen.
   final String title;
@@ -39,28 +35,31 @@ class GameShortcutsHelpScreen extends StatelessWidget {
 
   /// Build the widget.
   @override
-  Widget build(final BuildContext context) => Cancel(
-        child: SimpleScaffold(
-          title: title,
-          body: ListView.builder(
-            itemBuilder: (final context, final index) {
-              final shortcut = shortcuts[index];
-              final keys = <String>[
-                if (shortcut.controlKey) controlKey,
-                if (shortcut.metaKey) metaKey,
-                if (shortcut.shiftKey) shiftKey,
-                if (shortcut.altKey) altKey,
-                shortcut.shortcut.name,
-              ];
-              return CopyListTile(
-                autofocus: index == 0,
-                title: shortcut.title,
-                subtitle: keys.join(keyJoin),
-              );
-            },
-            itemCount: shortcuts.length,
-            shrinkWrap: true,
-          ),
+  Widget build(final BuildContext context) {
+    final shortcuts = GameShortcuts.of(context).shortcuts;
+    return Cancel(
+      child: SimpleScaffold(
+        title: title,
+        body: ListView.builder(
+          itemBuilder: (final context, final index) {
+            final shortcut = shortcuts[index];
+            final keys = <String>[
+              if (shortcut.controlKey) controlKey,
+              if (shortcut.metaKey) metaKey,
+              if (shortcut.shiftKey) shiftKey,
+              if (shortcut.altKey) altKey,
+              shortcut.shortcut.name,
+            ];
+            return CopyListTile(
+              autofocus: index == 0,
+              title: shortcut.title,
+              subtitle: keys.join(keyJoin),
+            );
+          },
+          itemCount: shortcuts.length,
+          shrinkWrap: true,
         ),
-      );
+      ),
+    );
+  }
 }

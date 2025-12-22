@@ -6,11 +6,7 @@ import 'package:flutter/material.dart';
 /// Instances of [TickingTasks] to move player or fire weapons for example.
 class TickingTasks extends StatelessWidget {
   /// Create an instance.
-  const TickingTasks({
-    required this.tasks,
-    required this.child,
-    super.key,
-  });
+  const TickingTasks({required this.tasks, required this.child, super.key});
 
   /// The tasks to run.
   ///
@@ -23,14 +19,12 @@ class TickingTasks extends StatelessWidget {
   /// Build the widget.
   @override
   Widget build(final BuildContext context) => RandomTasks(
-        tasks: tasks
-            .map(
-              (final e) => RandomTask(
-                getDuration: () => e.duration,
-                onTick: e.onTick,
-              ),
-            )
-            .toList(),
-        child: child,
-      );
+    tasks: tasks
+        .map(
+          (final e) =>
+              RandomTask(getDuration: () => e.duration, onTick: e.onTick),
+        )
+        .toList(),
+    child: child,
+  );
 }

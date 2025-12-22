@@ -1,7 +1,31 @@
 import 'dart:async';
 
-import 'package:backstreets_widgets/widgets.dart';
 import 'package:flutter/material.dart';
+
+/// The inherited version of [Ticking].
+///
+/// Instances of [TickingProvider] will be used when calling
+/// [Ticking.maybeOf()] and [Ticking.of()].
+class TickingProvider extends InheritedWidget {
+  /// Create an instance.
+  const TickingProvider({
+    required this.pause,
+    required this.resume,
+    required super.child,
+    super.key,
+  });
+
+  /// The function that will pause the [Ticking.onTick] method.
+  final VoidCallback pause;
+
+  /// The function that will resume the [Ticking.onTick] method.
+  final VoidCallback resume;
+
+  /// Whether this widget should notify listeners.
+  @override
+  bool updateShouldNotify(covariant final TickingProvider oldWidget) =>
+      pause != oldWidget.pause || resume != oldWidget.resume;
+}
 
 /// A widget that calls [onTick] every [duration].
 ///
@@ -18,11 +42,11 @@ class Ticking extends StatefulWidget {
   });
 
   /// Maybe return an instance.
-  static InheritedTicking? maybeOf(final BuildContext context) =>
-      context.dependOnInheritedWidgetOfExactType<InheritedTicking>();
+  static TickingProvider? maybeOf(final BuildContext context) =>
+      context.dependOnInheritedWidgetOfExactType<TickingProvider>();
 
   /// Return the nearest instance.
-  static InheritedTicking of(final BuildContext context) => maybeOf(context)!;
+  static TickingProvider of(final BuildContext context) => maybeOf(context)!;
 
   /// How often [onTick] should be called.
   final Duration duration;
@@ -73,9 +97,9 @@ class TickingState extends State<Ticking> {
 
   /// Build a widget.
   @override
-  Widget build(final BuildContext context) => InheritedTicking(
-        pause: () => _paused = true,
-        resume: () => _paused = false,
-        child: widget.child,
-      );
+  Widget build(final BuildContext context) => TickingProvider(
+    pause: () => _paused = true,
+    resume: () => _paused = false,
+    child: widget.child,
+  );
 }
