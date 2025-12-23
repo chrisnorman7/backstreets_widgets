@@ -47,8 +47,13 @@ class GameShortcuts extends StatelessWidget {
       context.dependOnInheritedWidgetOfExactType<GameShortcutsProvider>();
 
   /// Return an instance.
-  static GameShortcutsProvider of(final BuildContext context) =>
-      maybeOf(context)!;
+  static GameShortcutsProvider of(final BuildContext context) {
+    final provider = maybeOf(context);
+    if (provider == null) {
+      throw StateError('No `GameShortcuts` could be found.');
+    }
+    return provider;
+  }
 
   /// The widget below this widget in the tree.
   final Widget child;
