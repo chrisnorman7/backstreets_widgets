@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.41.0]
+
+- Add the `shortcuts` argument back to `GameShortcutsHelpScreen`.
+
 ## [0.40.0]
 
 - `GameShortcutsHelpScreen` now used `GameShortcuts.of`.
