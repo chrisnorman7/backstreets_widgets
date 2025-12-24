@@ -123,17 +123,18 @@ class TabbedScaffoldState extends State<TabbedScaffold> {
             setState(() => _pageIndex = i);
           },
         ),
-    ];
-    shortcuts.add(
       GameShortcut(
         title: 'Show help',
         shortcut: GameShortcutsShortcut.slash,
         shiftKey: true,
-        onStart: (final innerContext) => innerContext.pushWidgetBuilder(
-          (final _) => GameShortcutsHelpScreen(shortcuts: shortcuts),
-        ),
+        onStart: (final innerContext) {
+          final provider = GameShortcuts.of(innerContext);
+          innerContext.pushWidgetBuilder(
+            (final _) => GameShortcutsHelpScreen(shortcuts: provider.shortcuts),
+          );
+        },
       ),
-    );
+    ];
     return GameShortcuts(
       shortcuts: shortcuts,
       autofocus: false,

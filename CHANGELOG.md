@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.41.1]
+
+- Use `GameShortcuts.of` to get shortcuts for help in `TabbedScaffold`s.
+
 ## [0.41.0]
 
 - Add the `shortcuts` argument back to `GameShortcutsHelpScreen`.
