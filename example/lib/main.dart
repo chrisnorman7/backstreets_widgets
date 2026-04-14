@@ -1,3 +1,4 @@
+import 'package:backstreets_widgets/extensions.dart';
 import 'package:backstreets_widgets/screens.dart';
 import 'package:backstreets_widgets/shortcuts.dart';
 import 'package:backstreets_widgets/widgets.dart';
@@ -138,6 +139,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
         initialPageIndex: 1,
-        onPageChange: print,
+        onPageChange: (final value) => context.announce('Page $value'),
       );
 }

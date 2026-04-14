@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.42.0]
+
+- Reinstate the`BuildContext.announce` extension method.
+- Added an announcement to the example.
+
 ## [0.41.1]
 
 - Use `GameShortcuts.of` to get shortcuts for help in `TabbedScaffold`s.

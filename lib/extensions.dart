@@ -1,10 +1,8 @@
 import 'dart:math';
 
-import 'package:backstreets_widgets/src/widgets/tasks/random_tasks/random_tasks.dart'
-    show RandomTasks;
-import 'package:backstreets_widgets/src/widgets/tasks/ticking/ticking.dart';
-import 'package:backstreets_widgets/widgets.dart' show RandomTasks;
+import 'package:backstreets_widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/semantics.dart';
 import 'package:flutter/services.dart';
 
 /// Useful methods for build contexts.
@@ -94,6 +92,13 @@ extension BuildContextX on BuildContext {
     await Navigator.of(this).push(MaterialPageRoute<void>(builder: builder));
     RandomTasks.maybeOf(this)?.resume();
   }
+
+  /// Announce a [message].
+  Future<void> announce(
+    final String message, {
+    final TextDirection textDirection = TextDirection.ltr,
+  }) =>
+      SemanticsService.sendAnnouncement(View.of(this), message, textDirection);
 }
 
 /// Useful extension methods for doubles.
