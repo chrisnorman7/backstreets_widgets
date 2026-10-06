@@ -9,6 +9,6 @@ class LoadingScreen extends StatelessWidget {
 
   /// Build the widget.
   @override
-  Widget build(final BuildContext context) =>
+  Widget build(BuildContext context) =>
       const SimpleScaffold(title: 'Loading', body: LoadingWidget());
 }

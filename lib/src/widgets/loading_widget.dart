@@ -7,6 +7,6 @@ class LoadingWidget extends StatelessWidget {
 
   /// Build the widget.
   @override
-  Widget build(final BuildContext context) =>
+  Widget build(BuildContext context) =>
       const CircularProgressIndicator(semanticsLabel: 'Loading...');
 }

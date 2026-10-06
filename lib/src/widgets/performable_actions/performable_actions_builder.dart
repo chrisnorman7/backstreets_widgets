@@ -27,7 +27,7 @@ class PerformableActionsBuilder extends StatelessWidget {
 
   /// Build the widget.
   @override
-  Widget build(final BuildContext context) {
+  Widget build(BuildContext context) {
     final actionsContext = PerformableActionsContext.fromActions(
       actions,
       closeMenuOnEscape: closeMenuOnEscape,
@@ -36,11 +36,10 @@ class PerformableActionsBuilder extends StatelessWidget {
       customSemanticsActions: actionsContext.customSemanticActions,
       child: MenuAnchor(
         menuChildren: actionsContext.menuChildren,
-        builder: (final builderContext, final controller, final _) =>
-            CallbackShortcuts(
-              bindings: actionsContext.bindings,
-              child: builder(builderContext, controller),
-            ),
+        builder: (builderContext, controller, _) => CallbackShortcuts(
+          bindings: actionsContext.bindings,
+          child: builder(builderContext, controller),
+        ),
         controller: controller,
       ),
     );

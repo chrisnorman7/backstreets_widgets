@@ -51,9 +51,7 @@ class GetTextState extends State<GetText> {
   @override
   void initState() {
     super.initState();
-    _controller = TextEditingController(
-      text: widget.text ?? '',
-    );
+    _controller = TextEditingController(text: widget.text ?? '');
     final textLength = widget.text?.length ?? 0;
     _controller.selection = TextSelection(
       baseOffset: 0,
@@ -64,37 +62,30 @@ class GetTextState extends State<GetText> {
 
   /// Build a widget.
   @override
-  Widget build(final BuildContext context) => Cancel(
-        child: SimpleScaffold(
-          actions: [
-            ...widget.actions,
-            ElevatedButton(
-              onPressed: onSubmit,
-              child: widget.icon,
+  Widget build(BuildContext context) => Cancel(
+    child: SimpleScaffold(
+      actions: [
+        ...widget.actions,
+        ElevatedButton(onPressed: onSubmit, child: widget.icon),
+      ],
+      title: widget.title,
+      body: Form(
+        key: _formKey,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextFormField(
+              autofocus: true,
+              controller: _controller,
+              decoration: InputDecoration(label: Text(widget.labelText)),
+              onFieldSubmitted: (value) => onSubmit(),
+              validator: widget.validator,
             ),
           ],
-          title: widget.title,
-          body: Form(
-            key: _formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TextFormField(
-                  autofocus: true,
-                  controller: _controller,
-                  decoration: InputDecoration(
-                    label: Text(
-                      widget.labelText,
-                    ),
-                  ),
-                  onFieldSubmitted: (final value) => onSubmit(),
-                  validator: widget.validator,
-                ),
-              ],
-            ),
-          ),
         ),
-      );
+      ),
+    ),
+  );
 
   /// Submit the form.
   void onSubmit() {

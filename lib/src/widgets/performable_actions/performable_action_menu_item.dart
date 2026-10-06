@@ -24,7 +24,7 @@ class PerformableActionMenuItem extends StatelessWidget {
 
   /// Build the widget.
   @override
-  Widget build(final BuildContext context) {
+  Widget build(BuildContext context) {
     final invoke = action.invoke;
     final activator = action.activator;
     final selected = action.checked;

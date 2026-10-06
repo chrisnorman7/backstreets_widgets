@@ -56,7 +56,7 @@ class TimedBuildersState extends State<TimedBuilders> {
 
   /// Build a widget.
   @override
-  Widget build(final BuildContext context) {
+  Widget build(BuildContext context) {
     final builder = widget.builders[_index];
     if (_index < (widget.builders.length - 1)) {
       _timer = Timer(widget.duration, () => setState(() => _index++));

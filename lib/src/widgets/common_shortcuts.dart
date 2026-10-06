@@ -68,7 +68,7 @@ class CommonShortcuts extends StatelessWidget {
 
   /// Build the widget.
   @override
-  Widget build(final BuildContext context) {
+  Widget build(BuildContext context) {
     final newFunction = newCallback;
     final openFunction = openCallback;
     final deleteFunction = deleteCallback;
@@ -84,19 +84,18 @@ class CommonShortcuts extends StatelessWidget {
     final text = copyText;
     return CallbackShortcuts(
       bindings: {
-        if (newFunction != null) newShortcut: newFunction,
-        if (openFunction != null) openShortcut: openFunction,
-        if (deleteFunction != null) deleteShortcut: deleteFunction,
-        if (moveUpFunction != null) moveUpShortcut: moveUpFunction,
-        if (moveDownFunction != null) moveDownShortcut: moveDownFunction,
-        if (homeFunction != null) moveToStartShortcut: homeFunction,
-        if (endFunction != null) moveToEndShortcut: endFunction,
-        if (pageUpFunction != null) pageUpShortcut: pageUpFunction,
-        if (pageDownFunction != null) pageDownShortcut: pageDownFunction,
-        if (testFunction != null) testShortcut: testFunction,
-        if (backspaceFunction != null) backspaceShortcut: backspaceFunction,
-        if (cancelFunction != null)
-          const SingleActivator(LogicalKeyboardKey.escape): cancelFunction,
+        newShortcut: ?newFunction,
+        openShortcut: ?openFunction,
+        deleteShortcut: ?deleteFunction,
+        moveUpShortcut: ?moveUpFunction,
+        moveDownShortcut: ?moveDownFunction,
+        moveToStartShortcut: ?homeFunction,
+        moveToEndShortcut: ?endFunction,
+        pageUpShortcut: ?pageUpFunction,
+        pageDownShortcut: ?pageDownFunction,
+        testShortcut: ?testFunction,
+        backspaceShortcut: ?backspaceFunction,
+        const SingleActivator(LogicalKeyboardKey.escape): ?cancelFunction,
         if (text != null) copyShortcut: text.copyToClipboard,
       },
       child: child,

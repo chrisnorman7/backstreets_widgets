@@ -20,8 +20,8 @@ class PerformableActionsContext {
   /// passing `canCloseMenu` to the constructor of every
   /// [PerformableActionMenuItem].
   factory PerformableActionsContext.fromActions(
-    final List<PerformableAction> actions, {
-    final bool closeMenuOnEscape = true,
+    List<PerformableAction> actions, {
+    bool closeMenuOnEscape = true,
   }) {
     final customSemanticActions = <CustomSemanticsAction, VoidCallback>{};
     final menuChildren = <Widget>[];

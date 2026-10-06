@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 /// The default button builder for [PerformableActionsListTile].
 Widget defaultButtonBuilder(
-  final BuildContext builderContext,
-  final MenuController controller,
+  BuildContext builderContext,
+  MenuController controller,
 ) => IconButton(
   onPressed: controller.toggle,
   icon: const Icon(Icons.more_vert),
@@ -62,9 +62,9 @@ class PerformableActionsListTile extends StatelessWidget {
 
   /// Build the widget.
   @override
-  Widget build(final BuildContext context) => PerformableActionsBuilder(
+  Widget build(BuildContext context) => PerformableActionsBuilder(
     actions: actions,
-    builder: (final builderContext, final controller) => ListTile(
+    builder: (builderContext, controller) => ListTile(
       autofocus: autofocus,
       selected: selected,
       title: title,

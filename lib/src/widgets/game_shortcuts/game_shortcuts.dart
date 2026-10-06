@@ -19,7 +19,7 @@ class GameShortcutsProvider extends InheritedWidget {
 
   /// Whether listeners should be notified.
   @override
-  bool updateShouldNotify(final GameShortcutsProvider oldWidget) =>
+  bool updateShouldNotify(GameShortcutsProvider oldWidget) =>
       shortcuts != oldWidget.shortcuts;
 }
 
@@ -43,11 +43,11 @@ class GameShortcuts extends StatelessWidget {
   });
 
   /// Possibly return an instance.
-  static GameShortcutsProvider? maybeOf(final BuildContext context) =>
+  static GameShortcutsProvider? maybeOf(BuildContext context) =>
       context.dependOnInheritedWidgetOfExactType<GameShortcutsProvider>();
 
   /// Return an instance.
-  static GameShortcutsProvider of(final BuildContext context) {
+  static GameShortcutsProvider of(BuildContext context) {
     final provider = maybeOf(context);
     if (provider == null) {
       throw StateError('No `GameShortcuts` could be found.');
@@ -79,7 +79,7 @@ class GameShortcuts extends StatelessWidget {
 
   /// Build the widget.
   @override
-  Widget build(final BuildContext context) {
+  Widget build(BuildContext context) {
     final keyboard = HardwareKeyboard.instance;
     final allShortcuts = <GameShortcut>[...shortcuts];
     if (includeParentShortcuts) {
@@ -91,9 +91,9 @@ class GameShortcuts extends StatelessWidget {
     return GameShortcutsProvider(
       shortcuts: allShortcuts,
       child: Builder(
-        builder: (final innerContext) => Focus(
+        builder: (innerContext) => Focus(
           autofocus: autofocus,
-          onKeyEvent: (final node, final event) {
+          onKeyEvent: (node, event) {
             if (event is KeyRepeatEvent) {
               return KeyEventResult.ignored;
             }

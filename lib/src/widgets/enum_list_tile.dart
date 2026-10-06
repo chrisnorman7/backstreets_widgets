@@ -50,53 +50,51 @@ class EnumListTile<T extends Enum> extends StatelessWidget {
 
   /// Build the widget.
   @override
-  Widget build(final BuildContext context) => Semantics(
-        customSemanticsActions: {
-          for (final v in values.where((final e) => e != value))
-            CustomSemanticsAction(label: _getValueName(v)): () => onChanged(v),
-          if (nullable)
-            CustomSemanticsAction(label: emptyValue): () => onChanged(null),
-        },
-        child: MenuAnchor(
-          menuChildren: [
-            if (nullable)
-              Semantics(
-                checked: value == null,
-                selected: true,
-                child: MenuItemButton(
-                  autofocus: value == null,
-                  child: Text(emptyValue),
-                  onPressed: () => onChanged(null),
-                ),
-              ),
-            ...values.map(
-              (final v) {
-                final checked = v == value;
-                return Semantics(
-                  checked: checked,
-                  selected: true,
-                  child: MenuItemButton(
-                    autofocus: checked,
-                    onPressed: () => onChanged(v),
-                    trailingIcon: SelectedIcon(selected: checked),
-                    child: Text(_getValueName(v)),
-                  ),
-                );
-              },
+  Widget build(BuildContext context) => Semantics(
+    customSemanticsActions: {
+      for (final v in values.where((e) => e != value))
+        CustomSemanticsAction(label: _getValueName(v)): () => onChanged(v),
+      if (nullable)
+        CustomSemanticsAction(label: emptyValue): () => onChanged(null),
+    },
+    child: MenuAnchor(
+      menuChildren: [
+        if (nullable)
+          Semantics(
+            checked: value == null,
+            selected: true,
+            child: MenuItemButton(
+              autofocus: value == null,
+              child: Text(emptyValue),
+              onPressed: () => onChanged(null),
             ),
-          ],
-          builder: (final context, final controller, final child) => ListTile(
-            autofocus: autofocus,
-            title: Text(title),
-            subtitle: Text(_getValueName(value)),
-            onTap: controller.toggle,
-            onLongPress: onLongPress,
           ),
-        ),
-      );
+        ...values.map((v) {
+          final checked = v == value;
+          return Semantics(
+            checked: checked,
+            selected: true,
+            child: MenuItemButton(
+              autofocus: checked,
+              onPressed: () => onChanged(v),
+              trailingIcon: SelectedIcon(selected: checked),
+              child: Text(_getValueName(v)),
+            ),
+          );
+        }),
+      ],
+      builder: (context, controller, child) => ListTile(
+        autofocus: autofocus,
+        title: Text(title),
+        subtitle: Text(_getValueName(value)),
+        onTap: controller.toggle,
+        onLongPress: onLongPress,
+      ),
+    ),
+  );
 
   /// Get the name of [value].
-  String _getValueName(final T? value) {
+  String _getValueName(T? value) {
     if (value == null) {
       return emptyValue;
     }

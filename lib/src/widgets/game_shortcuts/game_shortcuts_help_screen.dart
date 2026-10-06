@@ -39,11 +39,11 @@ class GameShortcutsHelpScreen extends StatelessWidget {
 
   /// Build the widget.
   @override
-  Widget build(final BuildContext context) => Cancel(
+  Widget build(BuildContext context) => Cancel(
     child: SimpleScaffold(
       title: title,
       body: ListView.builder(
-        itemBuilder: (final context, final index) {
+        itemBuilder: (context, index) {
           final shortcut = shortcuts[index];
           final keys = <String>[
             if (shortcut.controlKey) controlKey,

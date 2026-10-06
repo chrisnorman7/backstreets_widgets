@@ -37,15 +37,15 @@ class SimpleScaffold extends StatelessWidget {
 
   /// Build the widget.
   @override
-  Widget build(final BuildContext context) => Scaffold(
-        appBar: AppBar(
-          leading: leading,
-          actions: actions,
-          title: Text(title),
-          bottom: bottom,
-        ),
-        body: body,
-        bottomNavigationBar: bottomNavigationBar,
-        floatingActionButton: floatingActionButton,
-      );
+  Widget build(BuildContext context) => Scaffold(
+    appBar: AppBar(
+      leading: leading,
+      actions: actions,
+      title: Text(title),
+      bottom: bottom,
+    ),
+    body: body,
+    bottomNavigationBar: bottomNavigationBar,
+    floatingActionButton: floatingActionButton,
+  );
 }

@@ -55,11 +55,11 @@ class PerformableActions extends StatelessWidget {
 
   /// Build the widget.
   @override
-  Widget build(final BuildContext context) {
-    final actionNames = actions.map((final action) => action.name).toList();
+  Widget build(BuildContext context) {
+    final actionNames = actions.map((action) => action.name).toList();
     return PerformableActionsBuilder(
       actions: actions,
-      builder: (final builderContext, final controller) => Row(
+      builder: (builderContext, controller) => Row(
         crossAxisAlignment: crossAxisAlignment,
         mainAxisAlignment: mainAxisAlignment,
         mainAxisSize: mainAxisSize,

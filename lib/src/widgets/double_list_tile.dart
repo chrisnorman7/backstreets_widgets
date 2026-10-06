@@ -59,7 +59,7 @@ class DoubleListTile extends StatelessWidget {
 
   /// Build the widget.
   @override
-  Widget build(final BuildContext context) {
+  Widget build(BuildContext context) {
     final text = value.toStringAsFixed(decimalPlaces);
     final minValue = min;
     final maxValue = max;
@@ -102,15 +102,15 @@ class DoubleListTile extends StatelessWidget {
       title: Text(title),
       subtitle: Text(subtitle ?? text),
       onTap: () => context.pushWidgetBuilder(
-        (final context) => GetText(
-          onDone: (final value) {
+        (context) => GetText(
+          onDone: (value) {
             Navigator.pop(context);
             onChanged(double.parse(value));
           },
           actions: actions,
           text: text,
           title: title,
-          validator: (final value) {
+          validator: (value) {
             final d = value == null ? null : double.tryParse(value);
             if (value == null || value.isEmpty) {
               return 'You must enter a value';

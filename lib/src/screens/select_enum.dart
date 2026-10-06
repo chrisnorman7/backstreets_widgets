@@ -34,14 +34,14 @@ class SelectEnum<T extends Enum> extends StatelessWidget {
 
   /// Build the widget.
   @override
-  Widget build(final BuildContext context) => SelectItem<T>(
-        onDone: onDone,
-        values: values,
-        actions: actions,
-        getSearchString: (final value) => value.name,
-        getWidget: (final value) => Text(value.name),
-        title: title,
-        value: value,
-        getCallbackShortcuts: getCallbackShortcuts,
-      );
+  Widget build(BuildContext context) => SelectItem<T>(
+    onDone: onDone,
+    values: values,
+    actions: actions,
+    getSearchString: (value) => value.name,
+    getWidget: (value) => Text(value.name),
+    title: title,
+    value: value,
+    getCallbackShortcuts: getCallbackShortcuts,
+  );
 }

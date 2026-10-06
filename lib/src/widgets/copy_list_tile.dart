@@ -28,23 +28,23 @@ class CopyListTile extends StatelessWidget {
 
   /// Build the widget.
   @override
-  Widget build(final BuildContext context) => PerformableActionsListTile(
-        actions: [
-          PerformableAction(
-            name: 'Copy value',
-            activator: copyShortcut,
-            invoke: subtitle.copyToClipboard,
-          ),
-          PerformableAction(
-            name: 'Copy title',
-            activator: copyOtherShortcut,
-            invoke: title.copyToClipboard,
-          ),
-        ],
-        autofocus: autofocus,
-        title: Text(title),
-        subtitle: Text(subtitle),
-        onTap: () => '$title: $subtitle'.copyToClipboard(),
-        onLongPress: onLongPress,
-      );
+  Widget build(BuildContext context) => PerformableActionsListTile(
+    actions: [
+      PerformableAction(
+        name: 'Copy value',
+        activator: copyShortcut,
+        invoke: subtitle.copyToClipboard,
+      ),
+      PerformableAction(
+        name: 'Copy title',
+        activator: copyOtherShortcut,
+        invoke: title.copyToClipboard,
+      ),
+    ],
+    autofocus: autofocus,
+    title: Text(title),
+    subtitle: Text(subtitle),
+    onTap: () => '$title: $subtitle'.copyToClipboard(),
+    onLongPress: onLongPress,
+  );
 }

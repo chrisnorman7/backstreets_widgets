@@ -136,9 +136,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
+            autofocus: true,
           ),
         ],
-        initialPageIndex: 1,
         onPageChange: (final value) => context.announce('Page $value'),
       );
 }

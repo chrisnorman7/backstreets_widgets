@@ -4,11 +4,7 @@ import 'package:flutter/material.dart';
 /// A Button to create something new.
 class NewButton extends StatelessWidget {
   /// Create an instance.
-  const NewButton({
-    required this.onPressed,
-    this.tooltip = 'new',
-    super.key,
-  });
+  const NewButton({required this.onPressed, this.tooltip = 'new', super.key});
 
   /// The function to call when this button is pressed.
   final VoidCallback onPressed;
@@ -18,9 +14,9 @@ class NewButton extends StatelessWidget {
 
   /// Build the widget.
   @override
-  Widget build(final BuildContext context) => FloatingActionButton(
-        onPressed: onPressed,
-        tooltip: tooltip,
-        child: addIcon,
-      );
+  Widget build(BuildContext context) => FloatingActionButton(
+    onPressed: onPressed,
+    tooltip: tooltip,
+    child: addIcon,
+  );
 }

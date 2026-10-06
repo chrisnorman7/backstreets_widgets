@@ -77,10 +77,10 @@ class TimedCommandsState extends State<TimedCommands> {
 
   /// Build a widget.
   @override
-  Widget build(final BuildContext context) => widget.builder(context, this);
+  Widget build(BuildContext context) => widget.builder(context, this);
 
   /// Get the index for [command].
-  int _getCommandIndex(final VoidCallback command) {
+  int _getCommandIndex(VoidCallback command) {
     final index = _commands.indexOf(command);
     if (index == -1) {
       throw StateError(
@@ -91,7 +91,7 @@ class TimedCommandsState extends State<TimedCommands> {
   }
 
   /// Register a new command.
-  void registerCommand(final VoidCallback command, final Duration interval) {
+  void registerCommand(VoidCallback command, Duration interval) {
     _commands.add(command);
     _intervals.add(interval);
     _running.add(false);
@@ -100,7 +100,7 @@ class TimedCommandsState extends State<TimedCommands> {
 
   /// Unregisters a [command] which has previously been registered with
   /// [registerCommand].
-  void unregisterCommand(final VoidCallback command) {
+  void unregisterCommand(VoidCallback command) {
     final index = _getCommandIndex(command);
     _commands.removeAt(index);
     _intervals.removeAt(index);
@@ -110,27 +110,26 @@ class TimedCommandsState extends State<TimedCommands> {
 
   /// Returns a boolean indicating whether [command] is registered with this
   /// widget.
-  bool commandIsRegistered(final VoidCallback command) =>
-      _commands.contains(command);
+  bool commandIsRegistered(VoidCallback command) => _commands.contains(command);
 
   /// Returns a boolean indicating whether [command] is running.
   ///
   /// This is different from [commandIsScheduled], as it will only return `true`
   /// if the player has indicated a desire to run [command] next cycle.
-  bool commandIsRunning(final VoidCallback command) =>
+  bool commandIsRunning(VoidCallback command) =>
       _running[_getCommandIndex(command)];
 
   /// Returns a boolean indicating whether [command] is scheduled.
   ///
   /// This is different from [commandIsRunning], as [command] may be scheduled,
   /// but may not run if [stopCommand] has been called.
-  bool commandIsScheduled(final VoidCallback command) =>
+  bool commandIsScheduled(VoidCallback command) =>
       _timers[_getCommandIndex(command)] != null;
 
   /// Start a command.
   ///
   /// Returns `true` if the command was started.
-  bool startCommand(final VoidCallback command) {
+  bool startCommand(VoidCallback command) {
     final index = _getCommandIndex(command);
     if (commandIsRunning(command)) {
       return false;
@@ -144,12 +143,12 @@ class TimedCommandsState extends State<TimedCommands> {
   }
 
   /// Start the timer for [command].
-  void _startCommandTimer(final VoidCallback command) {
+  void _startCommandTimer(VoidCallback command) {
     final index = _getCommandIndex(command);
     final interval = _intervals[index];
     _timers[index] = Timer.periodic(
       interval,
-      (final timer) => _runCommand(timer, command, interval),
+      (timer) => _runCommand(timer, command, interval),
     );
   }
 
@@ -159,7 +158,7 @@ class TimedCommandsState extends State<TimedCommands> {
   /// won't run again this interval.
   ///
   /// Returns `true` if successful.
-  bool stopCommand(final VoidCallback command) {
+  bool stopCommand(VoidCallback command) {
     if (commandIsRunning(command)) {
       _running[_getCommandIndex(command)] = false;
       return true;
@@ -168,7 +167,7 @@ class TimedCommandsState extends State<TimedCommands> {
   }
 
   /// Change the [interval] that [command] runs at.
-  void setCommandInterval(final VoidCallback command, final Duration interval) {
+  void setCommandInterval(VoidCallback command, Duration interval) {
     final index = _getCommandIndex(command);
     _intervals[index] = interval;
     final oldTimer = _timers[index];
@@ -183,11 +182,7 @@ class TimedCommandsState extends State<TimedCommands> {
   /// This method will be called by the timer created by [startCommand]. It
   /// handles changing intervals after a call to [setCommandInterval], and
   /// cancelling timers when [command] is no longer running.
-  void _runCommand(
-    final Timer timer,
-    final VoidCallback command,
-    final Duration interval,
-  ) {
+  void _runCommand(Timer timer, VoidCallback command, Duration interval) {
     final index = _getCommandIndex(command);
     if (commandIsRunning(command)) {
       command();

@@ -23,7 +23,7 @@ class TickingProvider extends InheritedWidget {
 
   /// Whether this widget should notify listeners.
   @override
-  bool updateShouldNotify(covariant final TickingProvider oldWidget) =>
+  bool updateShouldNotify(covariant TickingProvider oldWidget) =>
       pause != oldWidget.pause || resume != oldWidget.resume;
 }
 
@@ -42,11 +42,11 @@ class Ticking extends StatefulWidget {
   });
 
   /// Maybe return an instance.
-  static TickingProvider? maybeOf(final BuildContext context) =>
+  static TickingProvider? maybeOf(BuildContext context) =>
       context.dependOnInheritedWidgetOfExactType<TickingProvider>();
 
   /// Return the nearest instance.
-  static TickingProvider of(final BuildContext context) => maybeOf(context)!;
+  static TickingProvider of(BuildContext context) => maybeOf(context)!;
 
   /// How often [onTick] should be called.
   final Duration duration;
@@ -81,7 +81,7 @@ class TickingState extends State<Ticking> {
   void initState() {
     super.initState();
     _paused = false;
-    timer = Timer.periodic(widget.duration, (final _) {
+    timer = Timer.periodic(widget.duration, (_) {
       if (!_paused) {
         widget.onTick();
       }
@@ -97,7 +97,7 @@ class TickingState extends State<Ticking> {
 
   /// Build a widget.
   @override
-  Widget build(final BuildContext context) => TickingProvider(
+  Widget build(BuildContext context) => TickingProvider(
     pause: () => _paused = true,
     resume: () => _paused = false,
     child: widget.child,

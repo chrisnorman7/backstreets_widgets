@@ -17,7 +17,7 @@ class TimedTransitions extends StatefulWidget {
 
   /// The initial builder to use.
   final Widget Function(BuildContext context, OnTransition onTransition)
-      initialBuilder;
+  initialBuilder;
 
   /// The builder that will build transition widgets.
   final WidgetBuilder transitionBuilder;
@@ -39,7 +39,7 @@ class TimedTransitionsState extends State<TimedTransitions> {
   @override
   void initState() {
     super.initState();
-    _builder = (final context) => widget.initialBuilder(context, transition);
+    _builder = (context) => widget.initialBuilder(context, transition);
   }
 
   /// Dispose of the widget.
@@ -53,10 +53,7 @@ class TimedTransitionsState extends State<TimedTransitions> {
   ///
   /// Note: Only the most recent call to [transition] will actually do anything,
   /// as calling [transition] cancels the timer.
-  void transition(
-    final Duration duration,
-    final WidgetBuilder builder,
-  ) {
+  void transition(Duration duration, WidgetBuilder builder) {
     _transitionTimer?.cancel();
     _transitionTimer = null;
     setState(() => _builder = widget.transitionBuilder);
@@ -70,5 +67,5 @@ class TimedTransitionsState extends State<TimedTransitions> {
 
   /// Build a widget.
   @override
-  Widget build(final BuildContext context) => Builder(builder: _builder);
+  Widget build(BuildContext context) => Builder(builder: _builder);
 }

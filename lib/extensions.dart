@@ -8,7 +8,7 @@ import 'package:flutter/services.dart';
 /// Useful methods for build contexts.
 extension BuildContextX on BuildContext {
   /// Push a widget [builder].
-  Future<void> pushWidgetBuilder(final WidgetBuilder builder) =>
+  Future<void> pushWidgetBuilder(WidgetBuilder builder) =>
       Navigator.of(this).push<void>(MaterialPageRoute(builder: builder));
 
   /// Pop `this` [BuildContext] from the [Navigator].
@@ -19,15 +19,15 @@ extension BuildContextX on BuildContext {
 
   /// Show a confirm [message].
   Future<void> showConfirmMessage({
-    final String title = 'Confirm',
-    final String message = 'Are you sure?',
-    final VoidCallback? yesCallback,
-    final VoidCallback? noCallback,
-    final String yesLabel = 'Yes',
-    final String noLabel = 'No',
+    String title = 'Confirm',
+    String message = 'Are you sure?',
+    VoidCallback? yesCallback,
+    VoidCallback? noCallback,
+    String yesLabel = 'Yes',
+    String noLabel = 'No',
   }) => showDialog<void>(
     context: this,
-    builder: (final innerContext) => AlertDialog(
+    builder: (innerContext) => AlertDialog(
       title: Text(title),
       content: Focus(autofocus: true, child: Text(message)),
       actions: [
@@ -51,12 +51,12 @@ extension BuildContextX on BuildContext {
 
   /// Show a message with an OK button.
   Future<void> showMessage({
-    required final String message,
-    final String title = 'Error',
-    final String buttonLabel = 'OK',
+    required String message,
+    String title = 'Error',
+    String buttonLabel = 'OK',
   }) => showDialog(
     context: this,
-    builder: (final innerContext) => AlertDialog(
+    builder: (innerContext) => AlertDialog(
       actions: [
         TextButton(onPressed: innerContext.pop, child: Text(buttonLabel)),
       ],
@@ -74,9 +74,7 @@ extension BuildContextX on BuildContext {
   /// Pause and resume a [Ticking] while pushing a widget [builder].
   ///
   /// This method is useful when implementing a pause menu for example.
-  Future<void> pauseTickingBuilderAndPushWidget(
-    final WidgetBuilder builder,
-  ) async {
+  Future<void> pauseTickingBuilderAndPushWidget(WidgetBuilder builder) async {
     Ticking.maybeOf(this)?.pause();
     await Navigator.of(this).push(MaterialPageRoute<void>(builder: builder));
     Ticking.maybeOf(this)?.resume();
@@ -86,7 +84,7 @@ extension BuildContextX on BuildContext {
   ///
   /// This method is useful when implementing a pause menu for example.
   Future<void> pauseRandomTaskBuilderAndPushWidget(
-    final WidgetBuilder builder,
+    WidgetBuilder builder,
   ) async {
     RandomTasks.maybeOf(this)?.pause();
     await Navigator.of(this).push(MaterialPageRoute<void>(builder: builder));
@@ -95,8 +93,8 @@ extension BuildContextX on BuildContext {
 
   /// Announce a [message].
   Future<void> announce(
-    final String message, {
-    final TextDirection textDirection = TextDirection.ltr,
+    String message, {
+    TextDirection textDirection = TextDirection.ltr,
   }) =>
       SemanticsService.sendAnnouncement(View.of(this), message, textDirection);
 }
@@ -106,7 +104,7 @@ extension DoubleX on double {
   /// Round to the given number of decimal [places].
   ///
   /// This code copied and modified from[here](https://www.bezkoder.com/dart-round-double/#:~:text=Dart%20round%20double%20to%20N%20decimal%20places,-We%20have%202&text=%E2%80%93%20Multiply%20the%20number%20by%2010,12.3412%20*%2010%5E2%20%3D%201234.12).
-  double roundDouble({final int places = 2}) {
+  double roundDouble({int places = 2}) {
     final mod = pow(10.0, places);
     return (this * mod).round().toDouble() / mod;
   }

@@ -20,7 +20,7 @@ class RandomTask {
 
   /// Provides equality.
   @override
-  bool operator ==(final Object other) {
+  bool operator ==(Object other) {
     if (other is RandomTask) {
       return other.getDuration == getDuration && other.onTick == onTick;
     }

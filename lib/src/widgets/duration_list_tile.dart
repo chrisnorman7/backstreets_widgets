@@ -39,7 +39,7 @@ class DurationListTile extends StatelessWidget {
 
   /// Build the widget.
   @override
-  Widget build(final BuildContext context) {
+  Widget build(BuildContext context) {
     final days = duration.inDays;
     final hours = duration.inHours % 24;
     final minutes = duration.inMinutes % 60;
@@ -57,7 +57,7 @@ class DurationListTile extends StatelessWidget {
       title: Text(title),
       subtitle: Text(parts.join(' ')),
       onTap: () => context.pushWidgetBuilder(
-        (final builderContext) => EditDurationScreen(
+        (builderContext) => EditDurationScreen(
           duration: duration,
           onChanged: onChanged,
           title: screenTitle,

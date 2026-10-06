@@ -5,18 +5,10 @@ import 'package:flutter/material.dart';
 /// A widget to show an [error], and optional [stackTrace].
 class ErrorListView extends StatelessWidget {
   /// Create an instance.
-  const ErrorListView({
-    required this.error,
-    this.stackTrace,
-    super.key,
-  });
+  const ErrorListView({required this.error, this.stackTrace, super.key});
 
   /// Create an instance quickly from Riverpod's `ref.watch` method.
-  const ErrorListView.withPositional(
-    this.error,
-    this.stackTrace, {
-    super.key,
-  });
+  const ErrorListView.withPositional(this.error, this.stackTrace, {super.key});
 
   /// The error to show.
   ///
@@ -32,7 +24,7 @@ class ErrorListView extends StatelessWidget {
 
   /// Build the widget.
   @override
-  Widget build(final BuildContext context) {
+  Widget build(BuildContext context) {
     final s = stackTrace;
     return ListView(
       children: [
@@ -42,12 +34,10 @@ class ErrorListView extends StatelessWidget {
           subtitle: error.toString(),
         ),
         if (s != null)
-          ...s.toString().split('\n').map(
-                (final e) => ListTile(
-                  title: Text(e),
-                  onTap: e.copyToClipboard,
-                ),
-              ),
+          ...s
+              .toString()
+              .split('\n')
+              .map((e) => ListTile(title: Text(e), onTap: e.copyToClipboard)),
       ],
     );
   }

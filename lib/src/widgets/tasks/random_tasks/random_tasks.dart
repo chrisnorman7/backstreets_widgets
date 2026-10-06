@@ -24,7 +24,7 @@ class RandomTasksProvider extends InheritedWidget {
 
   /// Whether this widget should notify listeners.
   @override
-  bool updateShouldNotify(covariant final RandomTasksProvider oldWidget) =>
+  bool updateShouldNotify(covariant RandomTasksProvider oldWidget) =>
       pause != oldWidget.pause || resume != oldWidget.resume;
 }
 
@@ -41,12 +41,11 @@ class RandomTasks extends StatefulWidget {
   const RandomTasks({required this.tasks, required this.child, super.key});
 
   /// Possibly provide an instance.
-  static RandomTasksProvider? maybeOf(final BuildContext context) =>
+  static RandomTasksProvider? maybeOf(BuildContext context) =>
       context.dependOnInheritedWidgetOfExactType<RandomTasksProvider>();
 
   /// Provide an instance.
-  static RandomTasksProvider of(final BuildContext context) =>
-      maybeOf(context)!;
+  static RandomTasksProvider of(BuildContext context) => maybeOf(context)!;
 
   /// The tasks to use.
   ///
@@ -96,7 +95,7 @@ class RandomTasksState extends State<RandomTasks> {
 
   /// Build a widget.
   @override
-  Widget build(final BuildContext context) =>
+  Widget build(BuildContext context) =>
       RandomTasksProvider(pause: pause, resume: resume, child: widget.child);
 
   /// Pause the tasks.
@@ -106,7 +105,7 @@ class RandomTasksState extends State<RandomTasks> {
   void resume() => _paused = false;
 
   /// Run [task].
-  void scheduleTask(final RandomTask task) {
+  void scheduleTask(RandomTask task) {
     timers[task] = Timer(task.getDuration(), () {
       timers.remove(task);
       if (!_paused) {

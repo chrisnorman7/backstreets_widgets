@@ -18,12 +18,9 @@ class TickingTasks extends StatelessWidget {
 
   /// Build the widget.
   @override
-  Widget build(final BuildContext context) => RandomTasks(
+  Widget build(BuildContext context) => RandomTasks(
     tasks: tasks
-        .map(
-          (final e) =>
-              RandomTask(getDuration: () => e.duration, onTick: e.onTick),
-        )
+        .map((e) => RandomTask(getDuration: () => e.duration, onTick: e.onTick))
         .toList(),
     child: child,
   );

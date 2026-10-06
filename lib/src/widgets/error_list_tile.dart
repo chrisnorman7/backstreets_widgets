@@ -32,7 +32,7 @@ class ErrorListTile extends StatelessWidget {
 
   /// Build the widget.
   @override
-  Widget build(final BuildContext context) {
+  Widget build(BuildContext context) {
     final s = stackTrace;
     return PerformableActionsListTile(
       autofocus: autofocus,

@@ -9,10 +9,7 @@ import 'package:flutter/rendering.dart';
 /// (Windows for example) causes problems.
 class EnsureSemantics extends StatefulWidget {
   /// Create an instance.
-  const EnsureSemantics({
-    required this.child,
-    super.key,
-  });
+  const EnsureSemantics({required this.child, super.key});
 
   /// The widget below this widget in the tree.
   final Widget child;
@@ -37,5 +34,5 @@ class EnsureSemanticsState extends State<EnsureSemantics> {
 
   /// Build a widget.
   @override
-  Widget build(final BuildContext context) => widget.child;
+  Widget build(BuildContext context) => widget.child;
 }

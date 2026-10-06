@@ -18,6 +18,7 @@ class TabbedScaffoldTab {
     this.floatingActionButton,
     this.tooltip,
     this.enabled = true,
+    this.autofocus = false,
   });
 
   /// The title of the scaffold.
@@ -43,23 +44,18 @@ class TabbedScaffoldTab {
 
   /// Whether this page is enabled.
   final bool enabled;
+
+  /// Whether this tab should be autofocused.
+  final bool autofocus;
 }
 
 /// A scaffold with multiple tabs.
 class TabbedScaffold extends StatefulWidget {
   /// Create an instance.
-  const TabbedScaffold({
-    required this.tabs,
-    this.initialPageIndex = 0,
-    this.onPageChange,
-    super.key,
-  });
+  const TabbedScaffold({required this.tabs, this.onPageChange, super.key});
 
   /// The tabs to use.
   final List<TabbedScaffoldTab> tabs;
-
-  /// The initial tab index to use.
-  final int initialPageIndex;
 
   /// A function to call when the index changes.
   final ValueChanged<int>? onPageChange;
@@ -77,12 +73,12 @@ class TabbedScaffoldState extends State<TabbedScaffold> {
   @override
   void initState() {
     super.initState();
-    _pageIndex = widget.initialPageIndex;
+    _pageIndex = max(0, widget.tabs.indexWhere((t) => t.autofocus));
   }
 
   /// Build a widget.
   @override
-  Widget build(final BuildContext context) {
+  Widget build(BuildContext context) {
     final page = widget.tabs[_pageIndex];
     final numbers = <GameShortcutsShortcut>[
       GameShortcutsShortcut.digit1,
@@ -102,7 +98,7 @@ class TabbedScaffoldState extends State<TabbedScaffold> {
         shortcut: GameShortcutsShortcut.tab,
         controlKey: useControlKey,
         metaKey: useMetaKey,
-        onStart: (final innerContext) => switchPages(1),
+        onStart: (innerContext) => switchPages(1),
       ),
       GameShortcut(
         title: 'Switch to the previous page',
@@ -110,7 +106,7 @@ class TabbedScaffoldState extends State<TabbedScaffold> {
         controlKey: useControlKey,
         metaKey: useMetaKey,
         shiftKey: true,
-        onStart: (final innerContext) => switchPages(-1),
+        onStart: (innerContext) => switchPages(-1),
       ),
       for (var i = 0; i < min(widget.tabs.length, numbers.length); i++)
         GameShortcut(
@@ -118,7 +114,7 @@ class TabbedScaffoldState extends State<TabbedScaffold> {
           shortcut: numbers[i],
           controlKey: useControlKey,
           metaKey: useMetaKey,
-          onStart: (final innerContext) {
+          onStart: (innerContext) {
             widget.onPageChange?.call(i);
             setState(() => _pageIndex = i);
           },
@@ -127,10 +123,10 @@ class TabbedScaffoldState extends State<TabbedScaffold> {
         title: 'Show help',
         shortcut: GameShortcutsShortcut.slash,
         shiftKey: true,
-        onStart: (final innerContext) {
+        onStart: (innerContext) {
           final provider = GameShortcuts.of(innerContext);
           innerContext.pushWidgetBuilder(
-            (final _) => GameShortcutsHelpScreen(shortcuts: provider.shortcuts),
+            (_) => GameShortcutsHelpScreen(shortcuts: provider.shortcuts),
           );
         },
       ),
@@ -148,7 +144,7 @@ class TabbedScaffoldState extends State<TabbedScaffold> {
         bottomNavigationBar: NavigationBar(
           destinations: widget.tabs
               .map(
-                (final e) => NavigationDestination(
+                (e) => NavigationDestination(
                   icon: e.icon,
                   label: e.title,
                   tooltip: e.tooltip,
@@ -156,7 +152,7 @@ class TabbedScaffoldState extends State<TabbedScaffold> {
                 ),
               )
               .toList(),
-          onDestinationSelected: (final value) {
+          onDestinationSelected: (value) {
             widget.onPageChange?.call(value);
             setState(() => _pageIndex = value);
           },
@@ -167,7 +163,7 @@ class TabbedScaffoldState extends State<TabbedScaffold> {
   }
 
   /// Switch pages.
-  void switchPages(final int direction) {
+  void switchPages(int direction) {
     final pageIndex = (_pageIndex + direction) % widget.tabs.length;
     widget.onPageChange?.call(pageIndex);
     setState(() {

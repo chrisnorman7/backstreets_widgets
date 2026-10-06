@@ -3,8 +3,8 @@ import 'package:backstreets_widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 /// The type of a function which returns callback shortcuts for a given value.
-typedef SelectItemCallbackShortcuts<T> = Map<ShortcutActivator, VoidCallback>
-    Function(T value);
+typedef SelectItemCallbackShortcuts<T> =
+    Map<ShortcutActivator, VoidCallback> Function(T value);
 
 /// A widget for selecting a new [value] from a list of [values].
 class SelectItem<T> extends StatelessWidget {
@@ -53,7 +53,7 @@ class SelectItem<T> extends StatelessWidget {
 
   /// Build the widget.
   @override
-  Widget build(final BuildContext context) {
+  Widget build(BuildContext context) {
     final getSearchStringFunction = getSearchString;
     final getWidgetFunction = getWidget;
     return Cancel(
@@ -62,7 +62,7 @@ class SelectItem<T> extends StatelessWidget {
         title: title,
         body: BuiltSearchableListView<T>(
           items: values,
-          builder: (final context, final index) {
+          builder: (context, index) {
             final item = values[index];
             final listTile = ListTile(
               autofocus: item == value || (value == null && index == 0),
@@ -74,9 +74,7 @@ class SelectItem<T> extends StatelessWidget {
                 if (shouldPop) {
                   Navigator.pop(context);
                 }
-                onDone(
-                  item,
-                );
+                onDone(item);
               },
             );
             final bindings = getCallbackShortcuts?.call(item);
@@ -85,10 +83,7 @@ class SelectItem<T> extends StatelessWidget {
                   getSearchStringFunction?.call(item) ?? item.toString(),
               child: bindings == null
                   ? listTile
-                  : CallbackShortcuts(
-                      bindings: bindings,
-                      child: listTile,
-                    ),
+                  : CallbackShortcuts(bindings: bindings, child: listTile),
             );
           },
         ),

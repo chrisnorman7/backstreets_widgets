@@ -55,7 +55,7 @@ class IntListTile extends StatelessWidget {
 
   /// Build the widget.
   @override
-  Widget build(final BuildContext context) {
+  Widget build(BuildContext context) {
     final minValue = min;
     final maxValue = max;
     return PerformableActionsListTile(
@@ -97,15 +97,15 @@ class IntListTile extends StatelessWidget {
       title: Text(title),
       subtitle: Text(subtitle ?? value.toString()),
       onTap: () => context.pushWidgetBuilder(
-        (final context) => GetText(
-          onDone: (final value) {
+        (context) => GetText(
+          onDone: (value) {
             Navigator.pop(context);
             onChanged(int.parse(value));
           },
           labelText: labelText,
           text: value.toString(),
           title: title,
-          validator: (final value) {
+          validator: (value) {
             if (value == null || value.isEmpty) {
               return 'You must provide a value';
             }

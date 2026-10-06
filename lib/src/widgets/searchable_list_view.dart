@@ -5,10 +5,7 @@ import 'package:flutter/services.dart';
 /// A list tile that can be searched for within a [SearchableListView].
 class SearchableListTile {
   /// Create an instance.
-  const SearchableListTile({
-    required this.searchString,
-    required this.child,
-  });
+  const SearchableListTile({required this.searchString, required this.child});
 
   /// The search string that will find this instance.
   final String searchString;
@@ -20,10 +17,7 @@ class SearchableListTile {
 /// A [ListView] that can be searched.
 class SearchableListView extends StatefulWidget {
   /// Create an instance.
-  const SearchableListView({
-    required this.children,
-    super.key,
-  });
+  const SearchableListView({required this.children, super.key});
 
   /// The list of children.
   final List<SearchableListTile> children;
@@ -48,7 +42,7 @@ class _SearchableListViewState extends State<SearchableListView> {
 
   /// Build the widget.
   @override
-  Widget build(final BuildContext context) {
+  Widget build(BuildContext context) {
     final searchString = _searchString;
     final List<SearchableListTile> results;
     if (searchString == null) {
@@ -56,14 +50,14 @@ class _SearchableListViewState extends State<SearchableListView> {
     } else {
       results = widget.children
           .where(
-            (final element) => element.searchString.toLowerCase().contains(
-                  searchString.toLowerCase(),
-                ),
+            (element) => element.searchString.toLowerCase().contains(
+              searchString.toLowerCase(),
+            ),
           )
           .toList();
     }
     return ListView.builder(
-      itemBuilder: (final context, final index) {
+      itemBuilder: (context, index) {
         if (index == 0) {
           var labelText = 'Search';
           if (searchString != null) {
@@ -83,10 +77,8 @@ class _SearchableListViewState extends State<SearchableListView> {
               title: TextField(
                 controller: _controller,
                 focusNode: _textFieldFocusNode,
-                decoration: InputDecoration(
-                  labelText: labelText,
-                ),
-                onChanged: (final value) => setState(
+                decoration: InputDecoration(labelText: labelText),
+                onChanged: (value) => setState(
                   () => _searchString = value.isEmpty ? null : value,
                 ),
               ),
@@ -124,9 +116,9 @@ class _SearchableListViewState extends State<SearchableListView> {
 
   /// Clear the search field.
   void clearSearchField() => setState(() {
-        _controller.text = '';
-        _searchString = null;
-      });
+    _controller.text = '';
+    _searchString = null;
+  });
 
   /// Dispose of things.
   @override
@@ -155,7 +147,7 @@ class BuiltSearchableListView<T> extends StatelessWidget {
 
   /// Build the widget.
   @override
-  Widget build(final BuildContext context) {
+  Widget build(BuildContext context) {
     final children = [
       for (var i = 0; i < items.length; i++) builder(context, i),
     ];

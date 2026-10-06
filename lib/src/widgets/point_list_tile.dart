@@ -53,21 +53,21 @@ class PointListTile extends StatelessWidget {
 
   /// Build the widget.
   @override
-  Widget build(final BuildContext context) => ListTile(
-        autofocus: autofocus,
-        title: Text(title),
-        subtitle: Text(subtitle ?? '${point.x}, ${point.y}'),
-        onTap: () => context.pushWidgetBuilder(
-          (final builderContext) => EditPointScreen(
-            point: point,
-            onChanged: onChanged,
-            defaultModifier: defaultModifier,
-            editorTitle: title,
-            minValue: min,
-            maxValue: max,
-            title: editorTitle,
-            initialEditPoint: initialEditPoint,
-          ),
-        ),
-      );
+  Widget build(BuildContext context) => ListTile(
+    autofocus: autofocus,
+    title: Text(title),
+    subtitle: Text(subtitle ?? '${point.x}, ${point.y}'),
+    onTap: () => context.pushWidgetBuilder(
+      (builderContext) => EditPointScreen(
+        point: point,
+        onChanged: onChanged,
+        defaultModifier: defaultModifier,
+        editorTitle: title,
+        minValue: min,
+        maxValue: max,
+        title: editorTitle,
+        initialEditPoint: initialEditPoint,
+      ),
+    ),
+  );
 }

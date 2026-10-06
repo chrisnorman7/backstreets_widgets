@@ -34,7 +34,7 @@ final shortcuts2 = <GameShortcut>[
     title: 'Help',
     shortcut: GameShortcutsShortcut.slash,
     shiftKey: true,
-    onStart: (final innerContext) {
+    onStart: (innerContext) {
       final widget = GameShortcuts.of(innerContext);
       innerContext.pushWidgetBuilder(
         (_) => GameShortcutsHelpScreen(shortcuts: widget.shortcuts),
@@ -52,7 +52,7 @@ class SecondShortcuts extends StatelessWidget {
 
   /// Build the widget.
   @override
-  Widget build(final BuildContext context) {
+  Widget build(BuildContext context) {
     final oldShortcuts = context
         .dependOnInheritedWidgetOfExactType<GameShortcutsProvider>();
     expect(oldShortcuts, isNotNull);
@@ -72,7 +72,7 @@ class FirstShortcuts extends StatelessWidget {
 
   /// Build the widget.
   @override
-  Widget build(final BuildContext context) => GameShortcuts(
+  Widget build(BuildContext context) => GameShortcuts(
     shortcuts: shortcuts1,
     autofocus: false,
     canRequestFocus: false,
@@ -82,7 +82,7 @@ class FirstShortcuts extends StatelessWidget {
 
 Future<void> main() async {
   testWidgets('Ensure that `GameShortcuts` can access parent shortcuts.', (
-    final tester,
+    tester,
   ) async {
     const data = 'Hello';
     await tester.pumpWidget(
@@ -96,9 +96,7 @@ Future<void> main() async {
     expect(find.text(data), findsOneWidget);
   });
 
-  testWidgets('Ensure the help screen gets all the shortcuts.', (
-    final tester,
-  ) async {
+  testWidgets('Ensure the help screen gets all the shortcuts.', (tester) async {
     await tester.pumpWidget(
       const MaterialApp(
         home: SimpleScaffold(

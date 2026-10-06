@@ -83,7 +83,7 @@ class EditPointScreenState extends State<EditPointScreen> {
 
   /// Build a widget.
   @override
-  Widget build(final BuildContext context) {
+  Widget build(BuildContext context) {
     final arrowKeys = <LogicalKeyboardKey, Point<int>>{
       LogicalKeyboardKey.arrowDown: const Point(0, -1),
       LogicalKeyboardKey.arrowUp: const Point(0, 1),
@@ -114,10 +114,7 @@ class EditPointScreenState extends State<EditPointScreen> {
             modifier++;
           });
         },
-        for (final MapEntry(
-              key: key,
-              value: adjustment,
-            ) in arrowKeys.entries)
+        for (final MapEntry(key: key, value: adjustment) in arrowKeys.entries)
           SingleActivator(key): () {
             final x = adjustment.x * modifier;
             final y = adjustment.y * modifier;
@@ -198,7 +195,7 @@ class EditPointScreenState extends State<EditPointScreen> {
   }
 
   /// Adjust either [xModifier] or [yModifier] of [point].
-  void adjustPoint(final int xModifier, final int yModifier) {
+  void adjustPoint(int xModifier, int yModifier) {
     final x = point.x + xModifier;
     final y = point.y + yModifier;
     point = Point(

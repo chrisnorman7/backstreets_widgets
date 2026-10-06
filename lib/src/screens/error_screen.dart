@@ -5,18 +5,10 @@ import 'package:flutter/material.dart';
 /// A widget that displays an [error], and an optional [stackTrace].
 class ErrorScreen extends StatelessWidget {
   /// Create an instance.
-  const ErrorScreen({
-    required this.error,
-    this.stackTrace,
-    super.key,
-  });
+  const ErrorScreen({required this.error, this.stackTrace, super.key});
 
   /// Create an instance quickly from Riverpod's `ref.watch` method.
-  const ErrorScreen.withPositional(
-    this.error,
-    this.stackTrace, {
-    super.key,
-  });
+  const ErrorScreen.withPositional(this.error, this.stackTrace, {super.key});
 
   /// The error to show.
   final Object error;
@@ -28,11 +20,8 @@ class ErrorScreen extends StatelessWidget {
 
   /// Build the widget.
   @override
-  Widget build(final BuildContext context) => SimpleScaffold(
-        title: 'Error',
-        body: ErrorListView(
-          error: error,
-          stackTrace: stackTrace,
-        ),
-      );
+  Widget build(BuildContext context) => SimpleScaffold(
+    title: 'Error',
+    body: ErrorListView(error: error, stackTrace: stackTrace),
+  );
 }

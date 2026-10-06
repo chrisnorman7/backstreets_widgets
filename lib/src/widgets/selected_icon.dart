@@ -6,14 +6,8 @@ class SelectedIcon extends StatelessWidget {
   const SelectedIcon({
     required this.selected,
     super.key,
-    this.selectedIcon = const Icon(
-      Icons.check_circle,
-      color: Colors.green,
-    ),
-    this.unselectedIcon = const Icon(
-      Icons.circle_outlined,
-      color: Colors.grey,
-    ),
+    this.selectedIcon = const Icon(Icons.check_circle, color: Colors.green),
+    this.unselectedIcon = const Icon(Icons.circle_outlined, color: Colors.grey),
   });
 
   /// Whether or not [selectedIcon] or [unselectedIcon] should be returned.
@@ -27,7 +21,7 @@ class SelectedIcon extends StatelessWidget {
 
   /// Build the widget.
   @override
-  Widget build(final BuildContext context) {
+  Widget build(BuildContext context) {
     if (selected) {
       return selectedIcon;
     }

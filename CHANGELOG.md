@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.43.0]
+
+- Updated Flutter and SDK dependencies.
+- Gave `TabbedScaffoldTab` an `autofocus` property.
+- Removed `TabbedScaffold.initialIndex`.
+
 ## [0.42.0]
 
 - Reinstate the`BuildContext.announce` extension method.

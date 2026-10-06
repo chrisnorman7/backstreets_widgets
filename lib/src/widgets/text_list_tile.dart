@@ -48,23 +48,23 @@ class TextListTile extends StatelessWidget {
 
   /// Build the widget.
   @override
-  Widget build(final BuildContext context) => ListTile(
-        autofocus: autofocus,
-        title: Text(header),
-        subtitle: Text(value),
-        onTap: () => context.pushWidgetBuilder(
-          (final context) => GetText(
-            onDone: (final value) {
-              Navigator.pop(context);
-              onChanged(value);
-            },
-            labelText: labelText ?? title ?? header,
-            text: value,
-            actions: actions,
-            title: title ?? header,
-            validator: validator,
-          ),
-        ),
-        onLongPress: onLongPress,
-      );
+  Widget build(BuildContext context) => ListTile(
+    autofocus: autofocus,
+    title: Text(header),
+    subtitle: Text(value),
+    onTap: () => context.pushWidgetBuilder(
+      (context) => GetText(
+        onDone: (value) {
+          Navigator.pop(context);
+          onChanged(value);
+        },
+        labelText: labelText ?? title ?? header,
+        text: value,
+        actions: actions,
+        title: title ?? header,
+        validator: validator,
+      ),
+    ),
+    onLongPress: onLongPress,
+  );
 }
