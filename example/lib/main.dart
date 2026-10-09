@@ -138,7 +138,57 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             autofocus: true,
           ),
+          const TabbedScaffoldTab(
+            title: 'Ticker',
+            icon: Icon(Icons.lock_clock),
+            child: _ClockWidget(),
+          ),
         ],
         onPageChange: (final value) => context.announce('Page $value'),
       );
+}
+
+class _ClockWidget extends StatefulWidget {
+  /// Create an instance.
+  const _ClockWidget();
+
+  /// Create state for this widget.
+  @override
+  _ClockWidgetState createState() => _ClockWidgetState();
+}
+
+/// State for [_ClockWidget].
+class _ClockWidgetState extends State<_ClockWidget> {
+  /// The duration to show.
+  late DateTime _now;
+
+  /// Initialise state.
+  @override
+  void initState() {
+    super.initState();
+    _now = DateTime.now();
+  }
+
+  /// Build a widget.
+  @override
+  Widget build(final BuildContext context) {
+    final now = _now;
+    final hours = now.hour.toString().padLeft(2, '0');
+    final minutes = now.minute.toString().padLeft(2, '0');
+    final seconds = now.second.toString().padLeft(2, '0');
+    return TickerWidget(
+      onTick: (final d) {
+        setState(() {
+          _now = _now.add(d);
+        });
+      },
+      child: CenterText(
+        text: '$hours:$minutes:$seconds',
+        autofocus: true,
+        key: ValueKey(
+          '$hours:$minutes:$seconds',
+        ),
+      ),
+    );
+  }
 }
