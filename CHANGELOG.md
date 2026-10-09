@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.44.0]
+
+- Added `TickerWidget`.
+
 ## [0.43.0]
 
 - Updated Flutter and SDK dependencies.
