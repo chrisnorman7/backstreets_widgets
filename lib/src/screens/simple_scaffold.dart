@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// A quicker way to create scaffolds.
 class SimpleScaffold extends StatelessWidget {

@@ -4,10 +4,7 @@ import 'package:flutter/services.dart';
 /// Hold information about [PhysicalKeyboardKey]s.
 class GameShortcutsShortcut {
   /// Create an instance.
-  const GameShortcutsShortcut({
-    required this.key,
-    required this.name,
-  });
+  const GameShortcutsShortcut({required this.key, required this.name});
 
   /// The represented key.
   final PhysicalKeyboardKey key;
@@ -222,9 +219,9 @@ class GameShortcutsShortcut {
   /// Represents the location of the "Closed Caption Toggle" key on ageneralized keyboard.
   static const GameShortcutsShortcut closedCaptionToggle =
       GameShortcutsShortcut(
-    key: PhysicalKeyboardKey.closedCaptionToggle,
-    name: 'closedCaptionToggle',
-  );
+        key: PhysicalKeyboardKey.closedCaptionToggle,
+        name: 'closedCaptionToggle',
+      );
 
   /// Represents the location of the "Comma" key on a generalized keyboard.
   static const GameShortcutsShortcut comma = GameShortcutsShortcut(
@@ -337,9 +334,9 @@ class GameShortcutsShortcut {
   /// Represents the location of the "Display Toggle Int Ext" key on ageneralized keyboard.
   static const GameShortcutsShortcut displayToggleIntExt =
       GameShortcutsShortcut(
-    key: PhysicalKeyboardKey.displayToggleIntExt,
-    name: 'displayToggleIntExt',
-  );
+        key: PhysicalKeyboardKey.displayToggleIntExt,
+        name: 'displayToggleIntExt',
+      );
 
   /// Represents the location of the "Eject" key on a generalized keyboard.
   static const GameShortcutsShortcut eject = GameShortcutsShortcut(
@@ -698,16 +695,16 @@ class GameShortcutsShortcut {
   /// Represents the location of the "Game Button Thumb Left" key on ageneralized keyboard.
   static const GameShortcutsShortcut gameButtonThumbLeft =
       GameShortcutsShortcut(
-    key: PhysicalKeyboardKey.gameButtonThumbLeft,
-    name: 'gameButtonThumbLeft',
-  );
+        key: PhysicalKeyboardKey.gameButtonThumbLeft,
+        name: 'gameButtonThumbLeft',
+      );
 
   /// Represents the location of the "Game Button Thumb Right" key on ageneralized keyboard.
   static const GameShortcutsShortcut gameButtonThumbRight =
       GameShortcutsShortcut(
-    key: PhysicalKeyboardKey.gameButtonThumbRight,
-    name: 'gameButtonThumbRight',
-  );
+        key: PhysicalKeyboardKey.gameButtonThumbRight,
+        name: 'gameButtonThumbRight',
+      );
 
   /// Represents the location of the "Game Button X" key on a generalizedkeyboard.
   static const GameShortcutsShortcut gameButtonX = GameShortcutsShortcut(
@@ -808,9 +805,9 @@ class GameShortcutsShortcut {
   /// Represents the location of the "Keyboard Layout Select" key on ageneralized keyboard.
   static const GameShortcutsShortcut keyboardLayoutSelect =
       GameShortcutsShortcut(
-    key: PhysicalKeyboardKey.keyboardLayoutSelect,
-    name: 'keyboardLayoutSelect',
-  );
+        key: PhysicalKeyboardKey.keyboardLayoutSelect,
+        name: 'keyboardLayoutSelect',
+      );
 
   /// Represents the location of the "Key C" key on a generalized keyboard.
   static const GameShortcutsShortcut keyC = GameShortcutsShortcut(
@@ -1037,16 +1034,16 @@ class GameShortcutsShortcut {
   /// Represents the location of the "Launch Internet Browser" key on ageneralized keyboard.
   static const GameShortcutsShortcut launchInternetBrowser =
       GameShortcutsShortcut(
-    key: PhysicalKeyboardKey.launchInternetBrowser,
-    name: 'launchInternetBrowser',
-  );
+        key: PhysicalKeyboardKey.launchInternetBrowser,
+        name: 'launchInternetBrowser',
+      );
 
   /// Represents the location of the "Launch Keyboard Layout" key on ageneralized keyboard.
   static const GameShortcutsShortcut launchKeyboardLayout =
       GameShortcutsShortcut(
-    key: PhysicalKeyboardKey.launchKeyboardLayout,
-    name: 'launchKeyboardLayout',
-  );
+        key: PhysicalKeyboardKey.launchKeyboardLayout,
+        name: 'launchKeyboardLayout',
+      );
 
   /// Represents the location of the "Launch Mail" key on a generalizedkeyboard.
   static const GameShortcutsShortcut launchMail = GameShortcutsShortcut(
@@ -1075,9 +1072,9 @@ class GameShortcutsShortcut {
   /// Represents the location of the "Launch Word Processor" key on ageneralized keyboard.
   static const GameShortcutsShortcut launchWordProcessor =
       GameShortcutsShortcut(
-    key: PhysicalKeyboardKey.launchWordProcessor,
-    name: 'launchWordProcessor',
-  );
+        key: PhysicalKeyboardKey.launchWordProcessor,
+        name: 'launchWordProcessor',
+      );
 
   /// Represents the location of the "Lock Screen" key on a generalizedkeyboard.
   static const GameShortcutsShortcut lockScreen = GameShortcutsShortcut(
@@ -1190,9 +1187,9 @@ class GameShortcutsShortcut {
   /// Represents the location of the "Microphone Mute Toggle" key on ageneralized keyboard.
   static const GameShortcutsShortcut microphoneMuteToggle =
       GameShortcutsShortcut(
-    key: PhysicalKeyboardKey.microphoneMuteToggle,
-    name: 'microphoneMuteToggle',
-  );
+        key: PhysicalKeyboardKey.microphoneMuteToggle,
+        name: 'microphoneMuteToggle',
+      );
 
   /// Represents the location of the "Minus" key on a generalized keyboard.
   static const GameShortcutsShortcut minus = GameShortcutsShortcut(
@@ -1359,9 +1356,9 @@ class GameShortcutsShortcut {
   /// Represents the location of the "Numpad Memory Subtract" key on ageneralized keyboard.
   static const GameShortcutsShortcut numpadMemorySubtract =
       GameShortcutsShortcut(
-    key: PhysicalKeyboardKey.numpadMemorySubtract,
-    name: 'numpadMemorySubtract',
-  );
+        key: PhysicalKeyboardKey.numpadMemorySubtract,
+        name: 'numpadMemorySubtract',
+      );
 
   /// Represents the location of the "Numpad Multiply" key on a generalizedkeyboard.
   static const GameShortcutsShortcut numpadMultiply = GameShortcutsShortcut(
@@ -1450,9 +1447,9 @@ class GameShortcutsShortcut {
   /// Represents the location of the "Privacy Screen Toggle" key on ageneralized keyboard.
   static const GameShortcutsShortcut privacyScreenToggle =
       GameShortcutsShortcut(
-    key: PhysicalKeyboardKey.privacyScreenToggle,
-    name: 'privacyScreenToggle',
-  );
+        key: PhysicalKeyboardKey.privacyScreenToggle,
+        name: 'privacyScreenToggle',
+      );
 
   /// Represents the location of the "Program Guide" key on a generalizedkeyboard.
   static const GameShortcutsShortcut programGuide = GameShortcutsShortcut(

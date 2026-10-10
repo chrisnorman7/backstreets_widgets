@@ -1,6 +1,6 @@
 import 'package:backstreets_widgets/screens.dart';
 import 'package:backstreets_widgets/widgets.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// The type of a function which returns callback shortcuts for a given value.
 typedef SelectItemCallbackShortcuts<T> =

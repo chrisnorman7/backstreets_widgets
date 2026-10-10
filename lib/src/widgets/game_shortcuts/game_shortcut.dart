@@ -25,8 +25,8 @@ class GameShortcut {
     this.onStop,
     this.altKey = false,
     this.shiftKey = false,
-  })  : controlKey = useControlKey,
-        metaKey = useMetaKey;
+  }) : controlKey = useControlKey,
+       metaKey = useMetaKey;
 
   /// The title of this shortcut.
   ///

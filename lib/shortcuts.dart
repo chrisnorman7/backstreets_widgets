@@ -1,13 +1,15 @@
 import 'package:backstreets_widgets/shortcuts.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:material_ui/material_ui.dart';
 
 export 'src/cross_platform_single_activator.dart';
 
 /// Whether we are running on something Apple-flavoured.
-final runningOnApple =
-    [TargetPlatform.iOS, TargetPlatform.macOS].contains(defaultTargetPlatform);
+final runningOnApple = [
+  TargetPlatform.iOS,
+  TargetPlatform.macOS,
+].contains(defaultTargetPlatform);
 
 /// Whether the control key should be used in shortcuts.
 final useControlKey = !runningOnApple;
@@ -33,10 +35,7 @@ const searchShortcut = SingleActivator(LogicalKeyboardKey.slash);
 const deleteShortcut = SingleActivator(LogicalKeyboardKey.delete);
 
 /// A shortcut to move items up.
-const moveUpShortcut = SingleActivator(
-  LogicalKeyboardKey.arrowUp,
-  alt: true,
-);
+const moveUpShortcut = SingleActivator(LogicalKeyboardKey.arrowUp, alt: true);
 
 /// A shortcut to move items down.
 const moveDownShortcut = SingleActivator(
@@ -57,21 +56,13 @@ const moveRightShortcut = SingleActivator(
 );
 
 /// A shortcut to move something to the top.
-const moveToStartShortcut = SingleActivator(
-  LogicalKeyboardKey.home,
-  alt: true,
-);
+const moveToStartShortcut = SingleActivator(LogicalKeyboardKey.home, alt: true);
 
 /// A shortcut to move something to the end.
-const moveToEndShortcut = SingleActivator(
-  LogicalKeyboardKey.end,
-  alt: true,
-);
+const moveToEndShortcut = SingleActivator(LogicalKeyboardKey.end, alt: true);
 
 /// The hotkey for copying things.
-final copyShortcut = CrossPlatformSingleActivator(
-  LogicalKeyboardKey.keyC,
-);
+final copyShortcut = CrossPlatformSingleActivator(LogicalKeyboardKey.keyC);
 
 /// The hotkey for copying other things.
 final copyOtherShortcut = CrossPlatformSingleActivator(

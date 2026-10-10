@@ -1,6 +1,6 @@
 import 'package:backstreets_widgets/shortcuts.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// A list tile that can be searched for within a [SearchableListView].
 class SearchableListTile {

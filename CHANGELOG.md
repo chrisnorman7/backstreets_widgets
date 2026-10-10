@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.44.1]
+
+- Migrated to using `material_ui`.
+
 ## [0.44.0]
 
 - Added `TickerWidget`.

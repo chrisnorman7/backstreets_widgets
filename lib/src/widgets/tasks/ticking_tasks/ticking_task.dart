@@ -1,15 +1,12 @@
 import 'package:backstreets_widgets/widgets.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// A task whose [onTick] method will be called every [duration].
 ///
 /// Instances of [TickingTask] are used by the [TickingTasks] widget.
 class TickingTask {
   /// Create an instance.
-  const TickingTask({
-    required this.duration,
-    required this.onTick,
-  });
+  const TickingTask({required this.duration, required this.onTick});
 
   /// How often [onTick] should be called.
   ///

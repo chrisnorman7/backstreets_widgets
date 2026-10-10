@@ -1,7 +1,7 @@
 import 'package:backstreets_widgets/extensions.dart';
 import 'package:backstreets_widgets/shortcuts.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// A widget which maps the most common shortcuts.
 class CommonShortcuts extends StatelessWidget {

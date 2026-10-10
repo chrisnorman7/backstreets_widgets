@@ -1,7 +1,7 @@
 /// A collection of [Widget]s which can be used inside a [Scaffold].
 library;
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 export 'src/game_shortcuts_shortcut.dart';
 export 'src/widgets/buttons/new_button.dart';

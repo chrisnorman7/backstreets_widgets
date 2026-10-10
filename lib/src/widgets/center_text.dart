@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// A widget that shows [text] in the centre of the screen.
 class CenterText extends StatelessWidget {

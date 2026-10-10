@@ -1,5 +1,5 @@
 import 'package:backstreets_widgets/widgets.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// A widget which uses [PerformableActionsBuilder] to produce a [Row] with a
 /// menu [IconButton] to the right of [child].

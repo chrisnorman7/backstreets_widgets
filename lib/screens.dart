@@ -1,7 +1,7 @@
 /// Various [Widget]s with [Scaffold]s at their root.
 library;
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 export 'src/screens/edit_duration_screen.dart';
 export 'src/screens/edit_point_screen.dart';

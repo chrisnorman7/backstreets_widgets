@@ -4,9 +4,9 @@ import 'package:backstreets_widgets/src/game_shortcuts_shortcut.dart';
 import 'package:backstreets_widgets/src/widgets/game_shortcuts/game_shortcut.dart';
 import 'package:backstreets_widgets/src/widgets/game_shortcuts/game_shortcuts.dart';
 import 'package:backstreets_widgets/src/widgets/game_shortcuts/game_shortcuts_help_screen.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// First 2 shortcuts.
 final shortcuts1 = <GameShortcut>[

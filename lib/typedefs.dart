@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// The type of a function which receives a build context as its only argument.
 typedef ContextCallback = void Function(BuildContext innerContext);
